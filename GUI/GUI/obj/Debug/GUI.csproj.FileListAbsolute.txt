@@ -1,0 +1,9 @@
+C:\Users\Neptune\OneDrive\Documents\Visual Studio 2015\Projects\GUI\GUI\bin\Debug\GUI.exe.config
+C:\Users\Neptune\OneDrive\Documents\Visual Studio 2015\Projects\GUI\bin\GUI.exe.config
+C:\Users\Neptune\OneDrive\Documents\Visual Studio 2015\Projects\GUI\bin\GUI.exe
+C:\Users\Neptune\OneDrive\Documents\Visual Studio 2015\Projects\GUI\bin\GUI.pdb
+C:\Users\Neptune\OneDrive\Documents\Visual Studio 2015\Projects\GUI\GUI\obj\Debug\GUI.csprojResolveAssemblyReference.cache
+C:\Users\Neptune\OneDrive\Documents\Visual Studio 2015\Projects\GUI\GUI\obj\Debug\GUI.Properties.Resources.resources
+C:\Users\Neptune\OneDrive\Documents\Visual Studio 2015\Projects\GUI\GUI\obj\Debug\GUI.csproj.GenerateResource.Cache
+C:\Users\Neptune\OneDrive\Documents\Visual Studio 2015\Projects\GUI\GUI\obj\Debug\GUI.exe
+C:\Users\Neptune\OneDrive\Documents\Visual Studio 2015\Projects\GUI\GUI\obj\Debug\GUI.pdb
