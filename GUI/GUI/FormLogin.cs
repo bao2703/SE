@@ -7,12 +7,6 @@ namespace GUI
 {
 	public partial class FormLogin : Form
 	{
-		FormConfig formConfig;
-		public FormLogin(FormConfig formConfig)
-		{
-			InitializeComponent();
-			this.formConfig = formConfig;
-		}
 		public FormLogin()
 		{
 			InitializeComponent();
@@ -47,26 +41,21 @@ namespace GUI
 			catch (Exception)
 			{
 				MessageBox.Show("Không thể kết nối cơ sở dữ liệu.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-				this.Dispose();
+				new FormConfig().Show();
 				return;
 			}
 			new FormMain(NhanVienBUS.Get(nhanVien.Id)).Show();
-			if (formConfig != null)
-			{
-				formConfig.Hide();
-			}
-			this.Dispose();
-		}
-
-		private void Enter_KeyDown(object sender, KeyEventArgs e)
-		{
-			if (e.KeyCode == Keys.Enter)
-				btnLogin_Click(sender, e);
+			this.Hide();
 		}
 
 		private void Form_FormClosed(object sender, FormClosedEventArgs e)
 		{
 			Application.Exit();
+		}
+
+		private void btnConfig_Click(object sender, EventArgs e)
+		{
+			new FormConfig().Show();
 		}
 	}
 }

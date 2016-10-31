@@ -30,7 +30,7 @@ namespace GUI
 				ConfigBUS.SQLSeverAuthentication(
 					new Config(txtServerName.Text, txtDatabaseName.Text, false, txtUserName.Text, txtPassword.Text));
 			}
-			new FormLogin(this).ShowDialog();
+			this.Dispose();
 		}
 
 		private void chkWAuthentication_CheckedChanged(object sender, EventArgs e)

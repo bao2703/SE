@@ -33,6 +33,7 @@
 			this.txtId = new System.Windows.Forms.TextBox();
 			this.txtPassword = new System.Windows.Forms.TextBox();
 			this.btnLogin = new System.Windows.Forms.Button();
+			this.btnConfig = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
 			// lblID
@@ -59,20 +60,18 @@
 			this.txtId.Name = "txtId";
 			this.txtId.Size = new System.Drawing.Size(253, 22);
 			this.txtId.TabIndex = 2;
-			this.txtId.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Enter_KeyDown);
 			// 
 			// txtPassword
 			// 
 			this.txtPassword.Location = new System.Drawing.Point(112, 45);
 			this.txtPassword.Name = "txtPassword";
-			this.txtPassword.PasswordChar = '*';
 			this.txtPassword.Size = new System.Drawing.Size(253, 22);
 			this.txtPassword.TabIndex = 3;
-			this.txtPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Enter_KeyDown);
+			this.txtPassword.UseSystemPasswordChar = true;
 			// 
 			// btnLogin
 			// 
-			this.btnLogin.Location = new System.Drawing.Point(257, 84);
+			this.btnLogin.Location = new System.Drawing.Point(143, 89);
 			this.btnLogin.Name = "btnLogin";
 			this.btnLogin.Size = new System.Drawing.Size(108, 30);
 			this.btnLogin.TabIndex = 4;
@@ -80,11 +79,23 @@
 			this.btnLogin.UseVisualStyleBackColor = true;
 			this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
 			// 
+			// btnConfig
+			// 
+			this.btnConfig.Location = new System.Drawing.Point(257, 89);
+			this.btnConfig.Name = "btnConfig";
+			this.btnConfig.Size = new System.Drawing.Size(108, 30);
+			this.btnConfig.TabIndex = 5;
+			this.btnConfig.Text = "Cấu hình";
+			this.btnConfig.UseVisualStyleBackColor = true;
+			this.btnConfig.Click += new System.EventHandler(this.btnConfig_Click);
+			// 
 			// FormLogin
 			// 
+			this.AcceptButton = this.btnLogin;
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(385, 131);
+			this.Controls.Add(this.btnConfig);
 			this.Controls.Add(this.btnLogin);
 			this.Controls.Add(this.txtPassword);
 			this.Controls.Add(this.txtId);
@@ -107,5 +118,6 @@
 		private System.Windows.Forms.TextBox txtId;
 		private System.Windows.Forms.TextBox txtPassword;
 		private System.Windows.Forms.Button btnLogin;
+		private System.Windows.Forms.Button btnConfig;
 	}
 }

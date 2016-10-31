@@ -18,14 +18,14 @@ namespace DAO
 		{
 			using (var data = new QLKhachSanDataContext(Connection.ConnectionString))
 			{
-				var query = (from table in data.Nhan_Viens
-							 where table.Ma_Nhan_Vien == idNhanVien
+				var query = (from table in data.NHAN_VIENs
+							 where table.ID_NHAN_VIEN == idNhanVien
 							 select table).SingleOrDefault();
 				if (query == null)
 				{
 					return new NhanVien();
 				}
-				return new NhanVien(query.Ma_Nhan_Vien, query.Ten_Nhan_Vien, query.Mat_Khau);
+				return new NhanVien(query.ID_NHAN_VIEN, query.TEN_NV, query.MAT_KHAU);
 			}
 		}
 
@@ -38,8 +38,8 @@ namespace DAO
 		{
 			using (var data = new QLKhachSanDataContext(Connection.ConnectionString))
 			{
-				var query = (from table in data.
-							 where (table.Ma_Nhan_Vien == nhanVien.Id) && (table.Mat_Khau == nhanVien.MatKhau)
+				var query = (from table in data.NHAN_VIENs
+							 where (table.ID_NHAN_VIEN == nhanVien.Id) && (table.MAT_KHAU == nhanVien.MatKhau)
 							 select table).SingleOrDefault();
 				if (query == null)
 				{
