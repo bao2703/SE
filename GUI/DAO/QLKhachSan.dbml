@@ -7,14 +7,18 @@
       <Column Name="NGAY_LAP" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
-  <Table Name="dbo.PHONG" Member="PHONGs">
-    <Type Name="PHONG">
-      <Column Name="ID_PHONG" Type="System.String" DbType="VarChar(45) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="LOAI_PHONG" Type="System.String" DbType="VarChar(45)" CanBeNull="true" />
-      <Association Name="PHONG_CT_DAT_PHONG" Member="CT_DAT_PHONGs" ThisKey="ID_PHONG" OtherKey="ID_PHONG" Type="CT_DAT_PHONG" />
-      <Association Name="PHONG_CT_GIA_THUE" Member="CT_GIA_THUEs" ThisKey="ID_PHONG" OtherKey="ID_PHONG" Type="CT_GIA_THUE" />
-      <Association Name="PHONG_CT_THUE_PHONG" Member="CT_THUE_PHONGs" ThisKey="ID_PHONG" OtherKey="ID_PHONG" Type="CT_THUE_PHONG" />
-      <Association Name="PHONG_KHACH_HANG" Member="KHACH_HANGs" ThisKey="ID_PHONG" OtherKey="ID_PHONG" Type="KHACH_HANG" />
+  <Table Name="dbo.PHIEU_THUE_PHONG" Member="PHIEU_THUE_PHONGs">
+    <Type Name="PHIEU_THUE_PHONG">
+      <Column Name="ID_THUE_PHONG" Type="System.String" DbType="VarChar(45) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ID_KHACH_HANG" Type="System.String" DbType="VarChar(45) NOT NULL" CanBeNull="false" />
+      <Column Name="ID_NHAN_VIEN" Type="System.String" DbType="VarChar(45) NOT NULL" CanBeNull="false" />
+      <Column Name="NGAY_NHAN" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="NGAY_TRA" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="PHIEU_THUE_PHONG_CT_DICH_VU" Member="CT_DICH_VUs" ThisKey="ID_THUE_PHONG" OtherKey="ID_THUE_PHONG" Type="CT_DICH_VU" />
+      <Association Name="PHIEU_THUE_PHONG_CT_THUE_PHONG" Member="CT_THUE_PHONGs" ThisKey="ID_THUE_PHONG" OtherKey="ID_THUE_PHONG" Type="CT_THUE_PHONG" />
+      <Association Name="PHIEU_THUE_PHONG_HOA_DON" Member="HOA_DONs" ThisKey="ID_THUE_PHONG" OtherKey="ID_THUE_PHONG" Type="HOA_DON" />
+      <Association Name="KHACH_HANG_PHIEU_THUE_PHONG" Member="KHACH_HANG" ThisKey="ID_KHACH_HANG" OtherKey="ID_KHACH_HANG" Type="KHACH_HANG" IsForeignKey="true" />
+      <Association Name="NHAN_VIEN_PHIEU_THUE_PHONG" Member="NHAN_VIEN" ThisKey="ID_NHAN_VIEN" OtherKey="ID_NHAN_VIEN" Type="NHAN_VIEN" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.CT_DAT_PHONG" Member="CT_DAT_PHONGs">
@@ -22,10 +26,8 @@
       <Column Name="ID_DAT_PHONG" Type="System.String" DbType="VarChar(45) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="ID_PHONG" Type="System.String" DbType="VarChar(45) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="SO_KHACH" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="NGAY_DEN" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="NGAY_DI" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Association Name="PHONG_CT_DAT_PHONG" Member="PHONG" ThisKey="ID_PHONG" OtherKey="ID_PHONG" Type="PHONG" IsForeignKey="true" />
       <Association Name="PHIEU_DAT_PHONG_CT_DAT_PHONG" Member="PHIEU_DAT_PHONG" ThisKey="ID_DAT_PHONG" OtherKey="ID_DAT_PHONG" Type="PHIEU_DAT_PHONG" IsForeignKey="true" />
+      <Association Name="PHONG_CT_DAT_PHONG" Member="PHONG" ThisKey="ID_PHONG" OtherKey="ID_PHONG" Type="PHONG" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.CT_DICH_VU" Member="CT_DICH_VUs">
@@ -34,8 +36,8 @@
       <Column Name="ID_THUE_PHONG" Type="System.String" DbType="VarChar(45) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="SO_LUONG" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="TIEN_DV" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="DICH_VU_CT_DICH_VU" Member="DICH_VU" ThisKey="ID_DICH_VU" OtherKey="ID_DICH_VU" Type="DICH_VU" IsForeignKey="true" />
       <Association Name="PHIEU_THUE_PHONG_CT_DICH_VU" Member="PHIEU_THUE_PHONG" ThisKey="ID_THUE_PHONG" OtherKey="ID_THUE_PHONG" Type="PHIEU_THUE_PHONG" IsForeignKey="true" />
+      <Association Name="DICH_VU_CT_DICH_VU" Member="DICH_VU" ThisKey="ID_DICH_VU" OtherKey="ID_DICH_VU" Type="DICH_VU" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.CT_GIA_THUE" Member="CT_GIA_THUEs">
@@ -43,8 +45,8 @@
       <Column Name="ID_PHONG" Type="System.String" DbType="VarChar(45) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="ID_GIA_THUE" Type="System.String" DbType="VarChar(45) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="SO_LUONG" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="PHONG_CT_GIA_THUE" Member="PHONG" ThisKey="ID_PHONG" OtherKey="ID_PHONG" Type="PHONG" IsForeignKey="true" />
       <Association Name="GIA_THUE_CT_GIA_THUE" Member="GIA_THUE" ThisKey="ID_GIA_THUE" OtherKey="ID_GIA_THUE" Type="GIA_THUE" IsForeignKey="true" />
+      <Association Name="PHONG_CT_GIA_THUE" Member="PHONG" ThisKey="ID_PHONG" OtherKey="ID_PHONG" Type="PHONG" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.CT_THUE_PHONG" Member="CT_THUE_PHONGs">
@@ -52,11 +54,9 @@
       <Column Name="ID_THUE_PHONG" Type="System.String" DbType="VarChar(45) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="ID_PHONG" Type="System.String" DbType="VarChar(45) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="SO_KHACH" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="NGAY_NHAN" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="NGAY_TRA" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Column Name="TIEN_THUE" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="PHONG_CT_THUE_PHONG" Member="PHONG" ThisKey="ID_PHONG" OtherKey="ID_PHONG" Type="PHONG" IsForeignKey="true" />
       <Association Name="PHIEU_THUE_PHONG_CT_THUE_PHONG" Member="PHIEU_THUE_PHONG" ThisKey="ID_THUE_PHONG" OtherKey="ID_THUE_PHONG" Type="PHIEU_THUE_PHONG" IsForeignKey="true" />
+      <Association Name="PHONG_CT_THUE_PHONG" Member="PHONG" ThisKey="ID_PHONG" OtherKey="ID_PHONG" Type="PHONG" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.DICH_VU" Member="DICH_VUs">
@@ -83,8 +83,8 @@
       <Column Name="TIEN_THUE" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="TIEN_DV" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="TONG_TIEN" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="NHAN_VIEN_HOA_DON" Member="NHAN_VIEN" ThisKey="ID_NHAN_VIEN" OtherKey="ID_NHAN_VIEN" Type="NHAN_VIEN" IsForeignKey="true" />
       <Association Name="PHIEU_THUE_PHONG_HOA_DON" Member="PHIEU_THUE_PHONG" ThisKey="ID_THUE_PHONG" OtherKey="ID_THUE_PHONG" Type="PHIEU_THUE_PHONG" IsForeignKey="true" />
+      <Association Name="NHAN_VIEN_HOA_DON" Member="NHAN_VIEN" ThisKey="ID_NHAN_VIEN" OtherKey="ID_NHAN_VIEN" Type="NHAN_VIEN" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.KHACH_HANG" Member="KHACH_HANGs">
@@ -96,8 +96,8 @@
       <Column Name="SDT" Type="System.String" DbType="VarChar(45)" CanBeNull="true" />
       <Column Name="FAX" Type="System.String" DbType="VarChar(45)" CanBeNull="true" />
       <Column Name="TELEX" Type="System.String" DbType="VarChar(45)" CanBeNull="true" />
-      <Association Name="KHACH_HANG_PHIEU_DAT_PHONG" Member="PHIEU_DAT_PHONGs" ThisKey="ID_KHACH_HANG" OtherKey="ID_KHACH_HANG" Type="PHIEU_DAT_PHONG" />
       <Association Name="KHACH_HANG_PHIEU_THUE_PHONG" Member="PHIEU_THUE_PHONGs" ThisKey="ID_KHACH_HANG" OtherKey="ID_KHACH_HANG" Type="PHIEU_THUE_PHONG" />
+      <Association Name="KHACH_HANG_PHIEU_DAT_PHONG" Member="PHIEU_DAT_PHONGs" ThisKey="ID_KHACH_HANG" OtherKey="ID_KHACH_HANG" Type="PHIEU_DAT_PHONG" />
       <Association Name="PHONG_KHACH_HANG" Member="PHONG" ThisKey="ID_PHONG" OtherKey="ID_PHONG" Type="PHONG" IsForeignKey="true" />
     </Type>
   </Table>
@@ -106,9 +106,9 @@
       <Column Name="ID_NHAN_VIEN" Type="System.String" DbType="VarChar(45) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="TEN_NV" Type="System.String" DbType="VarChar(45)" CanBeNull="true" />
       <Column Name="MAT_KHAU" Type="System.String" DbType="VarChar(45)" CanBeNull="true" />
+      <Association Name="NHAN_VIEN_PHIEU_THUE_PHONG" Member="PHIEU_THUE_PHONGs" ThisKey="ID_NHAN_VIEN" OtherKey="ID_NHAN_VIEN" Type="PHIEU_THUE_PHONG" />
       <Association Name="NHAN_VIEN_HOA_DON" Member="HOA_DONs" ThisKey="ID_NHAN_VIEN" OtherKey="ID_NHAN_VIEN" Type="HOA_DON" />
       <Association Name="NHAN_VIEN_PHIEU_DAT_PHONG" Member="PHIEU_DAT_PHONGs" ThisKey="ID_NHAN_VIEN" OtherKey="ID_NHAN_VIEN" Type="PHIEU_DAT_PHONG" />
-      <Association Name="NHAN_VIEN_PHIEU_THUE_PHONG" Member="PHIEU_THUE_PHONGs" ThisKey="ID_NHAN_VIEN" OtherKey="ID_NHAN_VIEN" Type="PHIEU_THUE_PHONG" />
     </Type>
   </Table>
   <Table Name="dbo.PHIEU_DAT_PHONG" Member="PHIEU_DAT_PHONGs">
@@ -117,25 +117,21 @@
       <Column Name="ID_KHACH_HANG" Type="System.String" DbType="VarChar(45) NOT NULL" CanBeNull="false" />
       <Column Name="ID_NHAN_VIEN" Type="System.String" DbType="VarChar(45) NOT NULL" CanBeNull="false" />
       <Column Name="NGAY_DAT" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="TONG_SO_KHACH" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="TONG_SO_PHONG" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NGAY_DEN" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="NGAY_DI" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Association Name="PHIEU_DAT_PHONG_CT_DAT_PHONG" Member="CT_DAT_PHONGs" ThisKey="ID_DAT_PHONG" OtherKey="ID_DAT_PHONG" Type="CT_DAT_PHONG" />
       <Association Name="KHACH_HANG_PHIEU_DAT_PHONG" Member="KHACH_HANG" ThisKey="ID_KHACH_HANG" OtherKey="ID_KHACH_HANG" Type="KHACH_HANG" IsForeignKey="true" />
       <Association Name="NHAN_VIEN_PHIEU_DAT_PHONG" Member="NHAN_VIEN" ThisKey="ID_NHAN_VIEN" OtherKey="ID_NHAN_VIEN" Type="NHAN_VIEN" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.PHIEU_THUE_PHONG" Member="PHIEU_THUE_PHONGs">
-    <Type Name="PHIEU_THUE_PHONG">
-      <Column Name="ID_THUE_PHONG" Type="System.String" DbType="VarChar(45) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="ID_KHACH_HANG" Type="System.String" DbType="VarChar(45) NOT NULL" CanBeNull="false" />
-      <Column Name="ID_NHAN_VIEN" Type="System.String" DbType="VarChar(45) NOT NULL" CanBeNull="false" />
-      <Column Name="TONG_SO_KHACH" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="TONG_SO_PHONG" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="PHIEU_THUE_PHONG_CT_DICH_VU" Member="CT_DICH_VUs" ThisKey="ID_THUE_PHONG" OtherKey="ID_THUE_PHONG" Type="CT_DICH_VU" />
-      <Association Name="PHIEU_THUE_PHONG_CT_THUE_PHONG" Member="CT_THUE_PHONGs" ThisKey="ID_THUE_PHONG" OtherKey="ID_THUE_PHONG" Type="CT_THUE_PHONG" />
-      <Association Name="PHIEU_THUE_PHONG_HOA_DON" Member="HOA_DONs" ThisKey="ID_THUE_PHONG" OtherKey="ID_THUE_PHONG" Type="HOA_DON" />
-      <Association Name="NHAN_VIEN_PHIEU_THUE_PHONG" Member="NHAN_VIEN" ThisKey="ID_NHAN_VIEN" OtherKey="ID_NHAN_VIEN" Type="NHAN_VIEN" IsForeignKey="true" />
-      <Association Name="KHACH_HANG_PHIEU_THUE_PHONG" Member="KHACH_HANG" ThisKey="ID_KHACH_HANG" OtherKey="ID_KHACH_HANG" Type="KHACH_HANG" IsForeignKey="true" />
+  <Table Name="dbo.PHONG" Member="PHONGs">
+    <Type Name="PHONG">
+      <Column Name="ID_PHONG" Type="System.String" DbType="VarChar(45) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="LOAI_PHONG" Type="System.String" DbType="VarChar(45)" CanBeNull="true" />
+      <Association Name="PHONG_CT_DAT_PHONG" Member="CT_DAT_PHONGs" ThisKey="ID_PHONG" OtherKey="ID_PHONG" Type="CT_DAT_PHONG" />
+      <Association Name="PHONG_CT_GIA_THUE" Member="CT_GIA_THUEs" ThisKey="ID_PHONG" OtherKey="ID_PHONG" Type="CT_GIA_THUE" />
+      <Association Name="PHONG_CT_THUE_PHONG" Member="CT_THUE_PHONGs" ThisKey="ID_PHONG" OtherKey="ID_PHONG" Type="CT_THUE_PHONG" />
+      <Association Name="PHONG_KHACH_HANG" Member="KHACH_HANGs" ThisKey="ID_PHONG" OtherKey="ID_PHONG" Type="KHACH_HANG" />
     </Type>
   </Table>
 </Database>

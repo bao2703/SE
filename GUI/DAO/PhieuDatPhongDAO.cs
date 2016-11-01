@@ -11,6 +11,27 @@ namespace DAO
 	public static class PhieuDatPhongDAO
 	{
 		/// <summary>
+		/// Get tất cả phiếu đặt phòng
+		/// </summary>
+		/// <returns></returns>
+		public static List<PhieuDatPhong> GetAll()
+		{
+			List<PhieuDatPhong> result = new List<PhieuDatPhong>();
+			using (var data = new QLKhachSanDataContext(Connection.ConnectionString))
+			{
+				var query = from table in data.PHIEU_DAT_PHONGs
+							orderby table.ID_DAT_PHONG
+							select table;
+				foreach (var item in query)
+				{
+					result.Add(new PhieuDatPhong(item.ID_DAT_PHONG, KhachHangDAO.Get(item.ID_KHACH_HANG), NhanVienDAO.Get(item.ID_NHAN_VIEN), 
+						item.NGAY_DAT, item.NGAY_DEN, item.NGAY_DI));
+				}
+			}
+			return result;
+		}
+
+		/// <summary>
 		/// Thêm phiếu đặt phòng
 		/// </summary>
 		/// <param name="phieuDatPhong"></param>
@@ -28,8 +49,8 @@ namespace DAO
 						temp.ID_KHACH_HANG = phieuDatPhong.KhachHang.Id;
 						temp.ID_NHAN_VIEN = phieuDatPhong.NhanVien.Id;
 						temp.NGAY_DAT = phieuDatPhong.NgayDat;
-						temp.TONG_SO_KHACH = phieuDatPhong.SoLuongKhach;
-						temp.TONG_SO_PHONG = phieuDatPhong.SoLuongPhong;
+						temp.NGAY_DEN = phieuDatPhong.NgayDen;
+						temp.NGAY_DI = phieuDatPhong.NgayDi;
 						data.PHIEU_DAT_PHONGs.InsertOnSubmit(temp);
 						data.SubmitChanges();
 						ChiTietDatPhongDAO.Add(phieuDatPhong);

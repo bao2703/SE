@@ -6,15 +6,17 @@ using System.Threading.Tasks;
 
 namespace DTO
 {
-	public class ChiTietDatPhong
+	public class ChiTietThuePhong
 	{
 		private Phong phong;
 		private int soLuongKhach;
+		private int tienThue;
 
-		public ChiTietDatPhong(Phong phong, int soLuongKhach)
+		public ChiTietThuePhong(Phong phong, int soLuongKhach, int tienThue)
 		{
 			this.phong = phong;
 			this.soLuongKhach = soLuongKhach;
+			this.tienThue = tienThue;
 		}
 
 		#region Properties
@@ -28,6 +30,12 @@ namespace DTO
 		{
 			get { return soLuongKhach; }
 			set { soLuongKhach = value; }
+		}
+
+		public int TienThue
+		{
+			get { return tienThue; }
+			set { tienThue = value; }
 		}
 		#endregion
 	}

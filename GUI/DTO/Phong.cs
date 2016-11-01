@@ -9,9 +9,13 @@ namespace DTO
 	public class Phong
 	{
 		private string id;
-		private int loai;
+		private string loai;
 
-		public Phong(string id, int loai)
+		public Phong()
+		{
+		}
+
+		public Phong(string id, string loai)
 		{
 			this.id = id;
 			this.loai = loai;
@@ -23,7 +27,7 @@ namespace DTO
 			set { id = value; }
 		}
 
-		public int Loai
+		public string Loai
 		{
 			get { return loai; }
 			set { loai = value; }

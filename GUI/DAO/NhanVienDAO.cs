@@ -23,7 +23,7 @@ namespace DAO
 							 select table).SingleOrDefault();
 				if (query == null)
 				{
-					return new NhanVien();
+					return null;
 				}
 				return new NhanVien(query.ID_NHAN_VIEN, query.TEN_NV, query.MAT_KHAU);
 			}

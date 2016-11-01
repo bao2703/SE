@@ -41,12 +41,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ChiTietDatPhong.cs" />
+    <Compile Include="ChiTietThuePhong.cs" />
     <Compile Include="Config.cs" />
     <Compile Include="DichVu.cs" />
     <Compile Include="KhachHang.cs" />
     <Compile Include="LoaiPhong.cs" />
     <Compile Include="NhanVien.cs" />
     <Compile Include="PhieuDatPhong.cs" />
+    <Compile Include="PhieuThuePhong.cs" />
     <Compile Include="Phong.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

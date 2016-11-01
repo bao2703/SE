@@ -22,7 +22,7 @@ namespace DAO
 							 select table).SingleOrDefault();
 				if (query == null)
 				{
-					return new KhachHang();
+					return null;
 				}
 				return new KhachHang(query.ID_KHACH_HANG, query.TEN, query.DIA_CHI, query.SDT, query.FAX, query.TELEX);
 			}

@@ -45,6 +45,7 @@
     <Compile Include="Module.cs" />
     <Compile Include="NhanVienBUS.cs" />
     <Compile Include="PhieuDatPhongBUS.cs" />
+    <Compile Include="PhongBUS.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

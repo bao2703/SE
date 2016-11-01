@@ -28,8 +28,6 @@ namespace DAO
 						temp.ID_DAT_PHONG = phieuDatPhong.Id;
 						temp.ID_PHONG = item.Phong.Id;
 						temp.SO_KHACH = item.SoLuongKhach;
-						temp.NGAY_DEN = item.NgayDen;
-						temp.NGAY_DI = item.NgayDi;
 						listChiTietDatPhong.Add(temp);
 					}
 					data.CT_DAT_PHONGs.InsertAllOnSubmit(listChiTietDatPhong);

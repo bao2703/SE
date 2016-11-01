@@ -33,9 +33,9 @@ namespace DAO
     partial void InsertBAO_CAO(BAO_CAO instance);
     partial void UpdateBAO_CAO(BAO_CAO instance);
     partial void DeleteBAO_CAO(BAO_CAO instance);
-    partial void InsertPHONG(PHONG instance);
-    partial void UpdatePHONG(PHONG instance);
-    partial void DeletePHONG(PHONG instance);
+    partial void InsertPHIEU_THUE_PHONG(PHIEU_THUE_PHONG instance);
+    partial void UpdatePHIEU_THUE_PHONG(PHIEU_THUE_PHONG instance);
+    partial void DeletePHIEU_THUE_PHONG(PHIEU_THUE_PHONG instance);
     partial void InsertCT_DAT_PHONG(CT_DAT_PHONG instance);
     partial void UpdateCT_DAT_PHONG(CT_DAT_PHONG instance);
     partial void DeleteCT_DAT_PHONG(CT_DAT_PHONG instance);
@@ -66,9 +66,9 @@ namespace DAO
     partial void InsertPHIEU_DAT_PHONG(PHIEU_DAT_PHONG instance);
     partial void UpdatePHIEU_DAT_PHONG(PHIEU_DAT_PHONG instance);
     partial void DeletePHIEU_DAT_PHONG(PHIEU_DAT_PHONG instance);
-    partial void InsertPHIEU_THUE_PHONG(PHIEU_THUE_PHONG instance);
-    partial void UpdatePHIEU_THUE_PHONG(PHIEU_THUE_PHONG instance);
-    partial void DeletePHIEU_THUE_PHONG(PHIEU_THUE_PHONG instance);
+    partial void InsertPHONG(PHONG instance);
+    partial void UpdatePHONG(PHONG instance);
+    partial void DeletePHONG(PHONG instance);
     #endregion
 		
 		public QLKhachSanDataContext() : 
@@ -109,11 +109,11 @@ namespace DAO
 			}
 		}
 		
-		public System.Data.Linq.Table<PHONG> PHONGs
+		public System.Data.Linq.Table<PHIEU_THUE_PHONG> PHIEU_THUE_PHONGs
 		{
 			get
 			{
-				return this.GetTable<PHONG>();
+				return this.GetTable<PHIEU_THUE_PHONG>();
 			}
 		}
 		
@@ -197,11 +197,11 @@ namespace DAO
 			}
 		}
 		
-		public System.Data.Linq.Table<PHIEU_THUE_PHONG> PHIEU_THUE_PHONGs
+		public System.Data.Linq.Table<PHONG> PHONGs
 		{
 			get
 			{
-				return this.GetTable<PHIEU_THUE_PHONG>();
+				return this.GetTable<PHONG>();
 			}
 		}
 	}
@@ -316,110 +316,180 @@ namespace DAO
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.PHONG")]
-	public partial class PHONG : INotifyPropertyChanging, INotifyPropertyChanged
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.PHIEU_THUE_PHONG")]
+	public partial class PHIEU_THUE_PHONG : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private string _ID_PHONG;
+		private string _ID_THUE_PHONG;
 		
-		private string _LOAI_PHONG;
+		private string _ID_KHACH_HANG;
 		
-		private EntitySet<CT_DAT_PHONG> _CT_DAT_PHONGs;
+		private string _ID_NHAN_VIEN;
 		
-		private EntitySet<CT_GIA_THUE> _CT_GIA_THUEs;
+		private System.DateTime _NGAY_NHAN;
+		
+		private System.DateTime _NGAY_TRA;
+		
+		private EntitySet<CT_DICH_VU> _CT_DICH_VUs;
 		
 		private EntitySet<CT_THUE_PHONG> _CT_THUE_PHONGs;
 		
-		private EntitySet<KHACH_HANG> _KHACH_HANGs;
+		private EntitySet<HOA_DON> _HOA_DONs;
+		
+		private EntityRef<KHACH_HANG> _KHACH_HANG;
+		
+		private EntityRef<NHAN_VIEN> _NHAN_VIEN;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnID_PHONGChanging(string value);
-    partial void OnID_PHONGChanged();
-    partial void OnLOAI_PHONGChanging(string value);
-    partial void OnLOAI_PHONGChanged();
+    partial void OnID_THUE_PHONGChanging(string value);
+    partial void OnID_THUE_PHONGChanged();
+    partial void OnID_KHACH_HANGChanging(string value);
+    partial void OnID_KHACH_HANGChanged();
+    partial void OnID_NHAN_VIENChanging(string value);
+    partial void OnID_NHAN_VIENChanged();
+    partial void OnNGAY_NHANChanging(System.DateTime value);
+    partial void OnNGAY_NHANChanged();
+    partial void OnNGAY_TRAChanging(System.DateTime value);
+    partial void OnNGAY_TRAChanged();
     #endregion
 		
-		public PHONG()
+		public PHIEU_THUE_PHONG()
 		{
-			this._CT_DAT_PHONGs = new EntitySet<CT_DAT_PHONG>(new Action<CT_DAT_PHONG>(this.attach_CT_DAT_PHONGs), new Action<CT_DAT_PHONG>(this.detach_CT_DAT_PHONGs));
-			this._CT_GIA_THUEs = new EntitySet<CT_GIA_THUE>(new Action<CT_GIA_THUE>(this.attach_CT_GIA_THUEs), new Action<CT_GIA_THUE>(this.detach_CT_GIA_THUEs));
+			this._CT_DICH_VUs = new EntitySet<CT_DICH_VU>(new Action<CT_DICH_VU>(this.attach_CT_DICH_VUs), new Action<CT_DICH_VU>(this.detach_CT_DICH_VUs));
 			this._CT_THUE_PHONGs = new EntitySet<CT_THUE_PHONG>(new Action<CT_THUE_PHONG>(this.attach_CT_THUE_PHONGs), new Action<CT_THUE_PHONG>(this.detach_CT_THUE_PHONGs));
-			this._KHACH_HANGs = new EntitySet<KHACH_HANG>(new Action<KHACH_HANG>(this.attach_KHACH_HANGs), new Action<KHACH_HANG>(this.detach_KHACH_HANGs));
+			this._HOA_DONs = new EntitySet<HOA_DON>(new Action<HOA_DON>(this.attach_HOA_DONs), new Action<HOA_DON>(this.detach_HOA_DONs));
+			this._KHACH_HANG = default(EntityRef<KHACH_HANG>);
+			this._NHAN_VIEN = default(EntityRef<NHAN_VIEN>);
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_PHONG", DbType="VarChar(45) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
-		public string ID_PHONG
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_THUE_PHONG", DbType="VarChar(45) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string ID_THUE_PHONG
 		{
 			get
 			{
-				return this._ID_PHONG;
+				return this._ID_THUE_PHONG;
 			}
 			set
 			{
-				if ((this._ID_PHONG != value))
+				if ((this._ID_THUE_PHONG != value))
 				{
-					this.OnID_PHONGChanging(value);
+					this.OnID_THUE_PHONGChanging(value);
 					this.SendPropertyChanging();
-					this._ID_PHONG = value;
-					this.SendPropertyChanged("ID_PHONG");
-					this.OnID_PHONGChanged();
+					this._ID_THUE_PHONG = value;
+					this.SendPropertyChanged("ID_THUE_PHONG");
+					this.OnID_THUE_PHONGChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LOAI_PHONG", DbType="VarChar(45)")]
-		public string LOAI_PHONG
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_KHACH_HANG", DbType="VarChar(45) NOT NULL", CanBeNull=false)]
+		public string ID_KHACH_HANG
 		{
 			get
 			{
-				return this._LOAI_PHONG;
+				return this._ID_KHACH_HANG;
 			}
 			set
 			{
-				if ((this._LOAI_PHONG != value))
+				if ((this._ID_KHACH_HANG != value))
 				{
-					this.OnLOAI_PHONGChanging(value);
+					if (this._KHACH_HANG.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnID_KHACH_HANGChanging(value);
 					this.SendPropertyChanging();
-					this._LOAI_PHONG = value;
-					this.SendPropertyChanged("LOAI_PHONG");
-					this.OnLOAI_PHONGChanged();
+					this._ID_KHACH_HANG = value;
+					this.SendPropertyChanged("ID_KHACH_HANG");
+					this.OnID_KHACH_HANGChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PHONG_CT_DAT_PHONG", Storage="_CT_DAT_PHONGs", ThisKey="ID_PHONG", OtherKey="ID_PHONG")]
-		public EntitySet<CT_DAT_PHONG> CT_DAT_PHONGs
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_NHAN_VIEN", DbType="VarChar(45) NOT NULL", CanBeNull=false)]
+		public string ID_NHAN_VIEN
 		{
 			get
 			{
-				return this._CT_DAT_PHONGs;
+				return this._ID_NHAN_VIEN;
 			}
 			set
 			{
-				this._CT_DAT_PHONGs.Assign(value);
+				if ((this._ID_NHAN_VIEN != value))
+				{
+					if (this._NHAN_VIEN.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnID_NHAN_VIENChanging(value);
+					this.SendPropertyChanging();
+					this._ID_NHAN_VIEN = value;
+					this.SendPropertyChanged("ID_NHAN_VIEN");
+					this.OnID_NHAN_VIENChanged();
+				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PHONG_CT_GIA_THUE", Storage="_CT_GIA_THUEs", ThisKey="ID_PHONG", OtherKey="ID_PHONG")]
-		public EntitySet<CT_GIA_THUE> CT_GIA_THUEs
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NGAY_NHAN", DbType="DateTime NOT NULL")]
+		public System.DateTime NGAY_NHAN
 		{
 			get
 			{
-				return this._CT_GIA_THUEs;
+				return this._NGAY_NHAN;
 			}
 			set
 			{
-				this._CT_GIA_THUEs.Assign(value);
+				if ((this._NGAY_NHAN != value))
+				{
+					this.OnNGAY_NHANChanging(value);
+					this.SendPropertyChanging();
+					this._NGAY_NHAN = value;
+					this.SendPropertyChanged("NGAY_NHAN");
+					this.OnNGAY_NHANChanged();
+				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PHONG_CT_THUE_PHONG", Storage="_CT_THUE_PHONGs", ThisKey="ID_PHONG", OtherKey="ID_PHONG")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NGAY_TRA", DbType="DateTime NOT NULL")]
+		public System.DateTime NGAY_TRA
+		{
+			get
+			{
+				return this._NGAY_TRA;
+			}
+			set
+			{
+				if ((this._NGAY_TRA != value))
+				{
+					this.OnNGAY_TRAChanging(value);
+					this.SendPropertyChanging();
+					this._NGAY_TRA = value;
+					this.SendPropertyChanged("NGAY_TRA");
+					this.OnNGAY_TRAChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PHIEU_THUE_PHONG_CT_DICH_VU", Storage="_CT_DICH_VUs", ThisKey="ID_THUE_PHONG", OtherKey="ID_THUE_PHONG")]
+		public EntitySet<CT_DICH_VU> CT_DICH_VUs
+		{
+			get
+			{
+				return this._CT_DICH_VUs;
+			}
+			set
+			{
+				this._CT_DICH_VUs.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PHIEU_THUE_PHONG_CT_THUE_PHONG", Storage="_CT_THUE_PHONGs", ThisKey="ID_THUE_PHONG", OtherKey="ID_THUE_PHONG")]
 		public EntitySet<CT_THUE_PHONG> CT_THUE_PHONGs
 		{
 			get
@@ -432,16 +502,84 @@ namespace DAO
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PHONG_KHACH_HANG", Storage="_KHACH_HANGs", ThisKey="ID_PHONG", OtherKey="ID_PHONG")]
-		public EntitySet<KHACH_HANG> KHACH_HANGs
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PHIEU_THUE_PHONG_HOA_DON", Storage="_HOA_DONs", ThisKey="ID_THUE_PHONG", OtherKey="ID_THUE_PHONG")]
+		public EntitySet<HOA_DON> HOA_DONs
 		{
 			get
 			{
-				return this._KHACH_HANGs;
+				return this._HOA_DONs;
 			}
 			set
 			{
-				this._KHACH_HANGs.Assign(value);
+				this._HOA_DONs.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="KHACH_HANG_PHIEU_THUE_PHONG", Storage="_KHACH_HANG", ThisKey="ID_KHACH_HANG", OtherKey="ID_KHACH_HANG", IsForeignKey=true)]
+		public KHACH_HANG KHACH_HANG
+		{
+			get
+			{
+				return this._KHACH_HANG.Entity;
+			}
+			set
+			{
+				KHACH_HANG previousValue = this._KHACH_HANG.Entity;
+				if (((previousValue != value) 
+							|| (this._KHACH_HANG.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._KHACH_HANG.Entity = null;
+						previousValue.PHIEU_THUE_PHONGs.Remove(this);
+					}
+					this._KHACH_HANG.Entity = value;
+					if ((value != null))
+					{
+						value.PHIEU_THUE_PHONGs.Add(this);
+						this._ID_KHACH_HANG = value.ID_KHACH_HANG;
+					}
+					else
+					{
+						this._ID_KHACH_HANG = default(string);
+					}
+					this.SendPropertyChanged("KHACH_HANG");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="NHAN_VIEN_PHIEU_THUE_PHONG", Storage="_NHAN_VIEN", ThisKey="ID_NHAN_VIEN", OtherKey="ID_NHAN_VIEN", IsForeignKey=true)]
+		public NHAN_VIEN NHAN_VIEN
+		{
+			get
+			{
+				return this._NHAN_VIEN.Entity;
+			}
+			set
+			{
+				NHAN_VIEN previousValue = this._NHAN_VIEN.Entity;
+				if (((previousValue != value) 
+							|| (this._NHAN_VIEN.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._NHAN_VIEN.Entity = null;
+						previousValue.PHIEU_THUE_PHONGs.Remove(this);
+					}
+					this._NHAN_VIEN.Entity = value;
+					if ((value != null))
+					{
+						value.PHIEU_THUE_PHONGs.Add(this);
+						this._ID_NHAN_VIEN = value.ID_NHAN_VIEN;
+					}
+					else
+					{
+						this._ID_NHAN_VIEN = default(string);
+					}
+					this.SendPropertyChanged("NHAN_VIEN");
+				}
 			}
 		}
 		
@@ -465,52 +603,40 @@ namespace DAO
 			}
 		}
 		
-		private void attach_CT_DAT_PHONGs(CT_DAT_PHONG entity)
+		private void attach_CT_DICH_VUs(CT_DICH_VU entity)
 		{
 			this.SendPropertyChanging();
-			entity.PHONG = this;
+			entity.PHIEU_THUE_PHONG = this;
 		}
 		
-		private void detach_CT_DAT_PHONGs(CT_DAT_PHONG entity)
+		private void detach_CT_DICH_VUs(CT_DICH_VU entity)
 		{
 			this.SendPropertyChanging();
-			entity.PHONG = null;
-		}
-		
-		private void attach_CT_GIA_THUEs(CT_GIA_THUE entity)
-		{
-			this.SendPropertyChanging();
-			entity.PHONG = this;
-		}
-		
-		private void detach_CT_GIA_THUEs(CT_GIA_THUE entity)
-		{
-			this.SendPropertyChanging();
-			entity.PHONG = null;
+			entity.PHIEU_THUE_PHONG = null;
 		}
 		
 		private void attach_CT_THUE_PHONGs(CT_THUE_PHONG entity)
 		{
 			this.SendPropertyChanging();
-			entity.PHONG = this;
+			entity.PHIEU_THUE_PHONG = this;
 		}
 		
 		private void detach_CT_THUE_PHONGs(CT_THUE_PHONG entity)
 		{
 			this.SendPropertyChanging();
-			entity.PHONG = null;
+			entity.PHIEU_THUE_PHONG = null;
 		}
 		
-		private void attach_KHACH_HANGs(KHACH_HANG entity)
+		private void attach_HOA_DONs(HOA_DON entity)
 		{
 			this.SendPropertyChanging();
-			entity.PHONG = this;
+			entity.PHIEU_THUE_PHONG = this;
 		}
 		
-		private void detach_KHACH_HANGs(KHACH_HANG entity)
+		private void detach_HOA_DONs(HOA_DON entity)
 		{
 			this.SendPropertyChanging();
-			entity.PHONG = null;
+			entity.PHIEU_THUE_PHONG = null;
 		}
 	}
 	
@@ -526,13 +652,9 @@ namespace DAO
 		
 		private int _SO_KHACH;
 		
-		private System.DateTime _NGAY_DEN;
-		
-		private System.DateTime _NGAY_DI;
+		private EntityRef<PHIEU_DAT_PHONG> _PHIEU_DAT_PHONG;
 		
 		private EntityRef<PHONG> _PHONG;
-		
-		private EntityRef<PHIEU_DAT_PHONG> _PHIEU_DAT_PHONG;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -544,16 +666,12 @@ namespace DAO
     partial void OnID_PHONGChanged();
     partial void OnSO_KHACHChanging(int value);
     partial void OnSO_KHACHChanged();
-    partial void OnNGAY_DENChanging(System.DateTime value);
-    partial void OnNGAY_DENChanged();
-    partial void OnNGAY_DIChanging(System.DateTime value);
-    partial void OnNGAY_DIChanged();
     #endregion
 		
 		public CT_DAT_PHONG()
 		{
-			this._PHONG = default(EntityRef<PHONG>);
 			this._PHIEU_DAT_PHONG = default(EntityRef<PHIEU_DAT_PHONG>);
+			this._PHONG = default(EntityRef<PHONG>);
 			OnCreated();
 		}
 		
@@ -625,42 +743,36 @@ namespace DAO
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NGAY_DEN", DbType="DateTime NOT NULL")]
-		public System.DateTime NGAY_DEN
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PHIEU_DAT_PHONG_CT_DAT_PHONG", Storage="_PHIEU_DAT_PHONG", ThisKey="ID_DAT_PHONG", OtherKey="ID_DAT_PHONG", IsForeignKey=true)]
+		public PHIEU_DAT_PHONG PHIEU_DAT_PHONG
 		{
 			get
 			{
-				return this._NGAY_DEN;
+				return this._PHIEU_DAT_PHONG.Entity;
 			}
 			set
 			{
-				if ((this._NGAY_DEN != value))
+				PHIEU_DAT_PHONG previousValue = this._PHIEU_DAT_PHONG.Entity;
+				if (((previousValue != value) 
+							|| (this._PHIEU_DAT_PHONG.HasLoadedOrAssignedValue == false)))
 				{
-					this.OnNGAY_DENChanging(value);
 					this.SendPropertyChanging();
-					this._NGAY_DEN = value;
-					this.SendPropertyChanged("NGAY_DEN");
-					this.OnNGAY_DENChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NGAY_DI", DbType="DateTime NOT NULL")]
-		public System.DateTime NGAY_DI
-		{
-			get
-			{
-				return this._NGAY_DI;
-			}
-			set
-			{
-				if ((this._NGAY_DI != value))
-				{
-					this.OnNGAY_DIChanging(value);
-					this.SendPropertyChanging();
-					this._NGAY_DI = value;
-					this.SendPropertyChanged("NGAY_DI");
-					this.OnNGAY_DIChanged();
+					if ((previousValue != null))
+					{
+						this._PHIEU_DAT_PHONG.Entity = null;
+						previousValue.CT_DAT_PHONGs.Remove(this);
+					}
+					this._PHIEU_DAT_PHONG.Entity = value;
+					if ((value != null))
+					{
+						value.CT_DAT_PHONGs.Add(this);
+						this._ID_DAT_PHONG = value.ID_DAT_PHONG;
+					}
+					else
+					{
+						this._ID_DAT_PHONG = default(string);
+					}
+					this.SendPropertyChanged("PHIEU_DAT_PHONG");
 				}
 			}
 		}
@@ -695,40 +807,6 @@ namespace DAO
 						this._ID_PHONG = default(string);
 					}
 					this.SendPropertyChanged("PHONG");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PHIEU_DAT_PHONG_CT_DAT_PHONG", Storage="_PHIEU_DAT_PHONG", ThisKey="ID_DAT_PHONG", OtherKey="ID_DAT_PHONG", IsForeignKey=true)]
-		public PHIEU_DAT_PHONG PHIEU_DAT_PHONG
-		{
-			get
-			{
-				return this._PHIEU_DAT_PHONG.Entity;
-			}
-			set
-			{
-				PHIEU_DAT_PHONG previousValue = this._PHIEU_DAT_PHONG.Entity;
-				if (((previousValue != value) 
-							|| (this._PHIEU_DAT_PHONG.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._PHIEU_DAT_PHONG.Entity = null;
-						previousValue.CT_DAT_PHONGs.Remove(this);
-					}
-					this._PHIEU_DAT_PHONG.Entity = value;
-					if ((value != null))
-					{
-						value.CT_DAT_PHONGs.Add(this);
-						this._ID_DAT_PHONG = value.ID_DAT_PHONG;
-					}
-					else
-					{
-						this._ID_DAT_PHONG = default(string);
-					}
-					this.SendPropertyChanged("PHIEU_DAT_PHONG");
 				}
 			}
 		}
@@ -768,9 +846,9 @@ namespace DAO
 		
 		private int _TIEN_DV;
 		
-		private EntityRef<DICH_VU> _DICH_VU;
-		
 		private EntityRef<PHIEU_THUE_PHONG> _PHIEU_THUE_PHONG;
+		
+		private EntityRef<DICH_VU> _DICH_VU;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -788,8 +866,8 @@ namespace DAO
 		
 		public CT_DICH_VU()
 		{
-			this._DICH_VU = default(EntityRef<DICH_VU>);
 			this._PHIEU_THUE_PHONG = default(EntityRef<PHIEU_THUE_PHONG>);
+			this._DICH_VU = default(EntityRef<DICH_VU>);
 			OnCreated();
 		}
 		
@@ -881,40 +959,6 @@ namespace DAO
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DICH_VU_CT_DICH_VU", Storage="_DICH_VU", ThisKey="ID_DICH_VU", OtherKey="ID_DICH_VU", IsForeignKey=true)]
-		public DICH_VU DICH_VU
-		{
-			get
-			{
-				return this._DICH_VU.Entity;
-			}
-			set
-			{
-				DICH_VU previousValue = this._DICH_VU.Entity;
-				if (((previousValue != value) 
-							|| (this._DICH_VU.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._DICH_VU.Entity = null;
-						previousValue.CT_DICH_VUs.Remove(this);
-					}
-					this._DICH_VU.Entity = value;
-					if ((value != null))
-					{
-						value.CT_DICH_VUs.Add(this);
-						this._ID_DICH_VU = value.ID_DICH_VU;
-					}
-					else
-					{
-						this._ID_DICH_VU = default(string);
-					}
-					this.SendPropertyChanged("DICH_VU");
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PHIEU_THUE_PHONG_CT_DICH_VU", Storage="_PHIEU_THUE_PHONG", ThisKey="ID_THUE_PHONG", OtherKey="ID_THUE_PHONG", IsForeignKey=true)]
 		public PHIEU_THUE_PHONG PHIEU_THUE_PHONG
 		{
@@ -945,6 +989,40 @@ namespace DAO
 						this._ID_THUE_PHONG = default(string);
 					}
 					this.SendPropertyChanged("PHIEU_THUE_PHONG");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DICH_VU_CT_DICH_VU", Storage="_DICH_VU", ThisKey="ID_DICH_VU", OtherKey="ID_DICH_VU", IsForeignKey=true)]
+		public DICH_VU DICH_VU
+		{
+			get
+			{
+				return this._DICH_VU.Entity;
+			}
+			set
+			{
+				DICH_VU previousValue = this._DICH_VU.Entity;
+				if (((previousValue != value) 
+							|| (this._DICH_VU.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._DICH_VU.Entity = null;
+						previousValue.CT_DICH_VUs.Remove(this);
+					}
+					this._DICH_VU.Entity = value;
+					if ((value != null))
+					{
+						value.CT_DICH_VUs.Add(this);
+						this._ID_DICH_VU = value.ID_DICH_VU;
+					}
+					else
+					{
+						this._ID_DICH_VU = default(string);
+					}
+					this.SendPropertyChanged("DICH_VU");
 				}
 			}
 		}
@@ -982,9 +1060,9 @@ namespace DAO
 		
 		private int _SO_LUONG;
 		
-		private EntityRef<PHONG> _PHONG;
-		
 		private EntityRef<GIA_THUE> _GIA_THUE;
+		
+		private EntityRef<PHONG> _PHONG;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -1000,8 +1078,8 @@ namespace DAO
 		
 		public CT_GIA_THUE()
 		{
-			this._PHONG = default(EntityRef<PHONG>);
 			this._GIA_THUE = default(EntityRef<GIA_THUE>);
+			this._PHONG = default(EntityRef<PHONG>);
 			OnCreated();
 		}
 		
@@ -1073,40 +1151,6 @@ namespace DAO
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PHONG_CT_GIA_THUE", Storage="_PHONG", ThisKey="ID_PHONG", OtherKey="ID_PHONG", IsForeignKey=true)]
-		public PHONG PHONG
-		{
-			get
-			{
-				return this._PHONG.Entity;
-			}
-			set
-			{
-				PHONG previousValue = this._PHONG.Entity;
-				if (((previousValue != value) 
-							|| (this._PHONG.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._PHONG.Entity = null;
-						previousValue.CT_GIA_THUEs.Remove(this);
-					}
-					this._PHONG.Entity = value;
-					if ((value != null))
-					{
-						value.CT_GIA_THUEs.Add(this);
-						this._ID_PHONG = value.ID_PHONG;
-					}
-					else
-					{
-						this._ID_PHONG = default(string);
-					}
-					this.SendPropertyChanged("PHONG");
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="GIA_THUE_CT_GIA_THUE", Storage="_GIA_THUE", ThisKey="ID_GIA_THUE", OtherKey="ID_GIA_THUE", IsForeignKey=true)]
 		public GIA_THUE GIA_THUE
 		{
@@ -1137,6 +1181,40 @@ namespace DAO
 						this._ID_GIA_THUE = default(string);
 					}
 					this.SendPropertyChanged("GIA_THUE");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PHONG_CT_GIA_THUE", Storage="_PHONG", ThisKey="ID_PHONG", OtherKey="ID_PHONG", IsForeignKey=true)]
+		public PHONG PHONG
+		{
+			get
+			{
+				return this._PHONG.Entity;
+			}
+			set
+			{
+				PHONG previousValue = this._PHONG.Entity;
+				if (((previousValue != value) 
+							|| (this._PHONG.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._PHONG.Entity = null;
+						previousValue.CT_GIA_THUEs.Remove(this);
+					}
+					this._PHONG.Entity = value;
+					if ((value != null))
+					{
+						value.CT_GIA_THUEs.Add(this);
+						this._ID_PHONG = value.ID_PHONG;
+					}
+					else
+					{
+						this._ID_PHONG = default(string);
+					}
+					this.SendPropertyChanged("PHONG");
 				}
 			}
 		}
@@ -1174,15 +1252,11 @@ namespace DAO
 		
 		private int _SO_KHACH;
 		
-		private System.DateTime _NGAY_NHAN;
-		
-		private System.DateTime _NGAY_TRA;
-		
 		private int _TIEN_THUE;
 		
-		private EntityRef<PHONG> _PHONG;
-		
 		private EntityRef<PHIEU_THUE_PHONG> _PHIEU_THUE_PHONG;
+		
+		private EntityRef<PHONG> _PHONG;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -1194,18 +1268,14 @@ namespace DAO
     partial void OnID_PHONGChanged();
     partial void OnSO_KHACHChanging(int value);
     partial void OnSO_KHACHChanged();
-    partial void OnNGAY_NHANChanging(System.DateTime value);
-    partial void OnNGAY_NHANChanged();
-    partial void OnNGAY_TRAChanging(System.DateTime value);
-    partial void OnNGAY_TRAChanged();
     partial void OnTIEN_THUEChanging(int value);
     partial void OnTIEN_THUEChanged();
     #endregion
 		
 		public CT_THUE_PHONG()
 		{
-			this._PHONG = default(EntityRef<PHONG>);
 			this._PHIEU_THUE_PHONG = default(EntityRef<PHIEU_THUE_PHONG>);
+			this._PHONG = default(EntityRef<PHONG>);
 			OnCreated();
 		}
 		
@@ -1277,46 +1347,6 @@ namespace DAO
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NGAY_NHAN", DbType="DateTime NOT NULL")]
-		public System.DateTime NGAY_NHAN
-		{
-			get
-			{
-				return this._NGAY_NHAN;
-			}
-			set
-			{
-				if ((this._NGAY_NHAN != value))
-				{
-					this.OnNGAY_NHANChanging(value);
-					this.SendPropertyChanging();
-					this._NGAY_NHAN = value;
-					this.SendPropertyChanged("NGAY_NHAN");
-					this.OnNGAY_NHANChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NGAY_TRA", DbType="DateTime NOT NULL")]
-		public System.DateTime NGAY_TRA
-		{
-			get
-			{
-				return this._NGAY_TRA;
-			}
-			set
-			{
-				if ((this._NGAY_TRA != value))
-				{
-					this.OnNGAY_TRAChanging(value);
-					this.SendPropertyChanging();
-					this._NGAY_TRA = value;
-					this.SendPropertyChanged("NGAY_TRA");
-					this.OnNGAY_TRAChanged();
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TIEN_THUE", DbType="Int NOT NULL")]
 		public int TIEN_THUE
 		{
@@ -1333,40 +1363,6 @@ namespace DAO
 					this._TIEN_THUE = value;
 					this.SendPropertyChanged("TIEN_THUE");
 					this.OnTIEN_THUEChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PHONG_CT_THUE_PHONG", Storage="_PHONG", ThisKey="ID_PHONG", OtherKey="ID_PHONG", IsForeignKey=true)]
-		public PHONG PHONG
-		{
-			get
-			{
-				return this._PHONG.Entity;
-			}
-			set
-			{
-				PHONG previousValue = this._PHONG.Entity;
-				if (((previousValue != value) 
-							|| (this._PHONG.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._PHONG.Entity = null;
-						previousValue.CT_THUE_PHONGs.Remove(this);
-					}
-					this._PHONG.Entity = value;
-					if ((value != null))
-					{
-						value.CT_THUE_PHONGs.Add(this);
-						this._ID_PHONG = value.ID_PHONG;
-					}
-					else
-					{
-						this._ID_PHONG = default(string);
-					}
-					this.SendPropertyChanged("PHONG");
 				}
 			}
 		}
@@ -1401,6 +1397,40 @@ namespace DAO
 						this._ID_THUE_PHONG = default(string);
 					}
 					this.SendPropertyChanged("PHIEU_THUE_PHONG");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PHONG_CT_THUE_PHONG", Storage="_PHONG", ThisKey="ID_PHONG", OtherKey="ID_PHONG", IsForeignKey=true)]
+		public PHONG PHONG
+		{
+			get
+			{
+				return this._PHONG.Entity;
+			}
+			set
+			{
+				PHONG previousValue = this._PHONG.Entity;
+				if (((previousValue != value) 
+							|| (this._PHONG.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._PHONG.Entity = null;
+						previousValue.CT_THUE_PHONGs.Remove(this);
+					}
+					this._PHONG.Entity = value;
+					if ((value != null))
+					{
+						value.CT_THUE_PHONGs.Add(this);
+						this._ID_PHONG = value.ID_PHONG;
+					}
+					else
+					{
+						this._ID_PHONG = default(string);
+					}
+					this.SendPropertyChanged("PHONG");
 				}
 			}
 		}
@@ -1698,9 +1728,9 @@ namespace DAO
 		
 		private int _TONG_TIEN;
 		
-		private EntityRef<NHAN_VIEN> _NHAN_VIEN;
-		
 		private EntityRef<PHIEU_THUE_PHONG> _PHIEU_THUE_PHONG;
+		
+		private EntityRef<NHAN_VIEN> _NHAN_VIEN;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -1724,8 +1754,8 @@ namespace DAO
 		
 		public HOA_DON()
 		{
-			this._NHAN_VIEN = default(EntityRef<NHAN_VIEN>);
 			this._PHIEU_THUE_PHONG = default(EntityRef<PHIEU_THUE_PHONG>);
+			this._NHAN_VIEN = default(EntityRef<NHAN_VIEN>);
 			OnCreated();
 		}
 		
@@ -1877,40 +1907,6 @@ namespace DAO
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="NHAN_VIEN_HOA_DON", Storage="_NHAN_VIEN", ThisKey="ID_NHAN_VIEN", OtherKey="ID_NHAN_VIEN", IsForeignKey=true)]
-		public NHAN_VIEN NHAN_VIEN
-		{
-			get
-			{
-				return this._NHAN_VIEN.Entity;
-			}
-			set
-			{
-				NHAN_VIEN previousValue = this._NHAN_VIEN.Entity;
-				if (((previousValue != value) 
-							|| (this._NHAN_VIEN.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._NHAN_VIEN.Entity = null;
-						previousValue.HOA_DONs.Remove(this);
-					}
-					this._NHAN_VIEN.Entity = value;
-					if ((value != null))
-					{
-						value.HOA_DONs.Add(this);
-						this._ID_NHAN_VIEN = value.ID_NHAN_VIEN;
-					}
-					else
-					{
-						this._ID_NHAN_VIEN = default(string);
-					}
-					this.SendPropertyChanged("NHAN_VIEN");
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PHIEU_THUE_PHONG_HOA_DON", Storage="_PHIEU_THUE_PHONG", ThisKey="ID_THUE_PHONG", OtherKey="ID_THUE_PHONG", IsForeignKey=true)]
 		public PHIEU_THUE_PHONG PHIEU_THUE_PHONG
 		{
@@ -1941,6 +1937,40 @@ namespace DAO
 						this._ID_THUE_PHONG = default(string);
 					}
 					this.SendPropertyChanged("PHIEU_THUE_PHONG");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="NHAN_VIEN_HOA_DON", Storage="_NHAN_VIEN", ThisKey="ID_NHAN_VIEN", OtherKey="ID_NHAN_VIEN", IsForeignKey=true)]
+		public NHAN_VIEN NHAN_VIEN
+		{
+			get
+			{
+				return this._NHAN_VIEN.Entity;
+			}
+			set
+			{
+				NHAN_VIEN previousValue = this._NHAN_VIEN.Entity;
+				if (((previousValue != value) 
+							|| (this._NHAN_VIEN.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._NHAN_VIEN.Entity = null;
+						previousValue.HOA_DONs.Remove(this);
+					}
+					this._NHAN_VIEN.Entity = value;
+					if ((value != null))
+					{
+						value.HOA_DONs.Add(this);
+						this._ID_NHAN_VIEN = value.ID_NHAN_VIEN;
+					}
+					else
+					{
+						this._ID_NHAN_VIEN = default(string);
+					}
+					this.SendPropertyChanged("NHAN_VIEN");
 				}
 			}
 		}
@@ -1986,9 +2016,9 @@ namespace DAO
 		
 		private string _TELEX;
 		
-		private EntitySet<PHIEU_DAT_PHONG> _PHIEU_DAT_PHONGs;
-		
 		private EntitySet<PHIEU_THUE_PHONG> _PHIEU_THUE_PHONGs;
+		
+		private EntitySet<PHIEU_DAT_PHONG> _PHIEU_DAT_PHONGs;
 		
 		private EntityRef<PHONG> _PHONG;
 		
@@ -2014,8 +2044,8 @@ namespace DAO
 		
 		public KHACH_HANG()
 		{
-			this._PHIEU_DAT_PHONGs = new EntitySet<PHIEU_DAT_PHONG>(new Action<PHIEU_DAT_PHONG>(this.attach_PHIEU_DAT_PHONGs), new Action<PHIEU_DAT_PHONG>(this.detach_PHIEU_DAT_PHONGs));
 			this._PHIEU_THUE_PHONGs = new EntitySet<PHIEU_THUE_PHONG>(new Action<PHIEU_THUE_PHONG>(this.attach_PHIEU_THUE_PHONGs), new Action<PHIEU_THUE_PHONG>(this.detach_PHIEU_THUE_PHONGs));
+			this._PHIEU_DAT_PHONGs = new EntitySet<PHIEU_DAT_PHONG>(new Action<PHIEU_DAT_PHONG>(this.attach_PHIEU_DAT_PHONGs), new Action<PHIEU_DAT_PHONG>(this.detach_PHIEU_DAT_PHONGs));
 			this._PHONG = default(EntityRef<PHONG>);
 			OnCreated();
 		}
@@ -2164,19 +2194,6 @@ namespace DAO
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="KHACH_HANG_PHIEU_DAT_PHONG", Storage="_PHIEU_DAT_PHONGs", ThisKey="ID_KHACH_HANG", OtherKey="ID_KHACH_HANG")]
-		public EntitySet<PHIEU_DAT_PHONG> PHIEU_DAT_PHONGs
-		{
-			get
-			{
-				return this._PHIEU_DAT_PHONGs;
-			}
-			set
-			{
-				this._PHIEU_DAT_PHONGs.Assign(value);
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="KHACH_HANG_PHIEU_THUE_PHONG", Storage="_PHIEU_THUE_PHONGs", ThisKey="ID_KHACH_HANG", OtherKey="ID_KHACH_HANG")]
 		public EntitySet<PHIEU_THUE_PHONG> PHIEU_THUE_PHONGs
 		{
@@ -2187,6 +2204,19 @@ namespace DAO
 			set
 			{
 				this._PHIEU_THUE_PHONGs.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="KHACH_HANG_PHIEU_DAT_PHONG", Storage="_PHIEU_DAT_PHONGs", ThisKey="ID_KHACH_HANG", OtherKey="ID_KHACH_HANG")]
+		public EntitySet<PHIEU_DAT_PHONG> PHIEU_DAT_PHONGs
+		{
+			get
+			{
+				return this._PHIEU_DAT_PHONGs;
+			}
+			set
+			{
+				this._PHIEU_DAT_PHONGs.Assign(value);
 			}
 		}
 		
@@ -2244,18 +2274,6 @@ namespace DAO
 			}
 		}
 		
-		private void attach_PHIEU_DAT_PHONGs(PHIEU_DAT_PHONG entity)
-		{
-			this.SendPropertyChanging();
-			entity.KHACH_HANG = this;
-		}
-		
-		private void detach_PHIEU_DAT_PHONGs(PHIEU_DAT_PHONG entity)
-		{
-			this.SendPropertyChanging();
-			entity.KHACH_HANG = null;
-		}
-		
 		private void attach_PHIEU_THUE_PHONGs(PHIEU_THUE_PHONG entity)
 		{
 			this.SendPropertyChanging();
@@ -2263,6 +2281,18 @@ namespace DAO
 		}
 		
 		private void detach_PHIEU_THUE_PHONGs(PHIEU_THUE_PHONG entity)
+		{
+			this.SendPropertyChanging();
+			entity.KHACH_HANG = null;
+		}
+		
+		private void attach_PHIEU_DAT_PHONGs(PHIEU_DAT_PHONG entity)
+		{
+			this.SendPropertyChanging();
+			entity.KHACH_HANG = this;
+		}
+		
+		private void detach_PHIEU_DAT_PHONGs(PHIEU_DAT_PHONG entity)
 		{
 			this.SendPropertyChanging();
 			entity.KHACH_HANG = null;
@@ -2281,11 +2311,11 @@ namespace DAO
 		
 		private string _MAT_KHAU;
 		
+		private EntitySet<PHIEU_THUE_PHONG> _PHIEU_THUE_PHONGs;
+		
 		private EntitySet<HOA_DON> _HOA_DONs;
 		
 		private EntitySet<PHIEU_DAT_PHONG> _PHIEU_DAT_PHONGs;
-		
-		private EntitySet<PHIEU_THUE_PHONG> _PHIEU_THUE_PHONGs;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -2301,9 +2331,9 @@ namespace DAO
 		
 		public NHAN_VIEN()
 		{
+			this._PHIEU_THUE_PHONGs = new EntitySet<PHIEU_THUE_PHONG>(new Action<PHIEU_THUE_PHONG>(this.attach_PHIEU_THUE_PHONGs), new Action<PHIEU_THUE_PHONG>(this.detach_PHIEU_THUE_PHONGs));
 			this._HOA_DONs = new EntitySet<HOA_DON>(new Action<HOA_DON>(this.attach_HOA_DONs), new Action<HOA_DON>(this.detach_HOA_DONs));
 			this._PHIEU_DAT_PHONGs = new EntitySet<PHIEU_DAT_PHONG>(new Action<PHIEU_DAT_PHONG>(this.attach_PHIEU_DAT_PHONGs), new Action<PHIEU_DAT_PHONG>(this.detach_PHIEU_DAT_PHONGs));
-			this._PHIEU_THUE_PHONGs = new EntitySet<PHIEU_THUE_PHONG>(new Action<PHIEU_THUE_PHONG>(this.attach_PHIEU_THUE_PHONGs), new Action<PHIEU_THUE_PHONG>(this.detach_PHIEU_THUE_PHONGs));
 			OnCreated();
 		}
 		
@@ -2367,6 +2397,19 @@ namespace DAO
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="NHAN_VIEN_PHIEU_THUE_PHONG", Storage="_PHIEU_THUE_PHONGs", ThisKey="ID_NHAN_VIEN", OtherKey="ID_NHAN_VIEN")]
+		public EntitySet<PHIEU_THUE_PHONG> PHIEU_THUE_PHONGs
+		{
+			get
+			{
+				return this._PHIEU_THUE_PHONGs;
+			}
+			set
+			{
+				this._PHIEU_THUE_PHONGs.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="NHAN_VIEN_HOA_DON", Storage="_HOA_DONs", ThisKey="ID_NHAN_VIEN", OtherKey="ID_NHAN_VIEN")]
 		public EntitySet<HOA_DON> HOA_DONs
 		{
@@ -2393,19 +2436,6 @@ namespace DAO
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="NHAN_VIEN_PHIEU_THUE_PHONG", Storage="_PHIEU_THUE_PHONGs", ThisKey="ID_NHAN_VIEN", OtherKey="ID_NHAN_VIEN")]
-		public EntitySet<PHIEU_THUE_PHONG> PHIEU_THUE_PHONGs
-		{
-			get
-			{
-				return this._PHIEU_THUE_PHONGs;
-			}
-			set
-			{
-				this._PHIEU_THUE_PHONGs.Assign(value);
-			}
-		}
-		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -2424,6 +2454,18 @@ namespace DAO
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+		
+		private void attach_PHIEU_THUE_PHONGs(PHIEU_THUE_PHONG entity)
+		{
+			this.SendPropertyChanging();
+			entity.NHAN_VIEN = this;
+		}
+		
+		private void detach_PHIEU_THUE_PHONGs(PHIEU_THUE_PHONG entity)
+		{
+			this.SendPropertyChanging();
+			entity.NHAN_VIEN = null;
 		}
 		
 		private void attach_HOA_DONs(HOA_DON entity)
@@ -2449,18 +2491,6 @@ namespace DAO
 			this.SendPropertyChanging();
 			entity.NHAN_VIEN = null;
 		}
-		
-		private void attach_PHIEU_THUE_PHONGs(PHIEU_THUE_PHONG entity)
-		{
-			this.SendPropertyChanging();
-			entity.NHAN_VIEN = this;
-		}
-		
-		private void detach_PHIEU_THUE_PHONGs(PHIEU_THUE_PHONG entity)
-		{
-			this.SendPropertyChanging();
-			entity.NHAN_VIEN = null;
-		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.PHIEU_DAT_PHONG")]
@@ -2477,9 +2507,9 @@ namespace DAO
 		
 		private System.DateTime _NGAY_DAT;
 		
-		private int _TONG_SO_KHACH;
+		private System.DateTime _NGAY_DEN;
 		
-		private int _TONG_SO_PHONG;
+		private System.DateTime _NGAY_DI;
 		
 		private EntitySet<CT_DAT_PHONG> _CT_DAT_PHONGs;
 		
@@ -2499,10 +2529,10 @@ namespace DAO
     partial void OnID_NHAN_VIENChanged();
     partial void OnNGAY_DATChanging(System.DateTime value);
     partial void OnNGAY_DATChanged();
-    partial void OnTONG_SO_KHACHChanging(int value);
-    partial void OnTONG_SO_KHACHChanged();
-    partial void OnTONG_SO_PHONGChanging(int value);
-    partial void OnTONG_SO_PHONGChanged();
+    partial void OnNGAY_DENChanging(System.DateTime value);
+    partial void OnNGAY_DENChanged();
+    partial void OnNGAY_DIChanging(System.DateTime value);
+    partial void OnNGAY_DIChanged();
     #endregion
 		
 		public PHIEU_DAT_PHONG()
@@ -2601,42 +2631,42 @@ namespace DAO
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TONG_SO_KHACH", DbType="Int NOT NULL")]
-		public int TONG_SO_KHACH
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NGAY_DEN", DbType="DateTime NOT NULL")]
+		public System.DateTime NGAY_DEN
 		{
 			get
 			{
-				return this._TONG_SO_KHACH;
+				return this._NGAY_DEN;
 			}
 			set
 			{
-				if ((this._TONG_SO_KHACH != value))
+				if ((this._NGAY_DEN != value))
 				{
-					this.OnTONG_SO_KHACHChanging(value);
+					this.OnNGAY_DENChanging(value);
 					this.SendPropertyChanging();
-					this._TONG_SO_KHACH = value;
-					this.SendPropertyChanged("TONG_SO_KHACH");
-					this.OnTONG_SO_KHACHChanged();
+					this._NGAY_DEN = value;
+					this.SendPropertyChanged("NGAY_DEN");
+					this.OnNGAY_DENChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TONG_SO_PHONG", DbType="Int NOT NULL")]
-		public int TONG_SO_PHONG
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NGAY_DI", DbType="DateTime NOT NULL")]
+		public System.DateTime NGAY_DI
 		{
 			get
 			{
-				return this._TONG_SO_PHONG;
+				return this._NGAY_DI;
 			}
 			set
 			{
-				if ((this._TONG_SO_PHONG != value))
+				if ((this._NGAY_DI != value))
 				{
-					this.OnTONG_SO_PHONGChanging(value);
+					this.OnNGAY_DIChanging(value);
 					this.SendPropertyChanging();
-					this._TONG_SO_PHONG = value;
-					this.SendPropertyChanged("TONG_SO_PHONG");
-					this.OnTONG_SO_PHONGChanged();
+					this._NGAY_DI = value;
+					this.SendPropertyChanged("NGAY_DI");
+					this.OnNGAY_DIChanged();
 				}
 			}
 		}
@@ -2755,180 +2785,110 @@ namespace DAO
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.PHIEU_THUE_PHONG")]
-	public partial class PHIEU_THUE_PHONG : INotifyPropertyChanging, INotifyPropertyChanged
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.PHONG")]
+	public partial class PHONG : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private string _ID_THUE_PHONG;
+		private string _ID_PHONG;
 		
-		private string _ID_KHACH_HANG;
+		private string _LOAI_PHONG;
 		
-		private string _ID_NHAN_VIEN;
+		private EntitySet<CT_DAT_PHONG> _CT_DAT_PHONGs;
 		
-		private int _TONG_SO_KHACH;
-		
-		private int _TONG_SO_PHONG;
-		
-		private EntitySet<CT_DICH_VU> _CT_DICH_VUs;
+		private EntitySet<CT_GIA_THUE> _CT_GIA_THUEs;
 		
 		private EntitySet<CT_THUE_PHONG> _CT_THUE_PHONGs;
 		
-		private EntitySet<HOA_DON> _HOA_DONs;
-		
-		private EntityRef<NHAN_VIEN> _NHAN_VIEN;
-		
-		private EntityRef<KHACH_HANG> _KHACH_HANG;
+		private EntitySet<KHACH_HANG> _KHACH_HANGs;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnID_THUE_PHONGChanging(string value);
-    partial void OnID_THUE_PHONGChanged();
-    partial void OnID_KHACH_HANGChanging(string value);
-    partial void OnID_KHACH_HANGChanged();
-    partial void OnID_NHAN_VIENChanging(string value);
-    partial void OnID_NHAN_VIENChanged();
-    partial void OnTONG_SO_KHACHChanging(int value);
-    partial void OnTONG_SO_KHACHChanged();
-    partial void OnTONG_SO_PHONGChanging(int value);
-    partial void OnTONG_SO_PHONGChanged();
+    partial void OnID_PHONGChanging(string value);
+    partial void OnID_PHONGChanged();
+    partial void OnLOAI_PHONGChanging(string value);
+    partial void OnLOAI_PHONGChanged();
     #endregion
 		
-		public PHIEU_THUE_PHONG()
+		public PHONG()
 		{
-			this._CT_DICH_VUs = new EntitySet<CT_DICH_VU>(new Action<CT_DICH_VU>(this.attach_CT_DICH_VUs), new Action<CT_DICH_VU>(this.detach_CT_DICH_VUs));
+			this._CT_DAT_PHONGs = new EntitySet<CT_DAT_PHONG>(new Action<CT_DAT_PHONG>(this.attach_CT_DAT_PHONGs), new Action<CT_DAT_PHONG>(this.detach_CT_DAT_PHONGs));
+			this._CT_GIA_THUEs = new EntitySet<CT_GIA_THUE>(new Action<CT_GIA_THUE>(this.attach_CT_GIA_THUEs), new Action<CT_GIA_THUE>(this.detach_CT_GIA_THUEs));
 			this._CT_THUE_PHONGs = new EntitySet<CT_THUE_PHONG>(new Action<CT_THUE_PHONG>(this.attach_CT_THUE_PHONGs), new Action<CT_THUE_PHONG>(this.detach_CT_THUE_PHONGs));
-			this._HOA_DONs = new EntitySet<HOA_DON>(new Action<HOA_DON>(this.attach_HOA_DONs), new Action<HOA_DON>(this.detach_HOA_DONs));
-			this._NHAN_VIEN = default(EntityRef<NHAN_VIEN>);
-			this._KHACH_HANG = default(EntityRef<KHACH_HANG>);
+			this._KHACH_HANGs = new EntitySet<KHACH_HANG>(new Action<KHACH_HANG>(this.attach_KHACH_HANGs), new Action<KHACH_HANG>(this.detach_KHACH_HANGs));
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_THUE_PHONG", DbType="VarChar(45) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
-		public string ID_THUE_PHONG
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_PHONG", DbType="VarChar(45) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string ID_PHONG
 		{
 			get
 			{
-				return this._ID_THUE_PHONG;
+				return this._ID_PHONG;
 			}
 			set
 			{
-				if ((this._ID_THUE_PHONG != value))
+				if ((this._ID_PHONG != value))
 				{
-					this.OnID_THUE_PHONGChanging(value);
+					this.OnID_PHONGChanging(value);
 					this.SendPropertyChanging();
-					this._ID_THUE_PHONG = value;
-					this.SendPropertyChanged("ID_THUE_PHONG");
-					this.OnID_THUE_PHONGChanged();
+					this._ID_PHONG = value;
+					this.SendPropertyChanged("ID_PHONG");
+					this.OnID_PHONGChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_KHACH_HANG", DbType="VarChar(45) NOT NULL", CanBeNull=false)]
-		public string ID_KHACH_HANG
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LOAI_PHONG", DbType="VarChar(45)")]
+		public string LOAI_PHONG
 		{
 			get
 			{
-				return this._ID_KHACH_HANG;
+				return this._LOAI_PHONG;
 			}
 			set
 			{
-				if ((this._ID_KHACH_HANG != value))
+				if ((this._LOAI_PHONG != value))
 				{
-					if (this._KHACH_HANG.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnID_KHACH_HANGChanging(value);
+					this.OnLOAI_PHONGChanging(value);
 					this.SendPropertyChanging();
-					this._ID_KHACH_HANG = value;
-					this.SendPropertyChanged("ID_KHACH_HANG");
-					this.OnID_KHACH_HANGChanged();
+					this._LOAI_PHONG = value;
+					this.SendPropertyChanged("LOAI_PHONG");
+					this.OnLOAI_PHONGChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_NHAN_VIEN", DbType="VarChar(45) NOT NULL", CanBeNull=false)]
-		public string ID_NHAN_VIEN
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PHONG_CT_DAT_PHONG", Storage="_CT_DAT_PHONGs", ThisKey="ID_PHONG", OtherKey="ID_PHONG")]
+		public EntitySet<CT_DAT_PHONG> CT_DAT_PHONGs
 		{
 			get
 			{
-				return this._ID_NHAN_VIEN;
+				return this._CT_DAT_PHONGs;
 			}
 			set
 			{
-				if ((this._ID_NHAN_VIEN != value))
-				{
-					if (this._NHAN_VIEN.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnID_NHAN_VIENChanging(value);
-					this.SendPropertyChanging();
-					this._ID_NHAN_VIEN = value;
-					this.SendPropertyChanged("ID_NHAN_VIEN");
-					this.OnID_NHAN_VIENChanged();
-				}
+				this._CT_DAT_PHONGs.Assign(value);
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TONG_SO_KHACH", DbType="Int NOT NULL")]
-		public int TONG_SO_KHACH
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PHONG_CT_GIA_THUE", Storage="_CT_GIA_THUEs", ThisKey="ID_PHONG", OtherKey="ID_PHONG")]
+		public EntitySet<CT_GIA_THUE> CT_GIA_THUEs
 		{
 			get
 			{
-				return this._TONG_SO_KHACH;
+				return this._CT_GIA_THUEs;
 			}
 			set
 			{
-				if ((this._TONG_SO_KHACH != value))
-				{
-					this.OnTONG_SO_KHACHChanging(value);
-					this.SendPropertyChanging();
-					this._TONG_SO_KHACH = value;
-					this.SendPropertyChanged("TONG_SO_KHACH");
-					this.OnTONG_SO_KHACHChanged();
-				}
+				this._CT_GIA_THUEs.Assign(value);
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TONG_SO_PHONG", DbType="Int NOT NULL")]
-		public int TONG_SO_PHONG
-		{
-			get
-			{
-				return this._TONG_SO_PHONG;
-			}
-			set
-			{
-				if ((this._TONG_SO_PHONG != value))
-				{
-					this.OnTONG_SO_PHONGChanging(value);
-					this.SendPropertyChanging();
-					this._TONG_SO_PHONG = value;
-					this.SendPropertyChanged("TONG_SO_PHONG");
-					this.OnTONG_SO_PHONGChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PHIEU_THUE_PHONG_CT_DICH_VU", Storage="_CT_DICH_VUs", ThisKey="ID_THUE_PHONG", OtherKey="ID_THUE_PHONG")]
-		public EntitySet<CT_DICH_VU> CT_DICH_VUs
-		{
-			get
-			{
-				return this._CT_DICH_VUs;
-			}
-			set
-			{
-				this._CT_DICH_VUs.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PHIEU_THUE_PHONG_CT_THUE_PHONG", Storage="_CT_THUE_PHONGs", ThisKey="ID_THUE_PHONG", OtherKey="ID_THUE_PHONG")]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PHONG_CT_THUE_PHONG", Storage="_CT_THUE_PHONGs", ThisKey="ID_PHONG", OtherKey="ID_PHONG")]
 		public EntitySet<CT_THUE_PHONG> CT_THUE_PHONGs
 		{
 			get
@@ -2941,84 +2901,16 @@ namespace DAO
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PHIEU_THUE_PHONG_HOA_DON", Storage="_HOA_DONs", ThisKey="ID_THUE_PHONG", OtherKey="ID_THUE_PHONG")]
-		public EntitySet<HOA_DON> HOA_DONs
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PHONG_KHACH_HANG", Storage="_KHACH_HANGs", ThisKey="ID_PHONG", OtherKey="ID_PHONG")]
+		public EntitySet<KHACH_HANG> KHACH_HANGs
 		{
 			get
 			{
-				return this._HOA_DONs;
+				return this._KHACH_HANGs;
 			}
 			set
 			{
-				this._HOA_DONs.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="NHAN_VIEN_PHIEU_THUE_PHONG", Storage="_NHAN_VIEN", ThisKey="ID_NHAN_VIEN", OtherKey="ID_NHAN_VIEN", IsForeignKey=true)]
-		public NHAN_VIEN NHAN_VIEN
-		{
-			get
-			{
-				return this._NHAN_VIEN.Entity;
-			}
-			set
-			{
-				NHAN_VIEN previousValue = this._NHAN_VIEN.Entity;
-				if (((previousValue != value) 
-							|| (this._NHAN_VIEN.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._NHAN_VIEN.Entity = null;
-						previousValue.PHIEU_THUE_PHONGs.Remove(this);
-					}
-					this._NHAN_VIEN.Entity = value;
-					if ((value != null))
-					{
-						value.PHIEU_THUE_PHONGs.Add(this);
-						this._ID_NHAN_VIEN = value.ID_NHAN_VIEN;
-					}
-					else
-					{
-						this._ID_NHAN_VIEN = default(string);
-					}
-					this.SendPropertyChanged("NHAN_VIEN");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="KHACH_HANG_PHIEU_THUE_PHONG", Storage="_KHACH_HANG", ThisKey="ID_KHACH_HANG", OtherKey="ID_KHACH_HANG", IsForeignKey=true)]
-		public KHACH_HANG KHACH_HANG
-		{
-			get
-			{
-				return this._KHACH_HANG.Entity;
-			}
-			set
-			{
-				KHACH_HANG previousValue = this._KHACH_HANG.Entity;
-				if (((previousValue != value) 
-							|| (this._KHACH_HANG.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._KHACH_HANG.Entity = null;
-						previousValue.PHIEU_THUE_PHONGs.Remove(this);
-					}
-					this._KHACH_HANG.Entity = value;
-					if ((value != null))
-					{
-						value.PHIEU_THUE_PHONGs.Add(this);
-						this._ID_KHACH_HANG = value.ID_KHACH_HANG;
-					}
-					else
-					{
-						this._ID_KHACH_HANG = default(string);
-					}
-					this.SendPropertyChanged("KHACH_HANG");
-				}
+				this._KHACH_HANGs.Assign(value);
 			}
 		}
 		
@@ -3042,40 +2934,52 @@ namespace DAO
 			}
 		}
 		
-		private void attach_CT_DICH_VUs(CT_DICH_VU entity)
+		private void attach_CT_DAT_PHONGs(CT_DAT_PHONG entity)
 		{
 			this.SendPropertyChanging();
-			entity.PHIEU_THUE_PHONG = this;
+			entity.PHONG = this;
 		}
 		
-		private void detach_CT_DICH_VUs(CT_DICH_VU entity)
+		private void detach_CT_DAT_PHONGs(CT_DAT_PHONG entity)
 		{
 			this.SendPropertyChanging();
-			entity.PHIEU_THUE_PHONG = null;
+			entity.PHONG = null;
+		}
+		
+		private void attach_CT_GIA_THUEs(CT_GIA_THUE entity)
+		{
+			this.SendPropertyChanging();
+			entity.PHONG = this;
+		}
+		
+		private void detach_CT_GIA_THUEs(CT_GIA_THUE entity)
+		{
+			this.SendPropertyChanging();
+			entity.PHONG = null;
 		}
 		
 		private void attach_CT_THUE_PHONGs(CT_THUE_PHONG entity)
 		{
 			this.SendPropertyChanging();
-			entity.PHIEU_THUE_PHONG = this;
+			entity.PHONG = this;
 		}
 		
 		private void detach_CT_THUE_PHONGs(CT_THUE_PHONG entity)
 		{
 			this.SendPropertyChanging();
-			entity.PHIEU_THUE_PHONG = null;
+			entity.PHONG = null;
 		}
 		
-		private void attach_HOA_DONs(HOA_DON entity)
+		private void attach_KHACH_HANGs(KHACH_HANG entity)
 		{
 			this.SendPropertyChanging();
-			entity.PHIEU_THUE_PHONG = this;
+			entity.PHONG = this;
 		}
 		
-		private void detach_HOA_DONs(HOA_DON entity)
+		private void detach_KHACH_HANGs(KHACH_HANG entity)
 		{
 			this.SendPropertyChanging();
-			entity.PHIEU_THUE_PHONG = null;
+			entity.PHONG = null;
 		}
 	}
 }
