@@ -11,36 +11,24 @@ namespace DTO
 		private static string prefixId = "DP";
 
 		private string id;
-		private KhachHang khachHang;
-		private NhanVien nhanVien;
+		private string idKhachHang;
+		private string idNhanVien;
 		private DateTime ngayDat;
 		private DateTime ngayDen;
 		private DateTime ngayDi;
-		private List<ChiTietDatPhong> chiTietDatPhong;
 
 		public PhieuDatPhong()
 		{
 		}
 
-		public PhieuDatPhong(string id, KhachHang khachHang, NhanVien nhanVien, DateTime ngayDat, DateTime ngayDen, DateTime ngayDi)
+		public PhieuDatPhong(string id, string idKhachHang, string idNhanVien, DateTime ngayDat, DateTime ngayDen, DateTime ngayDi)
 		{
 			this.id = id;
-			this.khachHang = khachHang;
-			this.nhanVien = nhanVien;
+			this.idKhachHang = idKhachHang;
+			this.idNhanVien = idNhanVien;
 			this.ngayDat = ngayDat;
 			this.ngayDen = ngayDen;
 			this.ngayDi = ngayDi;
-		}
-
-		public PhieuDatPhong(string id, KhachHang khachHang, NhanVien nhanVien, DateTime ngayDat, DateTime ngayDen, DateTime ngayDi, List<ChiTietDatPhong> chiTietDatPhong)
-		{
-			this.id = id;
-			this.khachHang = khachHang;
-			this.nhanVien = nhanVien;
-			this.ngayDat = ngayDat;
-			this.ngayDen = ngayDen;
-			this.ngayDi = ngayDi;
-			this.chiTietDatPhong = chiTietDatPhong;
 		}
 
 		#region Properties
@@ -55,16 +43,16 @@ namespace DTO
 			set { id = value; }
 		}
 
-		public KhachHang KhachHang
+		public string IdKhachHang
 		{
-			get { return khachHang; }
-			set { khachHang = value; }
+			get { return idKhachHang; }
+			set { idKhachHang = value; }
 		}
 
-		public NhanVien NhanVien
+		public string IdNhanVien
 		{
-			get { return nhanVien; }
-			set { nhanVien = value; }
+			get { return idNhanVien; }
+			set { idNhanVien = value; }
 		}
 
 		public DateTime NgayDat
@@ -83,12 +71,6 @@ namespace DTO
 		{
 			get { return ngayDi; }
 			set { ngayDi = value; }
-		}
-
-		public List<ChiTietDatPhong> ChiTietDatPhong
-		{
-			get { return chiTietDatPhong; }
-			set { chiTietDatPhong = value; }
 		}
 		#endregion
 	}

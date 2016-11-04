@@ -14,7 +14,7 @@ namespace DAO
 		/// </summary>
 		/// <param name="chiTietDatPhong"></param>
 		/// <returns></returns>
-		public static bool Add(PhieuDatPhong phieuDatPhong)
+		public static bool Add(List<ChiTietDatPhong> chiTietDatPhong)
 		{
 			using (var data = new QLKhachSanDataContext(Connection.ConnectionString))
 			{
@@ -22,11 +22,11 @@ namespace DAO
 				{
 					List<CT_DAT_PHONG> listChiTietDatPhong = new List<CT_DAT_PHONG>();
 					CT_DAT_PHONG temp;
-					foreach (var item in phieuDatPhong.ChiTietDatPhong)
+					foreach (var item in chiTietDatPhong)
 					{
 						temp = new CT_DAT_PHONG();
-						temp.ID_DAT_PHONG = phieuDatPhong.Id;
-						temp.ID_PHONG = item.Phong.Id;
+						temp.ID_DAT_PHONG = item.IdPhieuDatPhong;
+						temp.ID_PHONG = item.IdPhong;
 						temp.SO_KHACH = item.SoLuongKhach;
 						listChiTietDatPhong.Add(temp);
 					}

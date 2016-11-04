@@ -74,8 +74,7 @@ namespace DAO
 		/// </summary>
 		/// <returns></returns>
 		public static List<Phong> GetAllPhongTrong(DateTime ngayBatDau, DateTime ngayKetThuc)
-		{
-			string s = "";
+		{ 
 			List<Phong> result = new List<Phong>();
 			using (var data = new QLKhachSanDataContext(Connection.ConnectionString))
 			{

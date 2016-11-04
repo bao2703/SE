@@ -15,16 +15,14 @@ namespace DTO
 		private NhanVien nhanVien;
 		private DateTime ngayNhan;
 		private DateTime ngayTra;
-		private List<ChiTietThuePhong> chiTietThuePhong;
 
-		public PhieuThuePhong(string id, KhachHang khachHang, NhanVien nhanVien, DateTime ngayNhan, DateTime ngayTra, List<ChiTietThuePhong> chiTietThuePhong)
+		public PhieuThuePhong(string id, KhachHang khachHang, NhanVien nhanVien, DateTime ngayNhan, DateTime ngayTra)
 		{
 			this.id = id;
 			this.khachHang = khachHang;
 			this.nhanVien = nhanVien;
 			this.ngayNhan = ngayNhan;
 			this.ngayTra = ngayTra;
-			this.chiTietThuePhong = chiTietThuePhong;
 		}
 
 		#region Properties
@@ -61,12 +59,6 @@ namespace DTO
 		{
 			get { return ngayTra; }
 			set { ngayTra = value; }
-		}
-
-		public List<ChiTietThuePhong> ChiTietThuePhong
-		{
-			get { return chiTietThuePhong; }
-			set { chiTietThuePhong = value; }
 		}
 		#endregion
 	}

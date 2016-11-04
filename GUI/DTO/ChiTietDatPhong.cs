@@ -8,20 +8,28 @@ namespace DTO
 {
 	public class ChiTietDatPhong
 	{
-		private Phong phong;
+		private string idPhieuDatPhong;
+		private string idPhong;
 		private int soLuongKhach;
 
-		public ChiTietDatPhong(Phong phong, int soLuongKhach)
+		public ChiTietDatPhong(string idPhieuDatPhong, string idPhong, int soLuongKhach)
 		{
-			this.phong = phong;
+			this.idPhieuDatPhong = idPhieuDatPhong;
+			this.idPhong = idPhong;
 			this.soLuongKhach = soLuongKhach;
 		}
 
 		#region Properties
-		public Phong Phong
+		public string IdPhieuDatPhong
 		{
-			get { return phong; }
-			set { phong = value; }
+			get { return idPhieuDatPhong; }
+			set { idPhieuDatPhong = value; }
+		}
+
+		public string IdPhong
+		{
+			get { return idPhong; }
+			set { idPhong = value; }
 		}
 
 		public int SoLuongKhach

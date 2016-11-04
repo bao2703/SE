@@ -24,7 +24,7 @@ namespace DAO
 							select table;
 				foreach (var item in query)
 				{
-					result.Add(new PhieuDatPhong(item.ID_DAT_PHONG, KhachHangDAO.Get(item.ID_KHACH_HANG), NhanVienDAO.Get(item.ID_NHAN_VIEN), 
+					result.Add(new PhieuDatPhong(item.ID_DAT_PHONG, item.ID_KHACH_HANG, item.ID_NHAN_VIEN, 
 						item.NGAY_DAT, item.NGAY_DEN, item.NGAY_DI));
 				}
 			}
@@ -46,14 +46,14 @@ namespace DAO
 					{
 						PHIEU_DAT_PHONG temp = new PHIEU_DAT_PHONG();
 						temp.ID_DAT_PHONG = phieuDatPhong.Id;
-						temp.ID_KHACH_HANG = phieuDatPhong.KhachHang.Id;
-						temp.ID_NHAN_VIEN = phieuDatPhong.NhanVien.Id;
+						temp.ID_KHACH_HANG = phieuDatPhong.IdKhachHang;
+						temp.ID_NHAN_VIEN = phieuDatPhong.IdNhanVien;
 						temp.NGAY_DAT = phieuDatPhong.NgayDat;
 						temp.NGAY_DEN = phieuDatPhong.NgayDen;
 						temp.NGAY_DI = phieuDatPhong.NgayDi;
 						data.PHIEU_DAT_PHONGs.InsertOnSubmit(temp);
 						data.SubmitChanges();
-						ChiTietDatPhongDAO.Add(phieuDatPhong);
+						//ChiTietDatPhongDAO.Add(phieuDatPhong);
 						transaction.Complete();
 					}
 					catch (Exception)

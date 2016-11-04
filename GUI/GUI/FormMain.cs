@@ -14,18 +14,36 @@ namespace GUI
 {
 	public partial class FormMain : Form
 	{
+		private DataTable dataTableChiTietDatPhogn;
+		private DataTable dataTablePhong;
+		private List<Phong> a;
+		private DataColumn dataColumnIdPhong = new DataColumn("Id", typeof(string));
+		private DataColumn dataColumnLoaiPhong = new DataColumn("Loai", typeof(string));
 		private NhanVien nhanVien;
-		private List<ChiTietDatPhong> chiTietDatPhong;
-
 		public FormMain(NhanVien nhanVien)
 		{
 			InitializeComponent();
 			this.nhanVien = nhanVien;
 			lblTenNhanVien.Text = nhanVien.Ten;
-			this.FormClosed += new FormClosedEventHandler(Form_FormClosed);
-			comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
-			comboBox1.Items.AddRange(new object[] { "Tất cả", LoaiPhong.A, LoaiPhong.B, LoaiPhong.C, LoaiPhong.D });
-			comboBox1.SelectedIndex = 0;
+			dataGridViewKhachHang.DataSource = KhachHangBUS.GetAll();
+
+			dataTableChiTietDatPhogn = new DataTable();
+			dataTableChiTietDatPhogn.Columns.Add(dataColumnIdPhong);
+			dataTableChiTietDatPhogn.Columns.Add(dataColumnLoaiPhong);
+			dataTableChiTietDatPhogn.Columns.Add("SoLuongKhach", typeof(int));
+			dataGridViewChiTietDatPhong.DataSource = dataTableChiTietDatPhogn;
+		}
+
+		private KhachHang GetInputKhachHang()
+		{
+			KhachHang khachHang = new KhachHang();
+			khachHang.Id = KhachHangBUS.NextId();
+			khachHang.Ten = txtHoTen.Text;
+			khachHang.DiaChi = txtDiaChi.Text;
+			khachHang.SoDienThoai = txtSoDienThoai.Text;
+			khachHang.Fax = txtFax.Text;
+			khachHang.Telex = txtTelex.Text;
+			return khachHang;
 		}
 
 		private void btnLogout_Click(object sender, EventArgs e)
@@ -40,47 +58,41 @@ namespace GUI
 
 		private void btnXacNhan_Click(object sender, EventArgs e)
 		{
-			KhachHang khachHang = new KhachHang(KhachHangBUS.NextId(), txtHoTen.Text, txtDiaChi.Text, txtSoDienThoai.Text, txtFax.Text, txtTelex.Text);
-			KhachHangBUS.Add(khachHang);
-			PhieuDatPhong phieuDatPhong = new PhieuDatPhong(PhieuDatPhongBUS.NextId(), khachHang, nhanVien, DateTime.Now,
-				dateTimeNgayDen.Value, dateTimeNgayDi.Value, chiTietDatPhong);
-			// need add some method to make defaut chiTietDatPhong
-			if (chiTietDatPhong == null)
-			{
-				//chiTietDatPhong
-			}
+			PhieuDatPhong phieuDatPhong = new PhieuDatPhong(PhieuDatPhongBUS.NextId(), txtMaKhachHang.Text, nhanVien.Id, DateTime.Now,
+				dateTimeNgayDen.Value, dateTimeNgayDi.Value);
 			PhieuDatPhongBUS.Add(phieuDatPhong);
-			chiTietDatPhong = null;
 		}
 
-		private void btnChiTiet_Click(object sender, EventArgs e)
+		private void btnXemPhong_Click(object sender, EventArgs e)
 		{
-			new FormChiTietDatPhong(chiTietDatPhong).Show();
+
+
+			a = PhongBUS.GetAll();
+			dataGridViewPhong.DataSource = a;
+
 		}
 
-		private void btnXem_Click(object sender, EventArgs e)
+		private void btnThemKhachHang_Click(object sender, EventArgs e)
 		{
-			DateTime bd = new DateTime(2016, 11, 4);
-			DateTime kt = new DateTime(2016, 11, 11);
-			dataGridViewPhong.DataSource = PhongBUS.GetAllPhongTrong(bd, kt);
-			switch (comboBox1.SelectedIndex)
+			KhachHangBUS.Add(GetInputKhachHang());
+			dataGridViewKhachHang.DataSource = KhachHangBUS.GetAll();
+		}
+
+		private void button1_Click(object sender, EventArgs e)
+		{
+			DataRow row = dataTableChiTietDatPhogn.NewRow();
+			if (dataGridViewPhong.SelectedCells.Count == 1)
 			{
-				case 1:
-					dataGridViewPhong.DataSource = PhongBUS.GetLoai(LoaiPhong.A);
-					break;
-				case 2:
-					dataGridViewPhong.DataSource = PhongBUS.GetLoai(LoaiPhong.B);
-					break;
-				case 3:
-					dataGridViewPhong.DataSource = PhongBUS.GetLoai(LoaiPhong.C);
-					break;
-				case 4:
-					dataGridViewPhong.DataSource = PhongBUS.GetLoai(LoaiPhong.D);
-					break;
-				default:
-					
-					break;
+				foreach (DataGridViewCell item in dataGridViewPhong.SelectedCells)
+				{
+					row["Id"] = item.OwningRow.Cells["Id"].Value.ToString();
+					row["Loai"] = item.OwningRow.Cells["Loai"].Value.ToString();
+					row["SoLuongKhach"] = 1;
+					dataTableChiTietDatPhogn.Rows.Add(row);
+					a.RemoveAt(item.OwningRow.Index);
+				}
 			}
+			dataGridViewPhong.DataSource = a;
 		}
 	}
 }
