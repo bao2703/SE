@@ -38,11 +38,14 @@ namespace DTO.Domain
         public virtual Customer Customer { get; set; }
 
         public virtual Employee Employee { get; set; }
-        
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CheckInDetail> CheckInDetails { get; set; }
-      
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Invoice> Invoices { get; set; }
-       
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ServiceDetail> ServiceDetails { get; set; }
     }
 }

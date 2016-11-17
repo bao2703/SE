@@ -14,7 +14,7 @@ namespace DTO.Domain
             RoomPriceDetails = new HashSet<RoomPriceDetail>();
         }
 
-        [StringLength(45)]
+        [StringLength(10)]
         public string RoomPriceId { get; set; }
 
         public decimal Price { get; set; }

@@ -18,11 +18,11 @@ namespace BUS
 			}
 		}
 
-		public static IEnumerable<Customer> GetAll()
+		public static IList<Customer> GetAll()
 		{
 			using (var unitOfWork = new UnitOfWork())
 			{
-				return unitOfWork.Customers.ToList();
+				return unitOfWork.Customers.GetAll();
 			}
 		}
 

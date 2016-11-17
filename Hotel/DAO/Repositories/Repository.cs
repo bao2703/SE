@@ -9,11 +9,20 @@ using System.Threading.Tasks;
 
 namespace DAO.Repositories
 {
-	public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
+	public abstract class Repository<TEntity> : IRepository<TEntity> where TEntity : class
 	{
 		protected readonly DbContext context;
 
+		#region Properties
 		private DbSet<TEntity> Entities { get; set; }
+		protected HotelContext HotelContext
+		{
+			get
+			{
+				return context as HotelContext;
+			}
+		} 
+		#endregion
 
 		public Repository(DbContext context)
 		{

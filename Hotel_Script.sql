@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      Microsoft SQL Server 2012                    */
-/* Created on:     11/17/2016 7:23:23 PM                        */
+/* Created on:     11/17/2016 9:35:35 PM                        */
 /*==============================================================*/
 
 
@@ -573,7 +573,7 @@ go
 /* Table: RoomPriceDetail                                       */
 /*==============================================================*/
 create table RoomPriceDetail (
-   RoomPriceId          varchar(45)          not null,
+   RoomPriceId          NVARCHAR10           not null,
    TypeId               NVARCHAR10           not null,
    NumOfCustomer        int                  not null,
    constraint PK_ROOMPRICEDETAIL primary key (RoomPriceId, TypeId)
@@ -600,7 +600,7 @@ go
 /* Table: RoomPrices                                            */
 /*==============================================================*/
 create table RoomPrices (
-   RoomPriceId          varchar(45)          not null,
+   RoomPriceId          NVARCHAR10           not null,
    Price                decimal              not null,
    constraint PK_ROOMPRICES primary key nonclustered (RoomPriceId)
 )

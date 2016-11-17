@@ -11,7 +11,7 @@ namespace DTO.Domain
     {
         [Key]
         [Column(Order = 0)]
-        [StringLength(45)]
+        [StringLength(10)]
         public string RoomPriceId { get; set; }
 
         [Key]

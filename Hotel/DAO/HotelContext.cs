@@ -1,4 +1,4 @@
-namespace DAO
+namespace DTO.Domain
 {
 	using System;
 	using System.Data.Entity;
@@ -8,7 +8,8 @@ namespace DAO
 
 	public partial class HotelContext : DbContext
 	{
-		public HotelContext() : base("name=HotelContext")
+		public HotelContext()
+			: base("name=HotelContext")
 		{
 		}
 
@@ -81,14 +82,6 @@ namespace DAO
 			modelBuilder.Entity<Invoice>()
 				.Property(e => e.TotalPrice)
 				.HasPrecision(18, 0);
-
-			modelBuilder.Entity<RoomPriceDetail>()
-				.Property(e => e.RoomPriceId)
-				.IsUnicode(false);
-
-			modelBuilder.Entity<RoomPrice>()
-				.Property(e => e.RoomPriceId)
-				.IsUnicode(false);
 
 			modelBuilder.Entity<RoomPrice>()
 				.Property(e => e.Price)

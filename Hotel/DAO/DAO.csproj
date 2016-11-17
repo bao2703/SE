@@ -57,7 +57,10 @@
     <Compile Include="Repositories\BookingRepository.cs" />
     <Compile Include="Repositories\CustomerRepository.cs" />
     <Compile Include="Repositories\EmployeeRepository.cs" />
+    <Compile Include="Core\ICustomerRepository.cs" />
     <Compile Include="Repositories\Repository.cs" />
+    <Compile Include="Repositories\RoomRepository.cs" />
+    <Compile Include="Repositories\ServiceRepository.cs" />
     <Compile Include="UnitOfWork.cs" />
   </ItemGroup>
   <ItemGroup>

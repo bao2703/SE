@@ -5,44 +5,27 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DTO.Domain;
+using DAO.Core;
 
 namespace DAO.Repositories
 {
-	public class CustomerRepository : Repository<Customer>
+	public class CustomerRepository : Repository<Customer>, ICustomerRepository
 	{
 		public CustomerRepository(DbContext context) : base(context)
 		{
 		}
 
-		public IList<Customer> GetCustomerByPhone(string phone)
+		public IList<Customer> GetAll()
 		{
-			return HotelContext.Customers.Where(a => a.Phone == phone).ToList();
+			return HotelContext.Customers.ToList();
 		}
 
-		public IList<Customer> GetCustomerByFax(string fax)
+		public Customer GetCustomerWithBookings(string customerId)
 		{
-
-			return HotelContext.Customers.Where(a => a.Fax == fax).ToList();
-
-		}
-
-		public IList<Customer> GetCustomerByTelex(string telex)
-		{
-			return HotelContext.Customers.Where(a => a.Telex == telex).ToList();
-		}
-
-		public IList<Customer> GetCustomersWithBookings()
-		{
-			var customers = HotelContext.Customers.Include(a => a.Bookings).ToList();
-			return customers;
-		}
-
-		public HotelContext HotelContext
-		{
-			get
-			{
-				return context as HotelContext;
-			}
+			return HotelContext.Customers
+				.Where(a => a.CustomerId == customerId)
+				.Include(a => a.Bookings)
+				.SingleOrDefault();
 		}
 	}
 }
