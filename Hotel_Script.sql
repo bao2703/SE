@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      Microsoft SQL Server 2012                    */
-/* Created on:     11/17/2016 2:51:22 PM                        */
+/* Created on:     11/17/2016 3:24:20 PM                        */
 /*==============================================================*/
 
 
@@ -415,8 +415,8 @@ create table BookingDetails (
    BookingId            NVARCHAR10           not null,
    RoomId               NVARCHAR10           not null,
    NumOfCustomer        int                  not null,
-   BookingEnd           datetime             null,
-   BookingStart         datetime             null,
+   BookingEnd           datetime             not null,
+   BookingStart         datetime             not null,
    constraint PK_BOOKINGDETAILS primary key (BookingId, RoomId)
 )
 go
@@ -445,8 +445,8 @@ create table CheckInDetails (
    RoomId               NVARCHAR10           not null,
    RentPrice            decimal              not null,
    NumOfCustomer        int                  not null,
-   CheckInDate          datetime             null,
-   CheckOutDate         datetime             null,
+   CheckInDate          datetime             not null,
+   CheckOutDate         datetime             not null,
    constraint PK_CHECKINDETAILS primary key (CheckInId, RoomId)
 )
 go
@@ -668,7 +668,7 @@ go
 /*==============================================================*/
 create table Services (
    ServiceId            NVARCHAR10           not null,
-   Price                decimal              null,
+   Price                decimal              not null,
    constraint PK_SERVICES primary key nonclustered (ServiceId)
 )
 go
