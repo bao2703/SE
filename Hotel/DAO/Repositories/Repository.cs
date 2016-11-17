@@ -26,7 +26,7 @@ namespace DAO.Repositories
 			return Entities.Find(id);
 		}
 
-		public IEnumerable<TEntity> GetAll()
+		public IEnumerable<TEntity> ToList()
 		{
 			return Entities.ToList();
 		}
@@ -59,6 +59,11 @@ namespace DAO.Repositories
 		public void RemoveRange(IEnumerable<TEntity> entities)
 		{
 			Entities.RemoveRange(entities);
+		}
+
+		public int Count()
+		{
+			return Entities.Count();
 		}
 	}
 }

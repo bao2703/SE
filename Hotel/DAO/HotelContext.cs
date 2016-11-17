@@ -11,7 +11,7 @@ namespace DAO
 		public HotelContext() : base("name=HotelContext")
 		{
 		}
-		
+
 		public virtual DbSet<Booking> Bookings { get; set; }
 		public virtual DbSet<BookingDetail> BookingDetails { get; set; }
 		public virtual DbSet<CheckIn> CheckIns { get; set; }

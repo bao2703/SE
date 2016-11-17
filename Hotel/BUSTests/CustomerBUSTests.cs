@@ -18,9 +18,9 @@ namespace BUS.Tests
 		};
 
 		[TestMethod()]
-		public void GetTest()
+		public void GetCustomerByIdTest()
 		{
-			var actual = CustomerBUS.Get("1");
+			var actual = CustomerBUS.GetCustomerById("1");
 			Assert.AreEqual(expected.CustomerId, actual.CustomerId);
 		}
 
@@ -34,6 +34,22 @@ namespace BUS.Tests
 			};
 			CustomerBUS.Add(newCustomer);
 			Assert.IsTrue(true);
+		}
+
+		[TestMethod()]
+		public void RemoveTest()
+		{
+			var removeCustomerId = "1";
+			CustomerBUS.Remove(removeCustomerId);
+			Assert.IsTrue(true);
+		}
+
+		[TestMethod()]
+		public void CountTest()
+		{
+			var actual = CustomerBUS.Count();
+			var expected = 1;
+			Assert.AreEqual(expected, actual);
 		}
 	}
 }

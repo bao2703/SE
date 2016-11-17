@@ -21,17 +21,17 @@ namespace BUS.Tests
 
 		#region GetTest
 		[TestMethod()]
-		public void GetTest_TC1()
+		public void GetEmployeeByIdTest_TC1()
 		{
-			var actual = EmployeeBUS.Get("1");
+			var actual = EmployeeBUS.GetEmployeeById("1");
 			Assert.AreEqual(expected.EmployeeId, actual.EmployeeId);
 		}
 
 		[TestMethod()]
 
-		public void GetTest_TC2()
+		public void GetEmployeeByIdTest_TC2()
 		{
-			var actual = EmployeeBUS.Get("69");
+			var actual = EmployeeBUS.GetEmployeeById("69");
 			Assert.IsNull(actual);
 		}
 		#endregion

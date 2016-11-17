@@ -10,7 +10,7 @@ namespace BUS
 {
     public static class EmployeeBUS
     {
-		public static Employee Get(string employeeId)
+		public static Employee GetEmployeeById(string employeeId)
 		{
 			using (var unitOfWork = new UnitOfWork())
 			{
@@ -20,7 +20,7 @@ namespace BUS
 
 		public static bool IsValid(string employeeId, string password)
 		{
-			var employee = EmployeeBUS.Get(employeeId);
+			var employee = EmployeeBUS.GetEmployeeById(employeeId);
 			if (employee == null)
 			{
 				return false;

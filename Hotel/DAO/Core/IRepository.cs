@@ -11,7 +11,7 @@ namespace DAO.Core
 	{
 		TEntity Find(string id);
 
-		IEnumerable<TEntity> GetAll();
+		IEnumerable<TEntity> ToList();
 
 		IEnumerable<TEntity> Where(Expression<Func<TEntity, bool>> predicate);
 
