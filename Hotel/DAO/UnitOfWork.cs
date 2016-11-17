@@ -16,17 +16,13 @@ namespace DAO
 		{
 			this.context = new HotelContext();
 			Employees = new EmployeeRepository(context);
-		}
-
-		public UnitOfWork(HotelContext context)
-		{
-			this.context = context;
-			Employees = new EmployeeRepository(context);
+			Customers = new CustomerRepository(context);
 		}
 
 		public EmployeeRepository Employees { get; private set; }
+		public CustomerRepository Customers { get; private set; }
 
-		public int Complete()
+		public int SaveChanges()
 		{
 			return this.context.SaveChanges();
 		}

@@ -8,7 +8,7 @@ using DTO.Domain;
 
 namespace BUS
 {
-    public class EmployeeBUS
+    public static class EmployeeBUS
     {
 		public static Employee Get(string employeeId)
 		{

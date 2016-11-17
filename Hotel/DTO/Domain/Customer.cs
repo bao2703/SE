@@ -28,10 +28,10 @@ namespace DTO.Domain
         public string Phone { get; set; }
 
         [StringLength(50)]
-        public string FAX { get; set; }
+        public string Fax { get; set; }
 
         [StringLength(50)]
-        public string TELEX { get; set; }
+        public string Telex { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Booking> Bookings { get; set; }

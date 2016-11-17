@@ -12,6 +12,7 @@ namespace DAO.Repositories
 	public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
 	{
 		protected readonly DbContext context;
+
 		private DbSet<TEntity> Entities { get; set; }
 
 		public Repository(DbContext context)

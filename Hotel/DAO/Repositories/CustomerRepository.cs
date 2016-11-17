@@ -8,9 +8,9 @@ using DTO.Domain;
 
 namespace DAO.Repositories
 {
-	public class BookingRepository : Repository<Booking>
+	public class CustomerRepository : Repository<Customer>
 	{
-		public BookingRepository(DbContext context) : base(context)
+		public CustomerRepository(DbContext context) : base(context)
 		{
 		}
 	}

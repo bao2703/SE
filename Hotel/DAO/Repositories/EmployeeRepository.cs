@@ -13,11 +13,5 @@ namespace DAO.Repositories
 		public EmployeeRepository(DbContext context) : base(context)
 		{
 		}
-		public HotelContext HotelContext
-		{
-			get { return context as HotelContext; }
-		}
-
-
 	}
 }

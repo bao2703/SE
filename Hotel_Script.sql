@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      Microsoft SQL Server 2012                    */
-/* Created on:     11/17/2016 3:52:01 PM                        */
+/* Created on:     11/17/2016 7:23:23 PM                        */
 /*==============================================================*/
 
 
@@ -512,8 +512,8 @@ create table Customers (
    Name                 NVARCHAR50           null,
    Address              NVARCHAR50           null,
    Phone                NVARCHAR50           null,
-   FAX                  NVARCHAR50           null,
-   TELEX                NVARCHAR50           null,
+   Fax                  NVARCHAR50           null,
+   Telex                NVARCHAR50           null,
    constraint PK_CUSTOMERS primary key nonclustered (CustomerId)
 )
 go
