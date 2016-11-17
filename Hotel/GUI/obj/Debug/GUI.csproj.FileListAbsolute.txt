@@ -7,5 +7,10 @@ C:\Users\Neptune\OneDrive\GitHub\ISAD\Hotel\GUI\obj\Debug\GUI.csproj.GenerateRes
 C:\Users\Neptune\OneDrive\GitHub\ISAD\Hotel\GUI\obj\Debug\GUI.exe
 C:\Users\Neptune\OneDrive\GitHub\ISAD\Hotel\GUI\obj\Debug\GUI.pdb
 C:\Users\Neptune\OneDrive\GitHub\SE\Hotel\bin\GUI.exe.config
+C:\Users\Neptune\OneDrive\GitHub\SE\Hotel\bin\GUI.exe
+C:\Users\Neptune\OneDrive\GitHub\SE\Hotel\bin\GUI.pdb
+C:\Users\Neptune\OneDrive\GitHub\SE\Hotel\GUI\obj\Debug\GUI.csprojResolveAssemblyReference.cache
+C:\Users\Neptune\OneDrive\GitHub\SE\Hotel\GUI\obj\Debug\GUI.Properties.Resources.resources
+C:\Users\Neptune\OneDrive\GitHub\SE\Hotel\GUI\obj\Debug\GUI.csproj.GenerateResource.Cache
 C:\Users\Neptune\OneDrive\GitHub\SE\Hotel\GUI\obj\Debug\GUI.exe
 C:\Users\Neptune\OneDrive\GitHub\SE\Hotel\GUI\obj\Debug\GUI.pdb

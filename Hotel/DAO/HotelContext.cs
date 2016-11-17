@@ -4,19 +4,18 @@ namespace DAO
 	using System.Data.Entity;
 	using System.ComponentModel.DataAnnotations.Schema;
 	using System.Linq;
-	using DTO;
+	using DTO.Domain;
 
 	public partial class HotelContext : DbContext
 	{
-		public HotelContext()
-			: base("name=HotelContext")
+		public HotelContext() : base("name=HotelContext")
 		{
 		}
-
+		
 		public virtual DbSet<Booking> Bookings { get; set; }
 		public virtual DbSet<BookingDetail> BookingDetails { get; set; }
+		public virtual DbSet<CheckIn> CheckIns { get; set; }
 		public virtual DbSet<CheckInDetail> CheckInDetails { get; set; }
-		public virtual DbSet<CheckInInfo> CheckInInfoes { get; set; }
 		public virtual DbSet<Customer> Customers { get; set; }
 		public virtual DbSet<Employee> Employees { get; set; }
 		public virtual DbSet<Invoice> Invoices { get; set; }
@@ -35,24 +34,24 @@ namespace DAO
 				.WithRequired(e => e.Booking)
 				.WillCascadeOnDelete(false);
 
+			modelBuilder.Entity<CheckIn>()
+				.HasMany(e => e.CheckInDetails)
+				.WithRequired(e => e.CheckIn)
+				.WillCascadeOnDelete(false);
+
+			modelBuilder.Entity<CheckIn>()
+				.HasMany(e => e.Invoices)
+				.WithRequired(e => e.CheckIn)
+				.WillCascadeOnDelete(false);
+
+			modelBuilder.Entity<CheckIn>()
+				.HasMany(e => e.ServiceDetails)
+				.WithRequired(e => e.CheckIn)
+				.WillCascadeOnDelete(false);
+
 			modelBuilder.Entity<CheckInDetail>()
 				.Property(e => e.RentPrice)
 				.HasPrecision(18, 0);
-
-			modelBuilder.Entity<CheckInInfo>()
-				.HasMany(e => e.CheckInDetails)
-				.WithRequired(e => e.CheckInInfo)
-				.WillCascadeOnDelete(false);
-
-			modelBuilder.Entity<CheckInInfo>()
-				.HasMany(e => e.Invoices)
-				.WithRequired(e => e.CheckInInfo)
-				.WillCascadeOnDelete(false);
-
-			modelBuilder.Entity<CheckInInfo>()
-				.HasMany(e => e.ServiceDetails)
-				.WithRequired(e => e.CheckInInfo)
-				.WillCascadeOnDelete(false);
 
 			modelBuilder.Entity<Customer>()
 				.HasMany(e => e.Bookings)
@@ -60,7 +59,7 @@ namespace DAO
 				.WillCascadeOnDelete(false);
 
 			modelBuilder.Entity<Customer>()
-				.HasMany(e => e.CheckInInfoes)
+				.HasMany(e => e.CheckIns)
 				.WithRequired(e => e.Customer)
 				.WillCascadeOnDelete(false);
 
@@ -70,7 +69,7 @@ namespace DAO
 				.WillCascadeOnDelete(false);
 
 			modelBuilder.Entity<Employee>()
-				.HasMany(e => e.CheckInInfoes)
+				.HasMany(e => e.CheckIns)
 				.WithRequired(e => e.Employee)
 				.WillCascadeOnDelete(false);
 
