@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAO", "DAO\DAO.csproj", "{8
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BUSTests", "BUSTests\BUSTests.csproj", "{61821EF8-D454-4161-9450-23C5AFC116CC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GUI", "GUI\GUI.csproj", "{D80852CC-B73F-4380-91D8-1CF5D40C8B76}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GUI", "GUI\GUI.csproj", "{FD742F6E-894C-40D6-82B0-880AA822BB30}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,10 +35,10 @@ Global
 		{61821EF8-D454-4161-9450-23C5AFC116CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{61821EF8-D454-4161-9450-23C5AFC116CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{61821EF8-D454-4161-9450-23C5AFC116CC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D80852CC-B73F-4380-91D8-1CF5D40C8B76}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D80852CC-B73F-4380-91D8-1CF5D40C8B76}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D80852CC-B73F-4380-91D8-1CF5D40C8B76}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D80852CC-B73F-4380-91D8-1CF5D40C8B76}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD742F6E-894C-40D6-82B0-880AA822BB30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD742F6E-894C-40D6-82B0-880AA822BB30}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD742F6E-894C-40D6-82B0-880AA822BB30}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD742F6E-894C-40D6-82B0-880AA822BB30}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
