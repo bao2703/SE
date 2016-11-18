@@ -17,15 +17,15 @@ namespace DAO.Repositories
 		public Room GetRoomWithRoomType(string roomId)
 		{
 			return HotelContext.Rooms
-				.Where(a => a.RoomId == roomId)
-				.Include(a => a.RoomType)
+				.Where(r => r.RoomId == roomId)
+				.Include(r => r.RoomType)
 				.SingleOrDefault();
 		}
 
 		public IList<Room> GetRoomsWithRoomType()
 		{
 			return HotelContext.Rooms				
-				.Include(a => a.RoomType)
+				.Include(r => r.RoomType)
 				.ToList();
 		}
 	}

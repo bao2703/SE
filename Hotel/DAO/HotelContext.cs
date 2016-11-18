@@ -1,4 +1,4 @@
-namespace DTO.Domain
+namespace DAO
 {
 	using System;
 	using System.Data.Entity;
@@ -9,7 +9,7 @@ namespace DTO.Domain
 	public partial class HotelContext : DbContext
 	{
 		public HotelContext()
-			: base("name=HotelContext")
+			: base(Connection.ConnectionString)
 		{
 		}
 

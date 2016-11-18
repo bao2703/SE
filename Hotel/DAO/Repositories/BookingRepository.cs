@@ -17,15 +17,15 @@ namespace DAO.Repositories
 		public Booking GetBookingWithBookingDetails(string bookingId)
 		{
 			return HotelContext.Bookings
-				.Include(a => a.BookingDetails)
-				.Where(a => a.BookingId == bookingId)
+				.Include(b => b.BookingDetails)
+				.Where(b => b.BookingId == bookingId)
 				.SingleOrDefault();
 		}
 
 		public IList<Booking> GetContainBooking(string bookingId)
 		{
 			return HotelContext.Bookings
-				.Where(a => a.BookingId.Contains(bookingId))
+				.Where(b => b.BookingId.Contains(bookingId))
 				.ToList();
 		}
 	}

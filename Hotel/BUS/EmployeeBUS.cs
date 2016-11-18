@@ -18,14 +18,14 @@ namespace BUS
 			}
 		}
 
-		public static bool IsValid(string employeeId, string password)
+		public static bool IsValid(Employee employee)
 		{
-			var employee = EmployeeBUS.GetEmployeeById(employeeId);
+			var emp = EmployeeBUS.GetEmployeeById(employee.EmployeeId);
 			if (employee == null)
 			{
 				return false;
 			}
-			else if (employee.Password != password)
+			else if (emp.Password != employee.Password)
 			{
 				return false;
 			}

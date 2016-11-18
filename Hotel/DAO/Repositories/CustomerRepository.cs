@@ -23,8 +23,8 @@ namespace DAO.Repositories
 		public Customer GetCustomerWithBookings(string customerId)
 		{
 			return HotelContext.Customers
-				.Where(a => a.CustomerId == customerId)
-				.Include(a => a.Bookings)
+				.Where(c => c.CustomerId == customerId)
+				.Include(c => c.Bookings)
 				.SingleOrDefault();
 		}
 	}
