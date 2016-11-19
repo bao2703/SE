@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BindingModel\CustomerBindingModel.cs" />
     <Compile Include="Config.cs" />
     <Compile Include="Domain\Booking.cs" />
     <Compile Include="Domain\BookingDetail.cs" />

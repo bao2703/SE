@@ -9,20 +9,21 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BUS;
 using DTO.Domain;
+using DTO.BindingModel;
 
 namespace GUI
 {
-	public partial class dgvBookingRoom : Form
+	public partial class MainForm : Form
 	{
-		public dgvBookingRoom()
+		public MainForm()
 		{
 			InitializeComponent();
-			dgvReservationList.DataSource = CustomerBUS.GetAll();
+			customerBindingSource.DataSource = CustomerBUS.GetAll();
 		}
 
 		private void btnAddBooking_Click(object sender, EventArgs e)
 		{
-
+			
 		}
 	}
 }

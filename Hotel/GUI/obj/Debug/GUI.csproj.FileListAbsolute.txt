@@ -5,7 +5,6 @@ C:\Users\Neptune\OneDrive\GitHub\SE\Hotel\bin\GUI.pdb
 C:\Users\Neptune\OneDrive\GitHub\SE\Hotel\GUI\obj\Debug\GUI.csprojResolveAssemblyReference.cache
 C:\Users\Neptune\OneDrive\GitHub\SE\Hotel\GUI\obj\Debug\GUI.ConfigForm.resources
 C:\Users\Neptune\OneDrive\GitHub\SE\Hotel\GUI\obj\Debug\GUI.LoginForm.resources
-C:\Users\Neptune\OneDrive\GitHub\SE\Hotel\GUI\obj\Debug\GUI.Properties.Resources.resources
 C:\Users\Neptune\OneDrive\GitHub\SE\Hotel\GUI\obj\Debug\GUI.csproj.GenerateResource.Cache
 C:\Users\Neptune\OneDrive\GitHub\SE\Hotel\GUI\obj\Debug\GUI.exe
 C:\Users\Neptune\OneDrive\GitHub\SE\Hotel\GUI\obj\Debug\GUI.pdb

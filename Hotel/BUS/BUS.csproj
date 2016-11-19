@@ -51,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BookingBUS.cs" />
+    <Compile Include="Class1.cs" />
     <Compile Include="ConfigBUS.cs" />
     <Compile Include="CustomerBUS.cs" />
     <Compile Include="EmployeeBUS.cs" />
