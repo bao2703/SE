@@ -34,7 +34,7 @@ namespace DAO.Repositories
 			return Entities.Find(id);
 		}
 
-		public IEnumerable<TEntity> ToList()
+		public List<TEntity> ToList()
 		{
 			return Entities.ToList();
 		}

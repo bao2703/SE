@@ -14,6 +14,12 @@ namespace DAO.Repositories
 		{
 		}
 
+		public IEnumerable<Booking> GetBookingsWithCustomers()
+		{
+			return HotelContext.Bookings
+				.Include(b => b.Customer);
+		}
+
 		public Booking GetBookingWithBookingDetails(string bookingId)
 		{
 			return HotelContext.Bookings
@@ -22,11 +28,10 @@ namespace DAO.Repositories
 				.SingleOrDefault();
 		}
 
-		public IList<Booking> GetContainsBookingId(string bookingId)
+		public IEnumerable<Booking> GetContainsBookingId(string bookingId)
 		{
 			return HotelContext.Bookings
-				.Where(b => b.BookingId.Contains(bookingId))
-				.ToList();
+				.Where(b => b.BookingId.Contains(bookingId));
 		}
 	}
 }

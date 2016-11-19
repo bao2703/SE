@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using DAO;
 using DTO.Domain;
-using System.Windows.Input;
-using System.Windows.Forms;
+using DTO.BindingModel;
 
 namespace BUS
 {
@@ -17,14 +17,6 @@ namespace BUS
 			using (var unitOfWork = new UnitOfWork())
 			{
 				return unitOfWork.Customers.Find(customerId);
-			}
-		}
-
-		public static IEnumerable<Customer> GetAll()
-		{
-			using (var unitOfWork = new UnitOfWork())
-			{
-				return unitOfWork.Customers.ToList();
 			}
 		}
 

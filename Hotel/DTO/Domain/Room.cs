@@ -8,7 +8,6 @@ namespace DTO.Domain
 
     public partial class Room
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Room()
         {
             BookingDetails = new HashSet<BookingDetail>();
@@ -21,10 +20,8 @@ namespace DTO.Domain
         [StringLength(10)]
         public string TypeId { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BookingDetail> BookingDetails { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CheckInDetail> CheckInDetails { get; set; }
 
         public virtual RoomType RoomType { get; set; }

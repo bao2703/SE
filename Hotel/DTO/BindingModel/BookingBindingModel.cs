@@ -6,11 +6,17 @@ using System.Threading.Tasks;
 
 namespace DTO.BindingModel
 {
-	public class CustomerBindingModel
+	public class BookingBindingModel
 	{
-		public CustomerBindingModel()
+		public BookingBindingModel()
 		{
 		}
+
+		public string BookingId { get; set; }
+
+		public int TotalRoom { get; set; }
+
+		public DateTime CreateDate  { get; set; }
 
 		public string CustomerId { get; set; }
 

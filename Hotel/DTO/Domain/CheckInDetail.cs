@@ -22,7 +22,7 @@ namespace DTO.Domain
 
         public int NumOfCustomer { get; set; }
 
-        public DateTime? CheckInDate { get; set; }
+        public DateTime CheckInDate { get; set; }
 
         public DateTime CheckOutDate { get; set; }
 

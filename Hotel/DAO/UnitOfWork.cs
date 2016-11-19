@@ -20,13 +20,14 @@ namespace DAO
 			Customers = new CustomerRepository(hotelContext);
 			Rooms = new RoomRepository(hotelContext);
 			Services = new ServiceRepository(hotelContext);
+			BookingDetails = new BookingDetailRepository(hotelContext);
 		}
-
 		public BookingRepository Bookings { get; private set; }
 		public EmployeeRepository Employees { get; private set; }
 		public CustomerRepository Customers { get; private set; }
 		public RoomRepository Rooms { get; private set; }
 		public ServiceRepository Services { get; private set; }
+		public BookingDetailRepository BookingDetails { get; set; }
 
 		public int SaveChanges()
 		{
