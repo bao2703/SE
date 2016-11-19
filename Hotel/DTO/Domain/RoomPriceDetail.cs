@@ -6,7 +6,6 @@ namespace DTO.Domain
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("RoomPriceDetail")]
     public partial class RoomPriceDetail
     {
         [Key]

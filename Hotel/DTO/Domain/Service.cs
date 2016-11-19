@@ -17,6 +17,9 @@ namespace DTO.Domain
         [StringLength(10)]
         public string ServiceId { get; set; }
 
+        [StringLength(50)]
+        public string Name { get; set; }
+
         public decimal Price { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

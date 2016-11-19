@@ -54,13 +54,11 @@
   <ItemGroup>
     <Compile Include="Connection.cs" />
     <Compile Include="ConfigDAO.cs" />
-    <Compile Include="Core\IRepository.cs" />
     <Compile Include="HotelContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\BookingRepository.cs" />
     <Compile Include="Repositories\CustomerRepository.cs" />
     <Compile Include="Repositories\EmployeeRepository.cs" />
-    <Compile Include="Core\ICustomerRepository.cs" />
     <Compile Include="Repositories\Repository.cs" />
     <Compile Include="Repositories\RoomRepository.cs" />
     <Compile Include="Repositories\ServiceRepository.cs" />
@@ -71,6 +69,9 @@
       <Project>{e31a364a-f06d-487d-aa8b-515c5f5dd90f}</Project>
       <Name>DTO</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Core\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

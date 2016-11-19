@@ -22,7 +22,7 @@ namespace DAO.Repositories
 				.SingleOrDefault();
 		}
 
-		public IList<Booking> GetContainBooking(string bookingId)
+		public IList<Booking> GetContainsBookingId(string bookingId)
 		{
 			return HotelContext.Bookings
 				.Where(b => b.BookingId.Contains(bookingId))

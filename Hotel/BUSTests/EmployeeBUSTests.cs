@@ -28,7 +28,6 @@ namespace BUS.Tests
 		}
 
 		[TestMethod()]
-
 		public void GetEmployeeByIdTest_TC2()
 		{
 			var actual = EmployeeBUS.GetEmployeeById("69");
@@ -38,11 +37,40 @@ namespace BUS.Tests
 
 		#region IsValidTest
 		[TestMethod()]
-		public void IsValidTest()
+		public void IsValidEmployeeTest_TC1()
 		{
-			//var actual = EmployeeBUS.IsValid("1", "1");
-			//Assert.IsTrue(actual);
-		} 
+			var emp = new Employee()
+			{
+				EmployeeId = "1",
+				Password = "1"
+			};
+			var actual = EmployeeBUS.IsValid(emp);
+			Assert.IsTrue(actual);
+		}
+
+		[TestMethod()]
+		public void IsValidEmployeeTest_TC2()
+		{
+			var emp = new Employee()
+			{
+				EmployeeId = "1",
+				Password = "69"
+			};
+			var actual = EmployeeBUS.IsValid(emp);
+			Assert.IsFalse(actual);
+		}
+
+		[TestMethod()]
+		public void IsValidEmployeeTest_TC3()
+		{
+			var emp = new Employee()
+			{
+				EmployeeId = "69",
+				Password = "69"
+			};
+			var actual = EmployeeBUS.IsValid(emp);
+			Assert.IsFalse(actual);
+		}
 		#endregion
 	}
 }

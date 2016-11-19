@@ -18,11 +18,11 @@ namespace DTO.Domain
         [StringLength(10)]
         public string RoomId { get; set; }
 
-        public decimal RentPrice { get; set; }
+        public decimal RoomPrice { get; set; }
 
         public int NumOfCustomer { get; set; }
 
-        public DateTime CheckInDate { get; set; }
+        public DateTime? CheckInDate { get; set; }
 
         public DateTime CheckOutDate { get; set; }
 

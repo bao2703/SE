@@ -11,7 +11,7 @@ namespace BUS
 	public class ConfigBUS
 	{
 		private const string conStrWindows = @"Data Source={0}; Initial Catalog={1}; Integrated Security=True; MultipleActiveResultSets=True; App=EntityFramework";
-		private const string conStrSQLServer = @"Data Source = {0}; Initial Catalog = {1}; User ID = {2}; Password = {3};";
+		private const string conStrSQLServer = @"Data Source = {0}; Initial Catalog = {1}; User ID = {2}; Password = {3}; MultipleActiveResultSets=True; App=EntityFramework";
 
 		/// <summary>
 		/// Hàm sửa cấu hình quyền Windows

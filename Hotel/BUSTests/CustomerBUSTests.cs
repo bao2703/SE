@@ -14,20 +14,20 @@ namespace BUS.Tests
 	{
 		private Customer expected = new Customer()
 		{
-			CustomerId = "1"
+			CustomerId = "C0001"
 		};
 
 		[TestMethod()]
 		public void GetCustomerByIdTest()
 		{
-			var actual = CustomerBUS.GetCustomerById("1");
+			var actual = CustomerBUS.GetCustomerById("C0001");
 			Assert.AreEqual(expected.CustomerId, actual.CustomerId);
 		}
 
 		[TestMethod()]
-		public void AddTest()
+		public void AddCustomerTest()
 		{
-			var id = "1";
+			var id = CustomerBUS.NextId();
 			var newCustomer = new Customer()
 			{
 				CustomerId = id
@@ -37,18 +37,26 @@ namespace BUS.Tests
 		}
 
 		[TestMethod()]
-		public void RemoveTest()
+		public void RemoveCustomerTest()
 		{
-			var removeCustomerId = "1";
+			var removeCustomerId = "C0002";
 			CustomerBUS.Remove(removeCustomerId);
 			Assert.IsTrue(true);
 		}
 
 		[TestMethod()]
-		public void CountTest()
+		public void NextCustomerIdTest_TC1()
 		{
-			var actual = CustomerBUS.Count();
-			var expected = 1;
+			var actual = CustomerBUS.NextId();
+			var expected = "C0001";
+			Assert.AreEqual(expected, actual);
+		}
+
+		[TestMethod()]
+		public void NextCustomerIdTest_TC2()
+		{
+			var actual = CustomerBUS.NextId();
+			var expected = "C0002";
 			Assert.AreEqual(expected, actual);
 		}
 	}

@@ -11,9 +11,9 @@ namespace DTO.Domain
         [StringLength(10)]
         public string ReportId { get; set; }
 
-        public DateTime CreatedDate { get; set; }
-
         [StringLength(50)]
         public string Name { get; set; }
+
+        public DateTime CreatedDate { get; set; }
     }
 }

@@ -20,11 +20,11 @@ namespace BUS
 			}
 		}
 
-		public static IList<Customer> GetAll()
+		public static IEnumerable<Customer> GetAll()
 		{
 			using (var unitOfWork = new UnitOfWork())
 			{
-				return unitOfWork.Customers.GetAll();
+				return unitOfWork.Customers.ToList();
 			}
 		}
 
@@ -47,11 +47,17 @@ namespace BUS
 			}
 		}
 
-		public static int Count()
+		public static string NextId()
 		{
 			using (var unitOfWork = new UnitOfWork())
 			{
-				return unitOfWork.Customers.Count();
+				var query = unitOfWork.Customers.OrderByDescending(c => c.CustomerId).FirstOrDefault();
+				var prefixId = Customer.PrefixId;
+				if (query == null)
+				{
+					return Utilities.NextId("", prefixId);
+				}
+				return Utilities.NextId(query.CustomerId, prefixId);
 			}
 		}
 	}

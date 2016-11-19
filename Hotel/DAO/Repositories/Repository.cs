@@ -1,5 +1,4 @@
-﻿using DAO.Core;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -9,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DAO.Repositories
 {
-	public abstract class Repository<TEntity> : IRepository<TEntity> where TEntity : class
+	public abstract class Repository<TEntity> where TEntity : class
 	{
 		protected readonly DbContext context;
 
@@ -68,6 +67,16 @@ namespace DAO.Repositories
 		public void RemoveRange(IEnumerable<TEntity> entities)
 		{
 			Entities.RemoveRange(entities);
+		}
+
+		public IEnumerable<TEntity> OrderBy(Expression<Func<TEntity, string>> keySelector)
+		{
+			return Entities.OrderBy(keySelector);
+		}
+
+		public IEnumerable<TEntity> OrderByDescending(Expression<Func<TEntity, string>> keySelector)
+		{
+			return Entities.OrderByDescending(keySelector);
 		}
 
 		public int Count()

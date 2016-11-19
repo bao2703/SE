@@ -1,28 +1,14 @@
 /*==============================================================*/
 /* DBMS name:      Microsoft SQL Server 2012                    */
-/* Created on:     11/17/2016 9:35:35 PM                        */
+/* Created on:     11/19/2016 2:37:29 PM                        */
 /*==============================================================*/
 
 
 if exists (select 1
    from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
-   where r.fkeyid = object_id('Booking') and o.name = 'FK_BOOKING_HAS_CUSTOMER')
-alter table Booking
-   drop constraint FK_BOOKING_HAS_CUSTOMER
-go
-
-if exists (select 1
-   from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
-   where r.fkeyid = object_id('Booking') and o.name = 'FK_BOOKING_HAS_EMPLOYEE')
-alter table Booking
-   drop constraint FK_BOOKING_HAS_EMPLOYEE
-go
-
-if exists (select 1
-   from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
-   where r.fkeyid = object_id('BookingDetails') and o.name = 'FK_BOOKINGD_BOOKINGDE_BOOKING')
+   where r.fkeyid = object_id('BookingDetails') and o.name = 'FK_BOOKINGD_BOOKINGDE_BOOKINGS')
 alter table BookingDetails
-   drop constraint FK_BOOKINGD_BOOKINGDE_BOOKING
+   drop constraint FK_BOOKINGD_BOOKINGDE_BOOKINGS
 go
 
 if exists (select 1
@@ -34,30 +20,23 @@ go
 
 if exists (select 1
    from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
-   where r.fkeyid = object_id('CheckIn') and o.name = 'FK_CHECKIN_HAS_BOOKING')
-alter table CheckIn
-   drop constraint FK_CHECKIN_HAS_BOOKING
+   where r.fkeyid = object_id('Bookings') and o.name = 'FK_BOOKINGS_HAS_CUSTOMER')
+alter table Bookings
+   drop constraint FK_BOOKINGS_HAS_CUSTOMER
 go
 
 if exists (select 1
    from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
-   where r.fkeyid = object_id('CheckIn') and o.name = 'FK_CHECKIN_HAS_CUSTOMER')
-alter table CheckIn
-   drop constraint FK_CHECKIN_HAS_CUSTOMER
+   where r.fkeyid = object_id('Bookings') and o.name = 'FK_BOOKINGS_HAS_EMPLOYEE')
+alter table Bookings
+   drop constraint FK_BOOKINGS_HAS_EMPLOYEE
 go
 
 if exists (select 1
    from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
-   where r.fkeyid = object_id('CheckIn') and o.name = 'FK_CHECKIN_HAS_EMPLOYEE')
-alter table CheckIn
-   drop constraint FK_CHECKIN_HAS_EMPLOYEE
-go
-
-if exists (select 1
-   from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
-   where r.fkeyid = object_id('CheckInDetails') and o.name = 'FK_CHECKIND_CHECKINDE_CHECKIN')
+   where r.fkeyid = object_id('CheckInDetails') and o.name = 'FK_CHECKIND_CHECKINDE_CHECKINS')
 alter table CheckInDetails
-   drop constraint FK_CHECKIND_CHECKINDE_CHECKIN
+   drop constraint FK_CHECKIND_CHECKINDE_CHECKINS
 go
 
 if exists (select 1
@@ -69,9 +48,30 @@ go
 
 if exists (select 1
    from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
-   where r.fkeyid = object_id('Invoices') and o.name = 'FK_INVOICES_HAS_CHECKIN')
+   where r.fkeyid = object_id('CheckIns') and o.name = 'FK_CHECKINS_HAS_BOOKINGS')
+alter table CheckIns
+   drop constraint FK_CHECKINS_HAS_BOOKINGS
+go
+
+if exists (select 1
+   from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
+   where r.fkeyid = object_id('CheckIns') and o.name = 'FK_CHECKINS_HAS_CUSTOMER')
+alter table CheckIns
+   drop constraint FK_CHECKINS_HAS_CUSTOMER
+go
+
+if exists (select 1
+   from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
+   where r.fkeyid = object_id('CheckIns') and o.name = 'FK_CHECKINS_HAS_EMPLOYEE')
+alter table CheckIns
+   drop constraint FK_CHECKINS_HAS_EMPLOYEE
+go
+
+if exists (select 1
+   from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
+   where r.fkeyid = object_id('Invoices') and o.name = 'FK_INVOICES_HAS_CHECKINS')
 alter table Invoices
-   drop constraint FK_INVOICES_HAS_CHECKIN
+   drop constraint FK_INVOICES_HAS_CHECKINS
 go
 
 if exists (select 1
@@ -83,15 +83,15 @@ go
 
 if exists (select 1
    from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
-   where r.fkeyid = object_id('RoomPriceDetail') and o.name = 'FK_ROOMPRIC_ROOMPRICE_ROOMPRIC')
-alter table RoomPriceDetail
+   where r.fkeyid = object_id('RoomPriceDetails') and o.name = 'FK_ROOMPRIC_ROOMPRICE_ROOMPRIC')
+alter table RoomPriceDetails
    drop constraint FK_ROOMPRIC_ROOMPRICE_ROOMPRIC
 go
 
 if exists (select 1
    from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
-   where r.fkeyid = object_id('RoomPriceDetail') and o.name = 'FK_ROOMPRIC_ROOMPRICE_ROOMTYPE')
-alter table RoomPriceDetail
+   where r.fkeyid = object_id('RoomPriceDetails') and o.name = 'FK_ROOMPRIC_ROOMPRICE_ROOMTYPE')
+alter table RoomPriceDetails
    drop constraint FK_ROOMPRIC_ROOMPRICE_ROOMTYPE
 go
 
@@ -104,9 +104,9 @@ go
 
 if exists (select 1
    from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
-   where r.fkeyid = object_id('ServiceDetails') and o.name = 'FK_SERVICED_SERVICEDE_CHECKIN')
+   where r.fkeyid = object_id('ServiceDetails') and o.name = 'FK_SERVICED_SERVICEDE_CHECKINS')
 alter table ServiceDetails
-   drop constraint FK_SERVICED_SERVICEDE_CHECKIN
+   drop constraint FK_SERVICED_SERVICEDE_CHECKINS
 go
 
 if exists (select 1
@@ -114,31 +114,6 @@ if exists (select 1
    where r.fkeyid = object_id('ServiceDetails') and o.name = 'FK_SERVICED_SERVICEDE_SERVICES')
 alter table ServiceDetails
    drop constraint FK_SERVICED_SERVICEDE_SERVICES
-go
-
-if exists (select 1
-            from  sysindexes
-           where  id    = object_id('Booking')
-            and   name  = 'HAS_FK2'
-            and   indid > 0
-            and   indid < 255)
-   drop index Booking.HAS_FK2
-go
-
-if exists (select 1
-            from  sysindexes
-           where  id    = object_id('Booking')
-            and   name  = 'HAS_FK'
-            and   indid > 0
-            and   indid < 255)
-   drop index Booking.HAS_FK
-go
-
-if exists (select 1
-            from  sysobjects
-           where  id = object_id('Booking')
-            and   type = 'U')
-   drop table Booking
 go
 
 if exists (select 1
@@ -168,36 +143,27 @@ go
 
 if exists (select 1
             from  sysindexes
-           where  id    = object_id('CheckIn')
-            and   name  = 'HAS_FK3'
-            and   indid > 0
-            and   indid < 255)
-   drop index CheckIn.HAS_FK3
-go
-
-if exists (select 1
-            from  sysindexes
-           where  id    = object_id('CheckIn')
+           where  id    = object_id('Bookings')
             and   name  = 'HAS_FK2'
             and   indid > 0
             and   indid < 255)
-   drop index CheckIn.HAS_FK2
+   drop index Bookings.HAS_FK2
 go
 
 if exists (select 1
             from  sysindexes
-           where  id    = object_id('CheckIn')
+           where  id    = object_id('Bookings')
             and   name  = 'HAS_FK'
             and   indid > 0
             and   indid < 255)
-   drop index CheckIn.HAS_FK
+   drop index Bookings.HAS_FK
 go
 
 if exists (select 1
             from  sysobjects
-           where  id = object_id('CheckIn')
+           where  id = object_id('Bookings')
             and   type = 'U')
-   drop table CheckIn
+   drop table Bookings
 go
 
 if exists (select 1
@@ -223,6 +189,40 @@ if exists (select 1
            where  id = object_id('CheckInDetails')
             and   type = 'U')
    drop table CheckInDetails
+go
+
+if exists (select 1
+            from  sysindexes
+           where  id    = object_id('CheckIns')
+            and   name  = 'HAS_FK3'
+            and   indid > 0
+            and   indid < 255)
+   drop index CheckIns.HAS_FK3
+go
+
+if exists (select 1
+            from  sysindexes
+           where  id    = object_id('CheckIns')
+            and   name  = 'HAS_FK2'
+            and   indid > 0
+            and   indid < 255)
+   drop index CheckIns.HAS_FK2
+go
+
+if exists (select 1
+            from  sysindexes
+           where  id    = object_id('CheckIns')
+            and   name  = 'HAS_FK'
+            and   indid > 0
+            and   indid < 255)
+   drop index CheckIns.HAS_FK
+go
+
+if exists (select 1
+            from  sysobjects
+           where  id = object_id('CheckIns')
+            and   type = 'U')
+   drop table CheckIns
 go
 
 if exists (select 1
@@ -273,27 +273,27 @@ go
 
 if exists (select 1
             from  sysindexes
-           where  id    = object_id('RoomPriceDetail')
+           where  id    = object_id('RoomPriceDetails')
             and   name  = 'ROOMPRICEDETAIL_FK2'
             and   indid > 0
             and   indid < 255)
-   drop index RoomPriceDetail.ROOMPRICEDETAIL_FK2
+   drop index RoomPriceDetails.ROOMPRICEDETAIL_FK2
 go
 
 if exists (select 1
             from  sysindexes
-           where  id    = object_id('RoomPriceDetail')
+           where  id    = object_id('RoomPriceDetails')
             and   name  = 'ROOMPRICEDETAIL_FK'
             and   indid > 0
             and   indid < 255)
-   drop index RoomPriceDetail.ROOMPRICEDETAIL_FK
+   drop index RoomPriceDetails.ROOMPRICEDETAIL_FK
 go
 
 if exists (select 1
             from  sysobjects
-           where  id = object_id('RoomPriceDetail')
+           where  id = object_id('RoomPriceDetails')
             and   type = 'U')
-   drop table RoomPriceDetail
+   drop table RoomPriceDetails
 go
 
 if exists (select 1
@@ -381,42 +381,14 @@ create type NVARCHAR50
 go
 
 /*==============================================================*/
-/* Table: Booking                                               */
-/*==============================================================*/
-create table Booking (
-   BookingId            NVARCHAR10           not null,
-   CustomerId           NVARCHAR10           not null,
-   EmployeeId           NVARCHAR10           not null,
-   CreatedDate          datetime             not null,
-   constraint PK_BOOKING primary key nonclustered (BookingId)
-)
-go
-
-/*==============================================================*/
-/* Index: HAS_FK                                                */
-/*==============================================================*/
-create index HAS_FK on Booking (
-CustomerId ASC
-)
-go
-
-/*==============================================================*/
-/* Index: HAS_FK2                                               */
-/*==============================================================*/
-create index HAS_FK2 on Booking (
-EmployeeId ASC
-)
-go
-
-/*==============================================================*/
 /* Table: BookingDetails                                        */
 /*==============================================================*/
 create table BookingDetails (
    BookingId            NVARCHAR10           not null,
    RoomId               NVARCHAR10           not null,
-   NumOfCustomer        int                  not null,
-   BookingEnd           datetime             not null,
    BookingStart         datetime             not null,
+   BookingEnd           datetime             not null,
+   NumOfCustomer        int                  not null,
    constraint PK_BOOKINGDETAILS primary key (BookingId, RoomId)
 )
 go
@@ -438,22 +410,21 @@ RoomId ASC
 go
 
 /*==============================================================*/
-/* Table: CheckIn                                               */
+/* Table: Bookings                                              */
 /*==============================================================*/
-create table CheckIn (
-   CheckInId            NVARCHAR10           not null,
+create table Bookings (
+   BookingId            NVARCHAR10           not null,
    CustomerId           NVARCHAR10           not null,
    EmployeeId           NVARCHAR10           not null,
-   BookingId            NVARCHAR10           null,
-   CreatedDate          datetime             null,
-   constraint PK_CHECKIN primary key nonclustered (CheckInId)
+   CreatedDate          datetime             not null,
+   constraint PK_BOOKINGS primary key nonclustered (BookingId)
 )
 go
 
 /*==============================================================*/
 /* Index: HAS_FK                                                */
 /*==============================================================*/
-create index HAS_FK on CheckIn (
+create index HAS_FK on Bookings (
 CustomerId ASC
 )
 go
@@ -461,16 +432,8 @@ go
 /*==============================================================*/
 /* Index: HAS_FK2                                               */
 /*==============================================================*/
-create index HAS_FK2 on CheckIn (
+create index HAS_FK2 on Bookings (
 EmployeeId ASC
-)
-go
-
-/*==============================================================*/
-/* Index: HAS_FK3                                               */
-/*==============================================================*/
-create index HAS_FK3 on CheckIn (
-BookingId ASC
 )
 go
 
@@ -480,9 +443,9 @@ go
 create table CheckInDetails (
    CheckInId            NVARCHAR10           not null,
    RoomId               NVARCHAR10           not null,
-   RentPrice            decimal              not null,
+   RoomPrice            decimal              not null,
    NumOfCustomer        int                  not null,
-   CheckInDate          datetime             not null,
+   CheckInDate          datetime             null,
    CheckOutDate         datetime             not null,
    constraint PK_CHECKINDETAILS primary key (CheckInId, RoomId)
 )
@@ -501,6 +464,43 @@ go
 /*==============================================================*/
 create index CHECKINDETAILS_FK2 on CheckInDetails (
 RoomId ASC
+)
+go
+
+/*==============================================================*/
+/* Table: CheckIns                                              */
+/*==============================================================*/
+create table CheckIns (
+   CheckInId            NVARCHAR10           not null,
+   CustomerId           NVARCHAR10           not null,
+   EmployeeId           NVARCHAR10           not null,
+   BookingId            NVARCHAR10           null,
+   CreatedDate          datetime             null,
+   constraint PK_CHECKINS primary key nonclustered (CheckInId)
+)
+go
+
+/*==============================================================*/
+/* Index: HAS_FK                                                */
+/*==============================================================*/
+create index HAS_FK on CheckIns (
+CustomerId ASC
+)
+go
+
+/*==============================================================*/
+/* Index: HAS_FK2                                               */
+/*==============================================================*/
+create index HAS_FK2 on CheckIns (
+EmployeeId ASC
+)
+go
+
+/*==============================================================*/
+/* Index: HAS_FK3                                               */
+/*==============================================================*/
+create index HAS_FK3 on CheckIns (
+BookingId ASC
 )
 go
 
@@ -563,27 +563,27 @@ go
 /*==============================================================*/
 create table Reports (
    ReportId             NVARCHAR10           not null,
-   CreatedDate          datetime             not null,
    Name                 NVARCHAR50           null,
+   CreatedDate          datetime             not null,
    constraint PK_REPORTS primary key nonclustered (ReportId)
 )
 go
 
 /*==============================================================*/
-/* Table: RoomPriceDetail                                       */
+/* Table: RoomPriceDetails                                      */
 /*==============================================================*/
-create table RoomPriceDetail (
+create table RoomPriceDetails (
    RoomPriceId          NVARCHAR10           not null,
    TypeId               NVARCHAR10           not null,
    NumOfCustomer        int                  not null,
-   constraint PK_ROOMPRICEDETAIL primary key (RoomPriceId, TypeId)
+   constraint PK_ROOMPRICEDETAILS primary key (RoomPriceId, TypeId)
 )
 go
 
 /*==============================================================*/
 /* Index: ROOMPRICEDETAIL_FK                                    */
 /*==============================================================*/
-create index ROOMPRICEDETAIL_FK on RoomPriceDetail (
+create index ROOMPRICEDETAIL_FK on RoomPriceDetails (
 RoomPriceId ASC
 )
 go
@@ -591,7 +591,7 @@ go
 /*==============================================================*/
 /* Index: ROOMPRICEDETAIL_FK2                                   */
 /*==============================================================*/
-create index ROOMPRICEDETAIL_FK2 on RoomPriceDetail (
+create index ROOMPRICEDETAIL_FK2 on RoomPriceDetails (
 TypeId ASC
 )
 go
@@ -668,24 +668,15 @@ go
 /*==============================================================*/
 create table Services (
    ServiceId            NVARCHAR10           not null,
+   Name                 NVARCHAR50           null,
    Price                decimal              not null,
    constraint PK_SERVICES primary key nonclustered (ServiceId)
 )
 go
 
-alter table Booking
-   add constraint FK_BOOKING_HAS_CUSTOMER foreign key (CustomerId)
-      references Customers (CustomerId)
-go
-
-alter table Booking
-   add constraint FK_BOOKING_HAS_EMPLOYEE foreign key (EmployeeId)
-      references Employees (EmployeeId)
-go
-
 alter table BookingDetails
-   add constraint FK_BOOKINGD_BOOKINGDE_BOOKING foreign key (BookingId)
-      references Booking (BookingId)
+   add constraint FK_BOOKINGD_BOOKINGDE_BOOKINGS foreign key (BookingId)
+      references Bookings (BookingId)
 go
 
 alter table BookingDetails
@@ -693,24 +684,19 @@ alter table BookingDetails
       references Rooms (RoomId)
 go
 
-alter table CheckIn
-   add constraint FK_CHECKIN_HAS_BOOKING foreign key (BookingId)
-      references Booking (BookingId)
-go
-
-alter table CheckIn
-   add constraint FK_CHECKIN_HAS_CUSTOMER foreign key (CustomerId)
+alter table Bookings
+   add constraint FK_BOOKINGS_HAS_CUSTOMER foreign key (CustomerId)
       references Customers (CustomerId)
 go
 
-alter table CheckIn
-   add constraint FK_CHECKIN_HAS_EMPLOYEE foreign key (EmployeeId)
+alter table Bookings
+   add constraint FK_BOOKINGS_HAS_EMPLOYEE foreign key (EmployeeId)
       references Employees (EmployeeId)
 go
 
 alter table CheckInDetails
-   add constraint FK_CHECKIND_CHECKINDE_CHECKIN foreign key (CheckInId)
-      references CheckIn (CheckInId)
+   add constraint FK_CHECKIND_CHECKINDE_CHECKINS foreign key (CheckInId)
+      references CheckIns (CheckInId)
 go
 
 alter table CheckInDetails
@@ -718,9 +704,24 @@ alter table CheckInDetails
       references Rooms (RoomId)
 go
 
+alter table CheckIns
+   add constraint FK_CHECKINS_HAS_BOOKINGS foreign key (BookingId)
+      references Bookings (BookingId)
+go
+
+alter table CheckIns
+   add constraint FK_CHECKINS_HAS_CUSTOMER foreign key (CustomerId)
+      references Customers (CustomerId)
+go
+
+alter table CheckIns
+   add constraint FK_CHECKINS_HAS_EMPLOYEE foreign key (EmployeeId)
+      references Employees (EmployeeId)
+go
+
 alter table Invoices
-   add constraint FK_INVOICES_HAS_CHECKIN foreign key (CheckInId)
-      references CheckIn (CheckInId)
+   add constraint FK_INVOICES_HAS_CHECKINS foreign key (CheckInId)
+      references CheckIns (CheckInId)
 go
 
 alter table Invoices
@@ -728,12 +729,12 @@ alter table Invoices
       references Employees (EmployeeId)
 go
 
-alter table RoomPriceDetail
+alter table RoomPriceDetails
    add constraint FK_ROOMPRIC_ROOMPRICE_ROOMPRIC foreign key (RoomPriceId)
       references RoomPrices (RoomPriceId)
 go
 
-alter table RoomPriceDetail
+alter table RoomPriceDetails
    add constraint FK_ROOMPRIC_ROOMPRICE_ROOMTYPE foreign key (TypeId)
       references RoomTypes (TypeId)
 go
@@ -744,8 +745,8 @@ alter table Rooms
 go
 
 alter table ServiceDetails
-   add constraint FK_SERVICED_SERVICEDE_CHECKIN foreign key (CheckInId)
-      references CheckIn (CheckInId)
+   add constraint FK_SERVICED_SERVICEDE_CHECKINS foreign key (CheckInId)
+      references CheckIns (CheckInId)
 go
 
 alter table ServiceDetails

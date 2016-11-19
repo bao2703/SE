@@ -13,10 +13,10 @@ namespace DAO
 		{
 		}
 
-		public virtual DbSet<Booking> Bookings { get; set; }
 		public virtual DbSet<BookingDetail> BookingDetails { get; set; }
-		public virtual DbSet<CheckIn> CheckIns { get; set; }
+		public virtual DbSet<Booking> Bookings { get; set; }
 		public virtual DbSet<CheckInDetail> CheckInDetails { get; set; }
+		public virtual DbSet<CheckIn> CheckIns { get; set; }
 		public virtual DbSet<Customer> Customers { get; set; }
 		public virtual DbSet<Employee> Employees { get; set; }
 		public virtual DbSet<Invoice> Invoices { get; set; }
@@ -35,6 +35,10 @@ namespace DAO
 				.WithRequired(e => e.Booking)
 				.WillCascadeOnDelete(false);
 
+			modelBuilder.Entity<CheckInDetail>()
+				.Property(e => e.RoomPrice)
+				.HasPrecision(18, 0);
+
 			modelBuilder.Entity<CheckIn>()
 				.HasMany(e => e.CheckInDetails)
 				.WithRequired(e => e.CheckIn)
@@ -49,10 +53,6 @@ namespace DAO
 				.HasMany(e => e.ServiceDetails)
 				.WithRequired(e => e.CheckIn)
 				.WillCascadeOnDelete(false);
-
-			modelBuilder.Entity<CheckInDetail>()
-				.Property(e => e.RentPrice)
-				.HasPrecision(18, 0);
 
 			modelBuilder.Entity<Customer>()
 				.HasMany(e => e.Bookings)

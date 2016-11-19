@@ -21,7 +21,7 @@ namespace BUS
 		public static bool IsValid(Employee employee)
 		{
 			var emp = EmployeeBUS.GetEmployeeById(employee.EmployeeId);
-			if (employee == null)
+			if (emp == null)
 			{
 				return false;
 			}

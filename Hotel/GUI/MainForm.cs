@@ -12,9 +12,9 @@ using DTO.Domain;
 
 namespace GUI
 {
-	public partial class MainForm : Form
+	public partial class dgvBookingRoom : Form
 	{
-		public MainForm()
+		public dgvBookingRoom()
 		{
 			InitializeComponent();
 			dgvReservationList.DataSource = CustomerBUS.GetAll();

@@ -18,11 +18,11 @@ namespace DTO.Domain
         [StringLength(10)]
         public string RoomId { get; set; }
 
-        public int NumOfCustomer { get; set; }
+        public DateTime BookingStart { get; set; }
 
         public DateTime BookingEnd { get; set; }
 
-        public DateTime BookingStart { get; set; }
+        public int NumOfCustomer { get; set; }
 
         public virtual Booking Booking { get; set; }
 
