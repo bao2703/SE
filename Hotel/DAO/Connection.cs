@@ -11,7 +11,10 @@ namespace DAO
 	{
 		public static string ConnectionString
 		{
-			get { return ConfigurationManager.ConnectionStrings["HotelContext"].ConnectionString; }
+			get
+			{
+				return ConfigurationManager.ConnectionStrings["HotelContext"].ConnectionString;
+			}
 		}
 	}
 }

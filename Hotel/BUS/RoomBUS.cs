@@ -19,7 +19,7 @@ namespace BUS
 				var rooms = unitOfWork.Rooms.GetAvailableRooms(startDate, endDate);
 				if (typeOfRoom >= 1 && typeOfRoom <= 4)
 				{
-					rooms = unitOfWork.Rooms.FilterRoomsByType(typeOfRoom.ToString(), rooms);
+					rooms = rooms.Where(r => r.TypeId == typeOfRoom.ToString());
 				}
 				return Apdapter.Exec(rooms);
 			}

@@ -14,6 +14,7 @@ namespace DAO.Repositories
 
 		#region Properties
 		private DbSet<TEntity> Entities { get; set; }
+
 		protected HotelContext HotelContext
 		{
 			get

@@ -1,4 +1,3 @@
-C:\Users\Neptune\OneDrive\GitHub\SE\Hotel\bin\DTO.dll.config
 C:\Users\Neptune\OneDrive\GitHub\SE\Hotel\bin\DTO.dll
 C:\Users\Neptune\OneDrive\GitHub\SE\Hotel\bin\DTO.pdb
 C:\Users\Neptune\OneDrive\GitHub\SE\Hotel\DTO\obj\Debug\DTO.dll

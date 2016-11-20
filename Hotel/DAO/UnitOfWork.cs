@@ -8,7 +8,7 @@ using DTO.Domain;
 
 namespace DAO
 {
-	public class UnitOfWork : IDisposable
+	public class UnitOfWork : IUnitOfWork
 	{
 		private readonly HotelContext hotelContext;
 
@@ -22,6 +22,7 @@ namespace DAO
 			Services = new ServiceRepository(hotelContext);
 			BookingDetails = new BookingDetailRepository(hotelContext);
 		}
+
 		public BookingRepository Bookings { get; private set; }
 		public EmployeeRepository Employees { get; private set; }
 		public CustomerRepository Customers { get; private set; }
