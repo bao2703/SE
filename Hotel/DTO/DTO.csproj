@@ -63,19 +63,14 @@
     <Compile Include="Domain\Invoice.cs" />
     <Compile Include="Domain\Report.cs" />
     <Compile Include="Domain\Room.cs" />
-    <Compile Include="Domain\RoomPrice.cs" />
-    <Compile Include="Domain\RoomPriceDetail.cs" />
     <Compile Include="Domain\RoomType.cs" />
     <Compile Include="Domain\Service.cs" />
     <Compile Include="Domain\ServiceDetail.cs" />
+    <Compile Include="Domain\TypePrice.cs" />
+    <Compile Include="Domain\TypePriceDetail.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TypeOfRoom.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

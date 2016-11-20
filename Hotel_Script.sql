@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      Microsoft SQL Server 2012                    */
-/* Created on:     11/19/2016 2:37:29 PM                        */
+/* Created on:     11/20/2016 11:07:33 AM                       */
 /*==============================================================*/
 
 
@@ -83,20 +83,6 @@ go
 
 if exists (select 1
    from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
-   where r.fkeyid = object_id('RoomPriceDetails') and o.name = 'FK_ROOMPRIC_ROOMPRICE_ROOMPRIC')
-alter table RoomPriceDetails
-   drop constraint FK_ROOMPRIC_ROOMPRICE_ROOMPRIC
-go
-
-if exists (select 1
-   from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
-   where r.fkeyid = object_id('RoomPriceDetails') and o.name = 'FK_ROOMPRIC_ROOMPRICE_ROOMTYPE')
-alter table RoomPriceDetails
-   drop constraint FK_ROOMPRIC_ROOMPRICE_ROOMTYPE
-go
-
-if exists (select 1
-   from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
    where r.fkeyid = object_id('Rooms') and o.name = 'FK_ROOMS_HAS_ROOMTYPE')
 alter table Rooms
    drop constraint FK_ROOMS_HAS_ROOMTYPE
@@ -114,6 +100,20 @@ if exists (select 1
    where r.fkeyid = object_id('ServiceDetails') and o.name = 'FK_SERVICED_SERVICEDE_SERVICES')
 alter table ServiceDetails
    drop constraint FK_SERVICED_SERVICEDE_SERVICES
+go
+
+if exists (select 1
+   from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
+   where r.fkeyid = object_id('TypePriceDetails') and o.name = 'FK_TYPEPRIC_TYPEPRICE_ROOMTYPE')
+alter table TypePriceDetails
+   drop constraint FK_TYPEPRIC_TYPEPRICE_ROOMTYPE
+go
+
+if exists (select 1
+   from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
+   where r.fkeyid = object_id('TypePriceDetails') and o.name = 'FK_TYPEPRIC_TYPEPRICE_TYPEPRIC')
+alter table TypePriceDetails
+   drop constraint FK_TYPEPRIC_TYPEPRICE_TYPEPRIC
 go
 
 if exists (select 1
@@ -272,38 +272,6 @@ if exists (select 1
 go
 
 if exists (select 1
-            from  sysindexes
-           where  id    = object_id('RoomPriceDetails')
-            and   name  = 'ROOMPRICEDETAIL_FK2'
-            and   indid > 0
-            and   indid < 255)
-   drop index RoomPriceDetails.ROOMPRICEDETAIL_FK2
-go
-
-if exists (select 1
-            from  sysindexes
-           where  id    = object_id('RoomPriceDetails')
-            and   name  = 'ROOMPRICEDETAIL_FK'
-            and   indid > 0
-            and   indid < 255)
-   drop index RoomPriceDetails.ROOMPRICEDETAIL_FK
-go
-
-if exists (select 1
-            from  sysobjects
-           where  id = object_id('RoomPriceDetails')
-            and   type = 'U')
-   drop table RoomPriceDetails
-go
-
-if exists (select 1
-            from  sysobjects
-           where  id = object_id('RoomPrices')
-            and   type = 'U')
-   drop table RoomPrices
-go
-
-if exists (select 1
             from  sysobjects
            where  id = object_id('RoomTypes')
             and   type = 'U')
@@ -356,6 +324,38 @@ if exists (select 1
            where  id = object_id('Services')
             and   type = 'U')
    drop table Services
+go
+
+if exists (select 1
+            from  sysindexes
+           where  id    = object_id('TypePriceDetails')
+            and   name  = 'ROOMPRICEDETAIL_FK2'
+            and   indid > 0
+            and   indid < 255)
+   drop index TypePriceDetails.ROOMPRICEDETAIL_FK2
+go
+
+if exists (select 1
+            from  sysindexes
+           where  id    = object_id('TypePriceDetails')
+            and   name  = 'ROOMPRICEDETAIL_FK'
+            and   indid > 0
+            and   indid < 255)
+   drop index TypePriceDetails.ROOMPRICEDETAIL_FK
+go
+
+if exists (select 1
+            from  sysobjects
+           where  id = object_id('TypePriceDetails')
+            and   type = 'U')
+   drop table TypePriceDetails
+go
+
+if exists (select 1
+            from  sysobjects
+           where  id = object_id('TypePrices')
+            and   type = 'U')
+   drop table TypePrices
 go
 
 if exists(select 1 from systypes where name='NVARCHAR10')
@@ -445,7 +445,7 @@ create table CheckInDetails (
    RoomId               NVARCHAR10           not null,
    RoomPrice            decimal              not null,
    NumOfCustomer        int                  not null,
-   CheckInDate          datetime             null,
+   CheckInDate          datetime             not null,
    CheckOutDate         datetime             not null,
    constraint PK_CHECKINDETAILS primary key (CheckInId, RoomId)
 )
@@ -570,43 +570,6 @@ create table Reports (
 go
 
 /*==============================================================*/
-/* Table: RoomPriceDetails                                      */
-/*==============================================================*/
-create table RoomPriceDetails (
-   RoomPriceId          NVARCHAR10           not null,
-   TypeId               NVARCHAR10           not null,
-   NumOfCustomer        int                  not null,
-   constraint PK_ROOMPRICEDETAILS primary key (RoomPriceId, TypeId)
-)
-go
-
-/*==============================================================*/
-/* Index: ROOMPRICEDETAIL_FK                                    */
-/*==============================================================*/
-create index ROOMPRICEDETAIL_FK on RoomPriceDetails (
-RoomPriceId ASC
-)
-go
-
-/*==============================================================*/
-/* Index: ROOMPRICEDETAIL_FK2                                   */
-/*==============================================================*/
-create index ROOMPRICEDETAIL_FK2 on RoomPriceDetails (
-TypeId ASC
-)
-go
-
-/*==============================================================*/
-/* Table: RoomPrices                                            */
-/*==============================================================*/
-create table RoomPrices (
-   RoomPriceId          NVARCHAR10           not null,
-   Price                decimal              not null,
-   constraint PK_ROOMPRICES primary key nonclustered (RoomPriceId)
-)
-go
-
-/*==============================================================*/
 /* Table: RoomTypes                                             */
 /*==============================================================*/
 create table RoomTypes (
@@ -674,6 +637,43 @@ create table Services (
 )
 go
 
+/*==============================================================*/
+/* Table: TypePriceDetails                                      */
+/*==============================================================*/
+create table TypePriceDetails (
+   TypePriceId          NVARCHAR10           not null,
+   TypeId               NVARCHAR10           not null,
+   NumOfCustomer        int                  not null,
+   constraint PK_TYPEPRICEDETAILS primary key (TypePriceId, TypeId)
+)
+go
+
+/*==============================================================*/
+/* Index: ROOMPRICEDETAIL_FK                                    */
+/*==============================================================*/
+create index ROOMPRICEDETAIL_FK on TypePriceDetails (
+TypePriceId ASC
+)
+go
+
+/*==============================================================*/
+/* Index: ROOMPRICEDETAIL_FK2                                   */
+/*==============================================================*/
+create index ROOMPRICEDETAIL_FK2 on TypePriceDetails (
+TypeId ASC
+)
+go
+
+/*==============================================================*/
+/* Table: TypePrices                                            */
+/*==============================================================*/
+create table TypePrices (
+   TypePriceId          NVARCHAR10           not null,
+   Price                decimal              not null,
+   constraint PK_TYPEPRICES primary key nonclustered (TypePriceId)
+)
+go
+
 alter table BookingDetails
    add constraint FK_BOOKINGD_BOOKINGDE_BOOKINGS foreign key (BookingId)
       references Bookings (BookingId)
@@ -729,16 +729,6 @@ alter table Invoices
       references Employees (EmployeeId)
 go
 
-alter table RoomPriceDetails
-   add constraint FK_ROOMPRIC_ROOMPRICE_ROOMPRIC foreign key (RoomPriceId)
-      references RoomPrices (RoomPriceId)
-go
-
-alter table RoomPriceDetails
-   add constraint FK_ROOMPRIC_ROOMPRICE_ROOMTYPE foreign key (TypeId)
-      references RoomTypes (TypeId)
-go
-
 alter table Rooms
    add constraint FK_ROOMS_HAS_ROOMTYPE foreign key (TypeId)
       references RoomTypes (TypeId)
@@ -752,5 +742,15 @@ go
 alter table ServiceDetails
    add constraint FK_SERVICED_SERVICEDE_SERVICES foreign key (ServiceId)
       references Services (ServiceId)
+go
+
+alter table TypePriceDetails
+   add constraint FK_TYPEPRIC_TYPEPRICE_ROOMTYPE foreign key (TypeId)
+      references RoomTypes (TypeId)
+go
+
+alter table TypePriceDetails
+   add constraint FK_TYPEPRIC_TYPEPRICE_TYPEPRIC foreign key (TypePriceId)
+      references TypePrices (TypePriceId)
 go
 

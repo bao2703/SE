@@ -10,8 +10,8 @@ namespace DTO.Domain
     {
         public RoomType()
         {
-            RoomPriceDetails = new HashSet<RoomPriceDetail>();
             Rooms = new HashSet<Room>();
+            TypePriceDetails = new HashSet<TypePriceDetail>();
         }
 
         [Key]
@@ -21,8 +21,8 @@ namespace DTO.Domain
         [StringLength(50)]
         public string Name { get; set; }
 
-        public virtual ICollection<RoomPriceDetail> RoomPriceDetails { get; set; }
-
         public virtual ICollection<Room> Rooms { get; set; }
+
+        public virtual ICollection<TypePriceDetail> TypePriceDetails { get; set; }
     }
 }

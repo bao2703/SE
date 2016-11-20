@@ -6,21 +6,18 @@ namespace DTO.Domain
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class Service
+    public partial class TypePrice
     {
-        public Service()
+        public TypePrice()
         {
-            ServiceDetails = new HashSet<ServiceDetail>();
+            TypePriceDetails = new HashSet<TypePriceDetail>();
         }
 
         [StringLength(10)]
-        public string ServiceId { get; set; }
-
-        [StringLength(50)]
-        public string Name { get; set; }
+        public string TypePriceId { get; set; }
 
         public decimal Price { get; set; }
 
-        public virtual ICollection<ServiceDetail> ServiceDetails { get; set; }
+        public virtual ICollection<TypePriceDetail> TypePriceDetails { get; set; }
     }
 }

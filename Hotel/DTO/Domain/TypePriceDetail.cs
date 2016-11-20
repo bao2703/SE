@@ -6,12 +6,12 @@ namespace DTO.Domain
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class RoomPriceDetail
+    public partial class TypePriceDetail
     {
         [Key]
         [Column(Order = 0)]
         [StringLength(10)]
-        public string RoomPriceId { get; set; }
+        public string TypePriceId { get; set; }
 
         [Key]
         [Column(Order = 1)]
@@ -20,8 +20,8 @@ namespace DTO.Domain
 
         public int NumOfCustomer { get; set; }
 
-        public virtual RoomPrice RoomPrice { get; set; }
-
         public virtual RoomType RoomType { get; set; }
+
+        public virtual TypePrice TypePrice { get; set; }
     }
 }

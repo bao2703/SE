@@ -8,8 +8,7 @@ namespace DAO
 
 	public partial class HotelContext : DbContext
 	{
-		public HotelContext()
-			: base(Connection.ConnectionString)
+		public HotelContext() : base(Connection.ConnectionString)
 		{
 		}
 
@@ -21,12 +20,12 @@ namespace DAO
 		public virtual DbSet<Employee> Employees { get; set; }
 		public virtual DbSet<Invoice> Invoices { get; set; }
 		public virtual DbSet<Report> Reports { get; set; }
-		public virtual DbSet<RoomPriceDetail> RoomPriceDetails { get; set; }
-		public virtual DbSet<RoomPrice> RoomPrices { get; set; }
 		public virtual DbSet<Room> Rooms { get; set; }
 		public virtual DbSet<RoomType> RoomTypes { get; set; }
 		public virtual DbSet<ServiceDetail> ServiceDetails { get; set; }
 		public virtual DbSet<Service> Services { get; set; }
+		public virtual DbSet<TypePriceDetail> TypePriceDetails { get; set; }
+		public virtual DbSet<TypePrice> TypePrices { get; set; }
 
 		protected override void OnModelCreating(DbModelBuilder modelBuilder)
 		{
@@ -83,15 +82,6 @@ namespace DAO
 				.Property(e => e.TotalPrice)
 				.HasPrecision(18, 0);
 
-			modelBuilder.Entity<RoomPrice>()
-				.Property(e => e.Price)
-				.HasPrecision(18, 0);
-
-			modelBuilder.Entity<RoomPrice>()
-				.HasMany(e => e.RoomPriceDetails)
-				.WithRequired(e => e.RoomPrice)
-				.WillCascadeOnDelete(false);
-
 			modelBuilder.Entity<Room>()
 				.HasMany(e => e.BookingDetails)
 				.WithRequired(e => e.Room)
@@ -103,7 +93,7 @@ namespace DAO
 				.WillCascadeOnDelete(false);
 
 			modelBuilder.Entity<RoomType>()
-				.HasMany(e => e.RoomPriceDetails)
+				.HasMany(e => e.TypePriceDetails)
 				.WithRequired(e => e.RoomType)
 				.WillCascadeOnDelete(false);
 
@@ -118,6 +108,15 @@ namespace DAO
 			modelBuilder.Entity<Service>()
 				.HasMany(e => e.ServiceDetails)
 				.WithRequired(e => e.Service)
+				.WillCascadeOnDelete(false);
+
+			modelBuilder.Entity<TypePrice>()
+				.Property(e => e.Price)
+				.HasPrecision(18, 0);
+
+			modelBuilder.Entity<TypePrice>()
+				.HasMany(e => e.TypePriceDetails)
+				.WithRequired(e => e.TypePrice)
 				.WillCascadeOnDelete(false);
 		}
 	}
