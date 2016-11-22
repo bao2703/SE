@@ -6,8 +6,13 @@ using System.Threading.Tasks;
 
 namespace BUS
 {
-	public class Utilities
+	public static class Utilities
 	{
+		public static bool IsValidStartAndEndDate(DateTime start, DateTime end)
+		{
+			return start.CompareTo(end) == -1;
+		}
+
 		/// <summary>
 		/// Tìm mã kế tiếp
 		/// </summary>

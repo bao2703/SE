@@ -15,6 +15,6 @@ namespace DTO.BindingModel
 
         public string RoomId { get; set; }
 
-		public TypeOfRoom Type { get; set; }
+		public TypeOfRoom TypeName { get; set; }
 	}
 }

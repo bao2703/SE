@@ -10,7 +10,7 @@ namespace DAO.Repositories
 {
 	public abstract class Repository<TEntity> where TEntity : class
 	{
-		protected readonly DbContext context;
+		private readonly DbContext context;
 
 		#region Properties
 		private DbSet<TEntity> Entities { get; set; }
@@ -78,6 +78,11 @@ namespace DAO.Repositories
 		public IEnumerable<TEntity> OrderByDescending(Expression<Func<TEntity, string>> keySelector)
 		{
 			return Entities.OrderByDescending(keySelector);
+		}
+
+		public bool Any(Expression<Func<TEntity, bool>> predicate)
+		{
+			return Entities.Any(predicate);
 		}
 
 		public int Count()

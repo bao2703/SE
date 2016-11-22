@@ -20,16 +20,10 @@ namespace BUS
 
 		public static bool IsValid(Employee employee)
 		{
-			var emp = EmployeeBUS.GetEmployeeById(employee.EmployeeId);
-			if (emp == null)
+			using (var unitOfWork = new UnitOfWork())
 			{
-				return false;
+				return unitOfWork.Employees.Any(e => e.EmployeeId == employee.EmployeeId && e.Password == employee.Password);
 			}
-			else if (emp.Password != employee.Password)
-			{
-				return false;
-			}
-			return true;
 		}
     }
 }

@@ -40,7 +40,7 @@ namespace BUS
 			return new RoomBindingModel()
 			{
 				RoomId = room.RoomId,
-				//Type = room.RoomType.TypeName
+				TypeName = room.RoomType.TypeName
 			};
 		}
 

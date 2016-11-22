@@ -59,18 +59,6 @@ namespace BUS.Tests
 			var actual = EmployeeBUS.IsValid(emp);
 			Assert.IsFalse(actual);
 		}
-
-		[TestMethod()]
-		public void IsValidEmployeeTest_TC3()
-		{
-			var emp = new Employee()
-			{
-				EmployeeId = "69",
-				Password = "69"
-			};
-			var actual = EmployeeBUS.IsValid(emp);
-			Assert.IsFalse(actual);
-		}
 		#endregion
 	}
 }

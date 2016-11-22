@@ -20,14 +20,21 @@ namespace GUI
 		{
 			InitializeComponent();
 			comboBoxRoomType.DropDownStyle = ComboBoxStyle.DropDownList;
-			comboBoxRoomType.Items.AddRange(new object[] { "Type", "Type A", "Type B", "Type C", "Type D" });
+			comboBoxRoomType.Items.AddRange(new object[] { "None", TypeOfRoom.A, TypeOfRoom.B, TypeOfRoom.C, TypeOfRoom.D });
 			comboBoxRoomType.SelectedIndex = 0;
 			dgvReservationList.DataSource = BookingBUS.GetBookingsAndCustomersForBinding();
 			
 		}
 		private void MainForm_Load(object sender, EventArgs e)
 		{
-			comboBoxRoomType_SelectedIndexChanged(sender, e);
+			DataGridView[] dataGridViews = new DataGridView[2];
+			dataGridViews[0] = dgvReservationList;
+			dataGridViews[1] = dgvAvailableRooms;
+			foreach (var item in dataGridViews)
+			{
+				item.MultiSelect = false;
+				item.RowHeadersVisible = false;
+			}
 		}
 
 		private void btnAddBooking_Click(object sender, EventArgs e)
@@ -37,45 +44,29 @@ namespace GUI
 
 		private void comboBoxRoomType_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			TypeOfRoom typeOfRoom = 0;
-			if (comboBoxRoomType.SelectedIndex == 1)
+			TypeOfRoom? typeOfRoom = null;
+			if (!comboBoxRoomType.SelectedItem.Equals("None"))
 			{
-				typeOfRoom = TypeOfRoom.A;
+				typeOfRoom = (TypeOfRoom)comboBoxRoomType.SelectedItem;
 			}
-			else if(comboBoxRoomType.SelectedIndex == 2)
-			{
-				typeOfRoom = TypeOfRoom.B;
-			}
-			else if(comboBoxRoomType.SelectedIndex == 3)
-			{
-				typeOfRoom = TypeOfRoom.C;
-			}
-			else if (comboBoxRoomType.SelectedIndex == 4)
-			{
-				typeOfRoom = TypeOfRoom.D;
-			}
-			var rooms = RoomBUS.GetAvailableRoomsForBinding(typeOfRoom, dateTimePickerBookingStart.Value, dateTimePickerBookingEnd.Value);
-			dgvAvailableRooms.DataSource = rooms;
+			dgvAvailableRooms.DataSource = RoomBUS.GetAvailableRoomsForBinding(typeOfRoom, dateTimePickerBookingStart.Value, dateTimePickerBookingEnd.Value);
 		}
+
 
 		private void dateTimePickerBookingStart_ValueChanged(object sender, EventArgs e)
 		{
-			var start = dateTimePickerBookingStart.Value;
-			var end = dateTimePickerBookingEnd.Value;
-			if (start.CompareTo(end) == 1 || start.CompareTo(end) == 0)
+			if (!Utilities.IsValidStartAndEndDate(dateTimePickerBookingStart.Value, dateTimePickerBookingEnd.Value))
 			{
-				dateTimePickerBookingEnd.Value = start;
+				dateTimePickerBookingEnd.Value = dateTimePickerBookingStart.Value;
 			}
 			comboBoxRoomType_SelectedIndexChanged(sender, e);
 		}
 		 
 		private void dateTimePickerBookingEnd_ValueChanged(object sender, EventArgs e)
 		{
-			var start = dateTimePickerBookingStart.Value;
-			var end = dateTimePickerBookingEnd.Value;
-			if (start.CompareTo(end) == 1 || start.CompareTo(end) == 0)
+			if (!Utilities.IsValidStartAndEndDate(dateTimePickerBookingStart.Value, dateTimePickerBookingEnd.Value))
 			{
-				dateTimePickerBookingStart.Value = end;
+				dateTimePickerBookingStart.Value = dateTimePickerBookingEnd.Value;
 			}
 			comboBoxRoomType_SelectedIndexChanged(sender, e);
 		}
