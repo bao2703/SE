@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BindingModel\BookingBindingModel.cs" />
+    <Compile Include="BindingModel\BookingRoomBindingModel.cs" />
     <Compile Include="BindingModel\RoomBindingModel.cs" />
     <Compile Include="Config.cs" />
     <Compile Include="Domain\Booking.cs" />

@@ -6,16 +6,17 @@ using System.Threading.Tasks;
 using DAO;
 using DTO.Domain;
 using DTO.BindingModel;
+using System.ComponentModel;
 
 namespace BUS
 {
 	public static class BookingBUS
 	{
-		public static List<BookingBindingModel> GetBookingsAndCustomersForBinding()
+		public static BindingList<BookingBindingModel> GetBookingsForBinding()
 		{
 			using (var unitOfWork = new UnitOfWork())
 			{
-				return Apdapter.Exec(unitOfWork.Bookings.GetBookingsWithCustomers().ToList());
+				return Apdapter.Exec(unitOfWork.Bookings.ToList());
 			}
 		}
 

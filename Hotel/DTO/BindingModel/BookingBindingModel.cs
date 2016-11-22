@@ -16,7 +16,7 @@ namespace DTO.BindingModel
 
 		public int TotalRoom { get; set; }
 
-		public DateTime CreateDate  { get; set; }
+		public DateTime CreatedDate  { get; set; }
 
 		public string CustomerId { get; set; }
 

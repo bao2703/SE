@@ -178,17 +178,18 @@
 			// 
 			// btnAddBookingRoom
 			// 
-			this.btnAddBookingRoom.Location = new System.Drawing.Point(424, 308);
+			this.btnAddBookingRoom.Location = new System.Drawing.Point(278, 308);
 			this.btnAddBookingRoom.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
 			this.btnAddBookingRoom.Name = "btnAddBookingRoom";
 			this.btnAddBookingRoom.Size = new System.Drawing.Size(112, 44);
 			this.btnAddBookingRoom.TabIndex = 5;
 			this.btnAddBookingRoom.Text = ">>";
 			this.btnAddBookingRoom.UseVisualStyleBackColor = true;
+			this.btnAddBookingRoom.Click += new System.EventHandler(this.btnAddBookingRoom_Click);
 			// 
 			// txtSearch
 			// 
-			this.txtSearch.Location = new System.Drawing.Point(433, 449);
+			this.txtSearch.Location = new System.Drawing.Point(287, 449);
 			this.txtSearch.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
 			this.txtSearch.Name = "txtSearch";
 			this.txtSearch.Size = new System.Drawing.Size(94, 22);
@@ -197,7 +198,7 @@
 			// comboBoxRoomType
 			// 
 			this.comboBoxRoomType.FormattingEnabled = true;
-			this.comboBoxRoomType.Location = new System.Drawing.Point(433, 269);
+			this.comboBoxRoomType.Location = new System.Drawing.Point(287, 269);
 			this.comboBoxRoomType.Margin = new System.Windows.Forms.Padding(4);
 			this.comboBoxRoomType.Name = "comboBoxRoomType";
 			this.comboBoxRoomType.Size = new System.Drawing.Size(94, 24);
@@ -227,11 +228,11 @@
 			// groupBox2
 			// 
 			this.groupBox2.Controls.Add(this.dgvBookingRooms);
-			this.groupBox2.Location = new System.Drawing.Point(557, 252);
+			this.groupBox2.Location = new System.Drawing.Point(410, 251);
 			this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
 			this.groupBox2.Name = "groupBox2";
 			this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
-			this.groupBox2.Size = new System.Drawing.Size(394, 233);
+			this.groupBox2.Size = new System.Drawing.Size(541, 233);
 			this.groupBox2.TabIndex = 4;
 			this.groupBox2.TabStop = false;
 			this.groupBox2.Text = "Booking Room";
@@ -242,14 +243,14 @@
 			this.dgvBookingRooms.Location = new System.Drawing.Point(7, 17);
 			this.dgvBookingRooms.Margin = new System.Windows.Forms.Padding(4);
 			this.dgvBookingRooms.Name = "dgvBookingRooms";
-			this.dgvBookingRooms.Size = new System.Drawing.Size(379, 206);
+			this.dgvBookingRooms.Size = new System.Drawing.Size(528, 206);
 			this.dgvBookingRooms.TabIndex = 0;
 			// 
 			// label9
 			// 
 			this.label9.AutoSize = true;
 			this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label9.Location = new System.Drawing.Point(446, 421);
+			this.label9.Location = new System.Drawing.Point(300, 421);
 			this.label9.Name = "label9";
 			this.label9.Size = new System.Drawing.Size(70, 17);
 			this.label9.TabIndex = 0;
@@ -262,7 +263,7 @@
 			this.groupBox4.Margin = new System.Windows.Forms.Padding(4);
 			this.groupBox4.Name = "groupBox4";
 			this.groupBox4.Padding = new System.Windows.Forms.Padding(4);
-			this.groupBox4.Size = new System.Drawing.Size(394, 233);
+			this.groupBox4.Size = new System.Drawing.Size(254, 233);
 			this.groupBox4.TabIndex = 4;
 			this.groupBox4.TabStop = false;
 			this.groupBox4.Text = "Available Room";
@@ -270,21 +271,22 @@
 			// dgvAvailableRooms
 			// 
 			this.dgvAvailableRooms.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.dgvAvailableRooms.Location = new System.Drawing.Point(7, 17);
+			this.dgvAvailableRooms.Location = new System.Drawing.Point(10, 23);
 			this.dgvAvailableRooms.Margin = new System.Windows.Forms.Padding(4);
 			this.dgvAvailableRooms.Name = "dgvAvailableRooms";
-			this.dgvAvailableRooms.Size = new System.Drawing.Size(379, 206);
+			this.dgvAvailableRooms.Size = new System.Drawing.Size(236, 201);
 			this.dgvAvailableRooms.TabIndex = 0;
 			// 
 			// btnRemoveBookingRoom
 			// 
-			this.btnRemoveBookingRoom.Location = new System.Drawing.Point(424, 365);
+			this.btnRemoveBookingRoom.Location = new System.Drawing.Point(278, 365);
 			this.btnRemoveBookingRoom.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
 			this.btnRemoveBookingRoom.Name = "btnRemoveBookingRoom";
 			this.btnRemoveBookingRoom.Size = new System.Drawing.Size(111, 44);
 			this.btnRemoveBookingRoom.TabIndex = 5;
 			this.btnRemoveBookingRoom.Text = "<<";
 			this.btnRemoveBookingRoom.UseVisualStyleBackColor = true;
+			this.btnRemoveBookingRoom.Click += new System.EventHandler(this.btnRemoveBookingRoom_Click);
 			// 
 			// groupBox6
 			// 
@@ -363,9 +365,24 @@
 			// 
 			this.numericUpDownCustomerAmount.Location = new System.Drawing.Point(216, 103);
 			this.numericUpDownCustomerAmount.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+			this.numericUpDownCustomerAmount.Maximum = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
+			this.numericUpDownCustomerAmount.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
 			this.numericUpDownCustomerAmount.Name = "numericUpDownCustomerAmount";
 			this.numericUpDownCustomerAmount.Size = new System.Drawing.Size(93, 22);
 			this.numericUpDownCustomerAmount.TabIndex = 3;
+			this.numericUpDownCustomerAmount.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
 			// 
 			// label8
 			// 

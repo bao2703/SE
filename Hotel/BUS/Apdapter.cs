@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DTO.BindingModel;
 using DTO.Domain;
+using System.ComponentModel;
 
 namespace BUS
 {
@@ -15,7 +16,7 @@ namespace BUS
 			return new BookingBindingModel
 			{
 				BookingId = booking.BookingId,
-				CreateDate = booking.CreatedDate,
+				CreatedDate = booking.CreatedDate,
 				TotalRoom = booking.BookingDetails.Count(),
 				CustomerId = booking.Customer.CustomerId,
 				Name = booking.Customer.Name,
@@ -25,9 +26,10 @@ namespace BUS
 				Telex = booking.Customer.Telex
 			};
 		}
-		public static List<BookingBindingModel> Exec(IEnumerable<Booking> bookings)
+
+		public static BindingList<BookingBindingModel> Exec(IEnumerable<Booking> bookings)
 		{
-			var result = new List<BookingBindingModel>();
+			var result = new BindingList<BookingBindingModel>();
 			foreach (var item in bookings)
 			{
 				result.Add(Apdapter.Exec(item));
@@ -44,9 +46,9 @@ namespace BUS
 			};
 		}
 
-		public static List<RoomBindingModel> Exec(IEnumerable<Room> rooms)
+		public static BindingList<RoomBindingModel> Exec(IEnumerable<Room> rooms)
 		{
-			var result = new List<RoomBindingModel>();
+			var result = new BindingList<RoomBindingModel>();
 			foreach (var item in rooms)
 			{
 				result.Add(Apdapter.Exec(item));

@@ -13,13 +13,5 @@ namespace DAO.Repositories
 		public CustomerRepository(DbContext context) : base(context)
 		{
 		}
-
-		public Customer GetCustomerWithBookings(string customerId)
-		{
-			return HotelContext.Customers
-				.Where(c => c.CustomerId == customerId)
-				.Include(c => c.Bookings)
-				.SingleOrDefault();
-		}
 	}
 }

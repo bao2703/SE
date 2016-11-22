@@ -14,20 +14,6 @@ namespace DAO.Repositories
 		{
 		}
 
-		public IEnumerable<Booking> GetBookingsWithCustomers()
-		{
-			return HotelContext.Bookings
-				.Include(b => b.Customer);
-		}
-
-		public Booking GetBookingWithBookingDetails(string bookingId)
-		{
-			return HotelContext.Bookings
-				.Include(b => b.BookingDetails)
-				.Where(b => b.BookingId == bookingId)
-				.SingleOrDefault();
-		}
-
 		public IEnumerable<Booking> GetContainsBookingId(string bookingId)
 		{
 			return HotelContext.Bookings
