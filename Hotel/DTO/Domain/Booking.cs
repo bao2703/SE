@@ -8,12 +8,13 @@ namespace DTO.Domain
 
     public partial class Booking
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Booking()
         {
             BookingDetails = new HashSet<BookingDetail>();
             CheckIns = new HashSet<CheckIn>();
         }
+
+		[NotMapped]
 		public static string PrefixId
 		{
 			get

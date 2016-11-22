@@ -1,3 +1,4 @@
+C:\Users\Neptune\OneDrive\GitHub\SE\Hotel\bin\DAO.dll.config
 C:\Users\Neptune\OneDrive\GitHub\SE\Hotel\bin\DAO.dll
 C:\Users\Neptune\OneDrive\GitHub\SE\Hotel\bin\DAO.pdb
 C:\Users\Neptune\OneDrive\GitHub\SE\Hotel\DAO\obj\Debug\DAO.csprojResolveAssemblyReference.cache

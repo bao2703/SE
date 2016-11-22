@@ -5,7 +5,7 @@ namespace DAO
 {
 	public interface IUnitOfWork : IDisposable
 	{
-		BookingDetailRepository BookingDetails { get; set; }
+		BookingDetailRepository BookingDetails { get; }
 
 		BookingRepository Bookings { get; }
 

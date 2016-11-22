@@ -28,7 +28,7 @@ namespace DAO
 		public CustomerRepository Customers { get; private set; }
 		public RoomRepository Rooms { get; private set; }
 		public ServiceRepository Services { get; private set; }
-		public BookingDetailRepository BookingDetails { get; set; }
+		public BookingDetailRepository BookingDetails { get; private set; }
 
 		public int SaveChanges()
 		{

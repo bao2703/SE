@@ -12,6 +12,10 @@ namespace DAO
 		{
 		}
 
+		public HotelContext(string connectionString) : base (connectionString)
+		{
+		}
+
 		public virtual DbSet<BookingDetail> BookingDetails { get; set; }
 		public virtual DbSet<Booking> Bookings { get; set; }
 		public virtual DbSet<CheckInDetail> CheckInDetails { get; set; }

@@ -37,7 +37,7 @@ namespace GUI
 
 		private void comboBoxRoomType_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			int typeOfRoom = 0;
+			TypeOfRoom typeOfRoom = 0;
 			if (comboBoxRoomType.SelectedIndex == 1)
 			{
 				typeOfRoom = TypeOfRoom.A;

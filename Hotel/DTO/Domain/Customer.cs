@@ -14,6 +14,7 @@ namespace DTO.Domain
             CheckIns = new HashSet<CheckIn>();
         }
 
+		[NotMapped]
 		public static string PrefixId
 		{
 			get

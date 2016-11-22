@@ -6,7 +6,15 @@ namespace DTO.Domain
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class RoomType
+	public enum TypeOfRoom
+	{
+		A,
+		B,
+		C,
+		D
+	}
+
+	public partial class RoomType
     {
         public RoomType()
         {
@@ -18,8 +26,7 @@ namespace DTO.Domain
         [StringLength(10)]
         public string TypeId { get; set; }
 
-        [StringLength(50)]
-        public string Name { get; set; }
+        public TypeOfRoom TypeName { get; set; }
 
         public virtual ICollection<Room> Rooms { get; set; }
 
