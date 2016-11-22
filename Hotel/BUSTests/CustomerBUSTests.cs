@@ -27,20 +27,13 @@ namespace BUS.Tests
 		[TestMethod()]
 		public void AddCustomerTest()
 		{
-			var id = CustomerBUS.NextId();
+			var id = "C0003";
 			var newCustomer = new Customer()
 			{
-				CustomerId = id
+				CustomerId = id,
+				Name = "Satama"
 			};
 			CustomerBUS.Add(newCustomer);
-			Assert.IsTrue(true);
-		}
-
-		[TestMethod()]
-		public void RemoveCustomerTest()
-		{
-			var removeCustomerId = "C0002";
-			CustomerBUS.Remove(removeCustomerId);
 			Assert.IsTrue(true);
 		}
 
@@ -56,7 +49,7 @@ namespace BUS.Tests
 		public void NextCustomerIdTest_TC2()
 		{
 			var actual = CustomerBUS.NextId();
-			var expected = "C0002";
+			var expected = "C0004";
 			Assert.AreEqual(expected, actual);
 		}
 	}

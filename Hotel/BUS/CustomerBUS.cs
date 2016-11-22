@@ -29,16 +29,6 @@ namespace BUS
 			}
 		}
 
-		public static void Remove(string customerId)
-		{
-			using (var unitOfWork = new UnitOfWork())
-			{
-				var removeCustomers = unitOfWork.Customers.Find(customerId);
-				unitOfWork.Customers.Remove(removeCustomers);
-				unitOfWork.SaveChanges();
-			}
-		}
-
 		public static string NextId()
 		{
 			using (var unitOfWork = new UnitOfWork())

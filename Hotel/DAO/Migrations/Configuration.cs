@@ -19,7 +19,7 @@ namespace DAO.Migrations
 		{
 			#region Add Employees
 			var employee = new Employee { EmployeeId = "1", Name = "Neptune", Password = "1" };
-			context.Employees.AddOrUpdate(p => p.Name, employee);
+			context.Employees.AddOrUpdate(p => p.EmployeeId, employee);
 			#endregion
 
 			#region Add RoomTypes
@@ -56,7 +56,7 @@ namespace DAO.Migrations
 			#region Add Customers
 			var customer1 = new Customer() { CustomerId = "C0001", Name = "yaxu", Address = "20 phut", Phone = "gank", Fax = "tem", Telex = "GG" };
 			var customer2 = new Customer() { CustomerId = "C0002", Name = "Neptune", Address = "20 phut", Phone = "gank", Fax = "tem", Telex = "GG" };
-			context.Customers.AddOrUpdate(p => p.Name, customer1, customer2);
+			context.Customers.AddOrUpdate(p => p.CustomerId, customer1, customer2);
 			#endregion
 
 			#region Add Bookings
