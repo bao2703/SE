@@ -1,46 +1,46 @@
 namespace DTO.Domain
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
+	using System;
+	using System.Collections.Generic;
+	using System.ComponentModel.DataAnnotations;
+	using System.ComponentModel.DataAnnotations.Schema;
+	using System.Data.Entity.Spatial;
 
-    public partial class CheckIn
-    {
-        public CheckIn()
-        {
-            CheckInDetails = new HashSet<CheckInDetail>();
-            Invoices = new HashSet<Invoice>();
-            ServiceDetails = new HashSet<ServiceDetail>();
-        }
+	public partial class CheckIn
+	{
+		public CheckIn()
+		{
+			CheckInDetails = new HashSet<CheckInDetail>();
+			Invoices = new HashSet<Invoice>();
+			ServiceDetails = new HashSet<ServiceDetail>();
+		}
 
-        [StringLength(10)]
-        public string CheckInId { get; set; }
+		[StringLength(10)]
+		public string CheckInId { get; set; }
 
-        [Required]
-        [StringLength(10)]
-        public string CustomerId { get; set; }
+		[Required]
+		[StringLength(10)]
+		public string CustomerId { get; set; }
 
-        [Required]
-        [StringLength(10)]
-        public string EmployeeId { get; set; }
+		[Required]
+		[StringLength(10)]
+		public string EmployeeId { get; set; }
 
-        [StringLength(10)]
-        public string BookingId { get; set; }
+		[StringLength(10)]
+		public string BookingId { get; set; }
 
-        public DateTime? CreatedDate { get; set; }
+		public DateTime? CreatedDate { get; set; }
 
-        public virtual Booking Booking { get; set; }
+		public virtual Booking Booking { get; set; }
 
-        public virtual ICollection<CheckInDetail> CheckInDetails { get; set; }
+		public virtual ICollection<CheckInDetail> CheckInDetails { get; set; }
 
-        public virtual Customer Customer { get; set; }
+		public virtual Customer Customer { get; set; }
 
-        public virtual Employee Employee { get; set; }
+		public virtual Employee Employee { get; set; }
 
-        public virtual ICollection<Invoice> Invoices { get; set; }
+		public virtual ICollection<Invoice> Invoices { get; set; }
 
-        public virtual ICollection<ServiceDetail> ServiceDetails { get; set; }
-    }
+		public virtual ICollection<ServiceDetail> ServiceDetails { get; set; }
+	}
 }

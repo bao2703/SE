@@ -1,10 +1,10 @@
 namespace DTO.Domain
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
+	using System;
+	using System.Collections.Generic;
+	using System.ComponentModel.DataAnnotations;
+	using System.ComponentModel.DataAnnotations.Schema;
+	using System.Data.Entity.Spatial;
 
 	public enum TypeOfRoom
 	{
@@ -15,21 +15,21 @@ namespace DTO.Domain
 	}
 
 	public partial class RoomType
-    {
-        public RoomType()
-        {
-            Rooms = new HashSet<Room>();
-            TypePriceDetails = new HashSet<TypePriceDetail>();
-        }
+	{
+		public RoomType()
+		{
+			Rooms = new HashSet<Room>();
+			TypePriceDetails = new HashSet<TypePriceDetail>();
+		}
 
-        [Key]
-        [StringLength(10)]
-        public string TypeId { get; set; }
+		[Key]
+		[StringLength(10)]
+		public string TypeId { get; set; }
 
-        public TypeOfRoom TypeName { get; set; }
+		public TypeOfRoom TypeName { get; set; }
 
-        public virtual ICollection<Room> Rooms { get; set; }
+		public virtual ICollection<Room> Rooms { get; set; }
 
-        public virtual ICollection<TypePriceDetail> TypePriceDetails { get; set; }
-    }
+		public virtual ICollection<TypePriceDetail> TypePriceDetails { get; set; }
+	}
 }

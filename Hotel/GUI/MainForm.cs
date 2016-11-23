@@ -140,7 +140,6 @@ namespace GUI
 
 			bookingRoomsBindingList.Remove(selectedRoom);
 			availableRoomBindingList = new BindingList<RoomBindingModel>(availableRoomBindingList.OrderBy(r => r.RoomId.Length).ThenBy(r => r.RoomId).ToList());
-			dgvAvailableRooms.DataSource = availableRoomBindingList;
 
 			comboBoxRoomType_SelectedIndexChanged(sender, e);
 			dgvBookingRooms.Refresh();
