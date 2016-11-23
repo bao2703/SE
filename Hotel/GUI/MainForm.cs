@@ -16,6 +16,8 @@ namespace GUI
 {
 	public partial class MainForm : Form
 	{
+		private List<Room> rooms;
+		private List<Room> bookingRooms;
 		private BindingList<RoomBindingModel> availableRoomBindingList;
 		private BindingList<BookingRoomBindingModel> bookingRoomsBindingList;
 
@@ -26,8 +28,11 @@ namespace GUI
 			this.comboBoxRoomType.Items.AddRange(new object[] { "None", TypeOfRoom.A, TypeOfRoom.B, TypeOfRoom.C, TypeOfRoom.D });
 			this.comboBoxRoomType.SelectedIndex = 0;
 
-			availableRoomBindingList = RoomBUS.GetAvailableRoomsForBinding(dateTimePickerBookingStart.Value, dateTimePickerBookingEnd.Value);
+			rooms = RoomBUS.GetAll();
+			bookingRooms = new List<Room>();
+			availableRoomBindingList = Adapter.Exec(RoomBUS.GetAvailableRooms(rooms, dateTimePickerBookingStart.Value, dateTimePickerBookingEnd.Value));
 			bookingRoomsBindingList = new BindingList<BookingRoomBindingModel>();
+
 			dgvAvailableRooms.DataSource = availableRoomBindingList;
 			dgvBookingRooms.DataSource = bookingRoomsBindingList;
 			dgvReservationList.DataSource = BookingBUS.GetBookingsForBinding();
@@ -104,23 +109,21 @@ namespace GUI
 			}
 
 			var selectedRoomId = dgvAvailableRooms.CurrentRow.Cells["RoomId"].Value.ToString();
-			var selectedRoom = availableRoomBindingList.Single(r => r.RoomId == selectedRoomId);
+			var selectedRoom = rooms.Single(r => r.RoomId == selectedRoomId);
 
 			bookingRoomsBindingList.Add(new BookingRoomBindingModel()
 			{
 				RoomId = selectedRoom.RoomId,
-				TypeName = selectedRoom.TypeName,
+				TypeName = selectedRoom.RoomType.TypeName,
 				BookingStart = dateTimePickerBookingStart.Value,
 				BookingEnd = dateTimePickerBookingEnd.Value,
 				NumOfCustomer = int.Parse(numericUpDownCustomerAmount.Value.ToString())
 			});
-			
-			availableRoomBindingList.Remove(selectedRoom);
-			dgvBookingRooms.CurrentCell = dgvBookingRooms.Rows[dgvBookingRooms.Rows.Count - 1].Cells["RoomId"];
 
+			rooms.Remove(selectedRoom);
+			bookingRooms.Add(selectedRoom);
+			Reload();
 			comboBoxRoomType_SelectedIndexChanged(sender, e);
-			dgvBookingRooms.Refresh();
-			dgvAvailableRooms.Refresh();
 		}
 
 		private void btnRemoveBookingRoom_Click(object sender, EventArgs e)
@@ -130,20 +133,23 @@ namespace GUI
 				return;
 			}
 			var selectedRoomId = dgvBookingRooms.CurrentRow.Cells["RoomId"].Value.ToString();
-			var selectedRoom = bookingRoomsBindingList.Single(r => r.RoomId == selectedRoomId);
+			var selectedRoom = bookingRooms.Single(r => r.RoomId == selectedRoomId);
 
 			availableRoomBindingList.Add(new RoomBindingModel()
 			{
 				RoomId = selectedRoom.RoomId,
-				TypeName = selectedRoom.TypeName,
+				TypeName = selectedRoom.RoomType.TypeName,
 			});
 
-			bookingRoomsBindingList.Remove(selectedRoom);
+			bookingRooms.Remove(selectedRoom);
 			availableRoomBindingList = new BindingList<RoomBindingModel>(availableRoomBindingList.OrderBy(r => r.RoomId.Length).ThenBy(r => r.RoomId).ToList());
-
 			comboBoxRoomType_SelectedIndexChanged(sender, e);
-			dgvBookingRooms.Refresh();
-			dgvAvailableRooms.Refresh();
+		}
+
+		private void Reload()
+		{
+			availableRoomBindingList = Adapter.Exec(RoomBUS.GetAvailableRooms(rooms, dateTimePickerBookingStart.Value, dateTimePickerBookingEnd.Value));
+			//bookingRoomsBindingList = Adapter.Exec(bookingRooms);
 		}
 	}
 }

@@ -9,7 +9,7 @@ using System.ComponentModel;
 
 namespace BUS
 {
-	public static class Apdapter
+	public static class Adapter
 	{
 		public static BookingBindingModel Exec(Booking booking)
 		{
@@ -32,7 +32,7 @@ namespace BUS
 			var result = new BindingList<BookingBindingModel>();
 			foreach (var item in bookings)
 			{
-				result.Add(Apdapter.Exec(item));
+				result.Add(Adapter.Exec(item));
 			}
 			return result;
 		}
@@ -51,7 +51,7 @@ namespace BUS
 			var result = new BindingList<RoomBindingModel>();
 			foreach (var item in rooms)
 			{
-				result.Add(Apdapter.Exec(item));
+				result.Add(Adapter.Exec(item));
 			}
 			return result;
 		}
