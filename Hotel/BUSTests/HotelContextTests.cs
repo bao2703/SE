@@ -6,10 +6,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
-using DTO.Domain;
-using BUS;
-using System.Data.Entity.Validation;
-using System.Diagnostics;
 
 namespace DAO.Tests
 {
@@ -24,7 +20,7 @@ namespace DAO.Tests
 	public class HotelContextTests
 	{
 		[TestMethod()]
-		public void ClearSeedData()
+		public void ClearAllData()
 		{
 			using (var context = new HotelContext())
 			{

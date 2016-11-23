@@ -84,6 +84,7 @@ namespace DAO.Repositories
 		{
 			return Entities.Any(predicate);
 		}
+
 		public int Count()
 		{
 			return Entities.Count();

@@ -14,12 +14,11 @@ namespace DAO.Repositories
 		{
 		}
 
-		public IEnumerable<Room> GetAll()
+		public IEnumerable<Room> GetAvailableRooms(DateTime startDate, DateTime endDate)
 		{
-			return HotelContext.Rooms
-				.Include(r => r.RoomType)
-				.Include(r => r.BookingDetails)
-				.Include(r => r.CheckInDetails);
+			return HotelContext.Rooms.Where(r =>
+				!(r.BookingDetails.Any(b => !(b.BookingStart.CompareTo(endDate) == 1 || b.BookingEnd.CompareTo(startDate) == -1)) ||
+					(r.CheckInDetails.Any(c => !(c.CheckInDate.CompareTo(endDate) == 1 || c.CheckOutDate.CompareTo(startDate) == -1)))));
 		}
 	}
 }

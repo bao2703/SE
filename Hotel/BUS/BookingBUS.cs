@@ -16,7 +16,7 @@ namespace BUS
 		{
 			using (var unitOfWork = new UnitOfWork())
 			{
-				return Adapter.Exec(unitOfWork.Bookings.ToList());
+				return Apdapter.Exec(unitOfWork.Bookings.ToList());
 			}
 		}
 

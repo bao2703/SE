@@ -13,10 +13,6 @@ namespace DTO.BindingModel
 		{
 		}
 
-		public DateTime BookingStart { get; set; }
-
-		public DateTime BookingEnd { get; set; }
-
 		public int NumOfCustomer { get; set; }
 	}
 }
