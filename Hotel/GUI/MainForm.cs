@@ -32,7 +32,7 @@ namespace GUI
 		private void Reload()
 		{
 			this.comboBoxRoomType.SelectedIndex = 0;
-			availableRoomBindingList = RoomBUS.GetAvailableRoomsForBinding(dateTimePickerBookingStart.Value, dateTimePickerBookingEnd.Value);
+			availableRoomBindingList = Adapter.Exec(RoomBUS.GetAvailableRooms(dateTimePickerBookingStart.Value, dateTimePickerBookingEnd.Value));
 			bookingRoomsBindingList = new BindingList<BookingRoomBindingModel>();
 			dgvAvailableRooms.DataSource = availableRoomBindingList;
 			dgvBookingRooms.DataSource = bookingRoomsBindingList;
@@ -106,7 +106,6 @@ namespace GUI
 			{
 				return;
 			}
-
 			var selectedRoomId = dgvAvailableRooms.CurrentRow.Cells["RoomId"].Value.ToString();
 			var selectedRoom = availableRoomBindingList.Single(r => r.RoomId == selectedRoomId);
 
@@ -118,7 +117,6 @@ namespace GUI
 			});
 			
 			availableRoomBindingList.Remove(selectedRoom);
-
 			comboBoxRoomType_SelectedIndexChanged(sender, e);
 		}
 
@@ -139,8 +137,6 @@ namespace GUI
 
 			bookingRoomsBindingList.Remove(selectedRoom);
 			availableRoomBindingList = new BindingList<RoomBindingModel>(availableRoomBindingList.OrderBy(r => r.RoomId.Length).ThenBy(r => r.RoomId).ToList());
-			dgvAvailableRooms.DataSource = availableRoomBindingList;
-
 			comboBoxRoomType_SelectedIndexChanged(sender, e);
 		}
 	}

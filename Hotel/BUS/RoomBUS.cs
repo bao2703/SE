@@ -13,12 +13,12 @@ namespace BUS
 {
 	public static class RoomBUS
 	{
-		public static BindingList<RoomBindingModel> GetAvailableRoomsForBinding(DateTime startDate, DateTime endDate)
+		public static List<Room> GetAvailableRooms(DateTime startDate, DateTime endDate)
 		{
 			using (var unitOfWork = new UnitOfWork())
 			{
 				var rooms = unitOfWork.Rooms.GetAvailableRooms(startDate, endDate).OrderBy(r => r.RoomId.Length).ThenBy(r => r.RoomId);
-				return Apdapter.Exec(rooms);
+				return rooms.ToList();
 			}
 		}
 	}

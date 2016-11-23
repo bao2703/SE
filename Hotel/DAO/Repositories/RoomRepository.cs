@@ -18,7 +18,10 @@ namespace DAO.Repositories
 		{
 			return HotelContext.Rooms.Where(r =>
 				!(r.BookingDetails.Any(b => !(b.BookingStart.CompareTo(endDate) == 1 || b.BookingEnd.CompareTo(startDate) == -1)) ||
-					(r.CheckInDetails.Any(c => !(c.CheckInDate.CompareTo(endDate) == 1 || c.CheckOutDate.CompareTo(startDate) == -1)))));
+				(r.CheckInDetails.Any(c => !(c.CheckInDate.CompareTo(endDate) == 1 || c.CheckOutDate.CompareTo(startDate) == -1)))))
+				.Include("BookingDetails")
+				.Include("CheckInDetails")
+				.Include("RoomType");
 		}
 	}
 }
