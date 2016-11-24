@@ -43,7 +43,7 @@
 			this.dgvAvailableRooms = new System.Windows.Forms.DataGridView();
 			this.btnRemoveBookingRoom = new System.Windows.Forms.Button();
 			this.groupBox6 = new System.Windows.Forms.GroupBox();
-			this.dgvReservationList = new System.Windows.Forms.DataGridView();
+			this.dgvBookingList = new System.Windows.Forms.DataGridView();
 			this.groupBox3 = new System.Windows.Forms.GroupBox();
 			this.dateTimePickerBookingEnd = new System.Windows.Forms.DateTimePicker();
 			this.dateTimePickerBookingStart = new System.Windows.Forms.DateTimePicker();
@@ -114,7 +114,7 @@
 			this.groupBox4.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dgvAvailableRooms)).BeginInit();
 			this.groupBox6.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.dgvReservationList)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.dgvBookingList)).BeginInit();
 			this.groupBox3.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDownCustomerAmount)).BeginInit();
 			this.groupBox1.SuspendLayout();
@@ -290,7 +290,7 @@
 			// 
 			// groupBox6
 			// 
-			this.groupBox6.Controls.Add(this.dgvReservationList);
+			this.groupBox6.Controls.Add(this.dgvBookingList);
 			this.groupBox6.Location = new System.Drawing.Point(5, 5);
 			this.groupBox6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
 			this.groupBox6.Name = "groupBox6";
@@ -302,13 +302,13 @@
 			// 
 			// dgvReservationList
 			// 
-			this.dgvReservationList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.dgvReservationList.Location = new System.Drawing.Point(7, 20);
-			this.dgvReservationList.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-			this.dgvReservationList.Name = "dgvReservationList";
-			this.dgvReservationList.RowTemplate.Height = 24;
-			this.dgvReservationList.Size = new System.Drawing.Size(933, 214);
-			this.dgvReservationList.TabIndex = 0;
+			this.dgvBookingList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.dgvBookingList.Location = new System.Drawing.Point(7, 20);
+			this.dgvBookingList.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+			this.dgvBookingList.Name = "dgvReservationList";
+			this.dgvBookingList.RowTemplate.Height = 24;
+			this.dgvBookingList.Size = new System.Drawing.Size(933, 214);
+			this.dgvBookingList.TabIndex = 0;
 			// 
 			// groupBox3
 			// 
@@ -984,7 +984,7 @@
 			this.groupBox4.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.dgvAvailableRooms)).EndInit();
 			this.groupBox6.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.dgvReservationList)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.dgvBookingList)).EndInit();
 			this.groupBox3.ResumeLayout(false);
 			this.groupBox3.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDownCustomerAmount)).EndInit();
@@ -1086,6 +1086,6 @@
 		private System.Windows.Forms.Label label24;
 		private System.Windows.Forms.TextBox textBox16;
 		private System.Windows.Forms.Button btnAddBooking;
-		private System.Windows.Forms.DataGridView dgvReservationList;
+		private System.Windows.Forms.DataGridView dgvBookingList;
 	}
 }

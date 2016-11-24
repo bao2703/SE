@@ -1,5 +1,5 @@
 ﻿using BUS;
-using DTO.Domain;
+using DTO;
 using System;
 using System.Windows.Forms;
 
@@ -28,7 +28,7 @@ namespace GUI
 				MessageBox.Show("Vui lòng kiểm tra lại thông tin đăng nhập và mật khẩu.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				return;
 			}
-			Employee employee = new Employee()
+			EmployeeDTO employee = new EmployeeDTO()
 			{
 				EmployeeId = txtId.Text,
 				Password = txtPassword.Text

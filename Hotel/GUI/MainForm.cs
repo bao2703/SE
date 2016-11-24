@@ -9,46 +9,60 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BUS;
 using DTO;
-using DTO.Domain;
-using DTO.BindingModel;
 
 namespace GUI
 {
 	public partial class MainForm : Form
 	{
-		private BindingList<RoomBindingModel> availableRoomBindingList;
-		private BindingList<BookingRoomBindingModel> bookingRoomsBindingList;
+		//private BindingList<RoomBindingModel> availableRoomBindingList;
+		//private BindingList<BookingRoomBindingModel> bookingRoomsBindingList;
 
 		public MainForm()
 		{
 			InitializeComponent();
+			MapperConfiguration.Configure();
 			this.comboBoxRoomType.DropDownStyle = ComboBoxStyle.DropDownList;
 			this.comboBoxRoomType.Items.AddRange(new object[] { "None", TypeOfRoom.A, TypeOfRoom.B, TypeOfRoom.C, TypeOfRoom.D });
 			this.comboBoxRoomType.SelectedIndex = 0;
-			Reload();
-			dgvReservationList.DataSource = BookingBUS.GetBookingsForBinding();
+			//Reload();
+			//dgvBookingList.DataSource = BookingTable(BookingBUS.GetBookings());
 		}
 
-		private void Reload()
+		private DataTable BookingTable(List<BookingDTO> bookings)
 		{
-			this.comboBoxRoomType.SelectedIndex = 0;
-			availableRoomBindingList = Adapter.Exec(RoomBUS.GetAvailableRooms(dateTimePickerBookingStart.Value, dateTimePickerBookingEnd.Value));
-			bookingRoomsBindingList = new BindingList<BookingRoomBindingModel>();
-			dgvAvailableRooms.DataSource = availableRoomBindingList;
-			dgvBookingRooms.DataSource = bookingRoomsBindingList;
+			DataTable dt = new DataTable();
+			dt.Columns.Add("Name");
+			dt.Columns.Add("Marks");
+			foreach (var item in bookings)
+			{
+				DataRow _ravi = dt.NewRow();
+				_ravi["Name"] = "ravi";
+				_ravi["Marks"] = "500";
+				dt.Rows.Add(_ravi);
+			}
+			return dt;
 		}
 
-		private void AdjustColumnOrder()
-		{
-			dgvBookingRooms.Columns["RoomId"].DisplayIndex = 0;
-			dgvBookingRooms.Columns["TypeName"].DisplayIndex = 1;
-			dgvBookingRooms.Columns["NumOfCustomer"].DisplayIndex = 2;
-		}
+		//private void Reload()
+		//{
+		//	this.comboBoxRoomType.SelectedIndex = 0;
+		//	availableRoomBindingList = Adapter.Exec(RoomBUS.GetAvailableRooms(dateTimePickerBookingStart.Value, dateTimePickerBookingEnd.Value));
+		//	bookingRoomsBindingList = new BindingList<BookingRoomBindingModel>();
+		//	dgvAvailableRooms.DataSource = availableRoomBindingList;
+		//	dgvBookingRooms.DataSource = bookingRoomsBindingList;
+		//}
+
+		//private void AdjustColumnOrder()
+		//{
+		//	dgvBookingRooms.Columns["RoomId"].DisplayIndex = 0;
+		//	dgvBookingRooms.Columns["TypeName"].DisplayIndex = 1;
+		//	dgvBookingRooms.Columns["NumOfCustomer"].DisplayIndex = 2;
+		//}
 
 		private void MainForm_Load(object sender, EventArgs e)
 		{
 			DataGridView[] dataGridViews = new DataGridView[3];
-			dataGridViews[0] = dgvReservationList;
+			dataGridViews[0] = dgvBookingList;
 			dataGridViews[1] = dgvAvailableRooms;
 			dataGridViews[2] = dgvBookingRooms;
 			foreach (var item in dataGridViews)
@@ -60,7 +74,7 @@ namespace GUI
 				item.AllowUserToAddRows = false;
 				item.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.DisplayedCells);
 			}
-			AdjustColumnOrder();
+			//AdjustColumnOrder();
 		}
 
 		private void btnAddBooking_Click(object sender, EventArgs e)
@@ -70,15 +84,15 @@ namespace GUI
 
 		private void comboBoxRoomType_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			if (!comboBoxRoomType.SelectedItem.Equals("None"))
-			{
-				TypeOfRoom typeOfRoom = (TypeOfRoom)comboBoxRoomType.SelectedItem;
-				dgvAvailableRooms.DataSource = new BindingList<RoomBindingModel>(availableRoomBindingList.Where(r => r.TypeName == typeOfRoom).ToList());
-			}
-			else
-			{
-				dgvAvailableRooms.DataSource = availableRoomBindingList;
-			}
+			//if (!comboBoxRoomType.SelectedItem.Equals("None"))
+			//{
+			//	TypeOfRoom typeOfRoom = (TypeOfRoom)comboBoxRoomType.SelectedItem;
+			//	dgvAvailableRooms.DataSource = new BindingList<RoomBindingModel>(availableRoomBindingList.Where(r => r.TypeName == typeOfRoom).ToList());
+			//}
+			//else
+			//{
+			//	dgvAvailableRooms.DataSource = availableRoomBindingList;
+			//}
 		}
 
 
@@ -88,7 +102,7 @@ namespace GUI
 			{
 				dateTimePickerBookingEnd.Value = dateTimePickerBookingStart.Value;
 			}
-			Reload();
+			//Reload();
 		}
 
 		private void dateTimePickerBookingEnd_ValueChanged(object sender, EventArgs e)
@@ -97,47 +111,47 @@ namespace GUI
 			{
 				dateTimePickerBookingStart.Value = dateTimePickerBookingEnd.Value;
 			}
-			Reload();
+			//Reload();
 		}
 
 		private void btnAddBookingRoom_Click(object sender, EventArgs e)
 		{
-			if (dgvAvailableRooms.Rows.Count <= 0)
-			{
-				return;
-			}
-			var selectedRoomId = dgvAvailableRooms.CurrentRow.Cells["RoomId"].Value.ToString();
-			var selectedRoom = availableRoomBindingList.Single(r => r.RoomId == selectedRoomId);
+			//if (dgvAvailableRooms.Rows.Count <= 0)
+			//{
+			//	return;
+			//}
+			//var selectedRoomId = dgvAvailableRooms.CurrentRow.Cells["RoomId"].Value.ToString();
+			//var selectedRoom = availableRoomBindingList.Single(r => r.RoomId == selectedRoomId);
 
-			bookingRoomsBindingList.Add(new BookingRoomBindingModel()
-			{
-				RoomId = selectedRoom.RoomId,
-				TypeName = selectedRoom.TypeName,
-				NumOfCustomer = int.Parse(numericUpDownCustomerAmount.Value.ToString())
-			});
+			//bookingRoomsBindingList.Add(new BookingRoomBindingModel()
+			//{
+			//	RoomId = selectedRoom.RoomId,
+			//	TypeName = selectedRoom.TypeName,
+			//	NumOfCustomer = int.Parse(numericUpDownCustomerAmount.Value.ToString())
+			//});
 			
-			availableRoomBindingList.Remove(selectedRoom);
-			comboBoxRoomType_SelectedIndexChanged(sender, e);
+			//availableRoomBindingList.Remove(selectedRoom);
+			//comboBoxRoomType_SelectedIndexChanged(sender, e);
 		}
 
 		private void btnRemoveBookingRoom_Click(object sender, EventArgs e)
 		{
-			if (dgvBookingRooms.Rows.Count <= 0)
-			{
-				return;
-			}
-			var selectedRoomId = dgvBookingRooms.CurrentRow.Cells["RoomId"].Value.ToString();
-			var selectedRoom = bookingRoomsBindingList.Single(r => r.RoomId == selectedRoomId);
+			//if (dgvBookingRooms.Rows.Count <= 0)
+			//{
+			//	return;
+			//}
+			//var selectedRoomId = dgvBookingRooms.CurrentRow.Cells["RoomId"].Value.ToString();
+			//var selectedRoom = bookingRoomsBindingList.Single(r => r.RoomId == selectedRoomId);
 
-			availableRoomBindingList.Add(new RoomBindingModel()
-			{
-				RoomId = selectedRoom.RoomId,
-				TypeName = selectedRoom.TypeName,
-			});
+			//availableRoomBindingList.Add(new RoomBindingModel()
+			//{
+			//	RoomId = selectedRoom.RoomId,
+			//	TypeName = selectedRoom.TypeName,
+			//});
 
-			bookingRoomsBindingList.Remove(selectedRoom);
-			availableRoomBindingList = new BindingList<RoomBindingModel>(availableRoomBindingList.OrderBy(r => r.RoomId.Length).ThenBy(r => r.RoomId).ToList());
-			comboBoxRoomType_SelectedIndexChanged(sender, e);
+			//bookingRoomsBindingList.Remove(selectedRoom);
+			//availableRoomBindingList = new BindingList<RoomBindingModel>(availableRoomBindingList.OrderBy(r => r.RoomId.Length).ThenBy(r => r.RoomId).ToList());
+			//comboBoxRoomType_SelectedIndexChanged(sender, e);
 		}
 	}
 }

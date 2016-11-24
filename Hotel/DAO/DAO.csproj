@@ -61,8 +61,7 @@
     <Compile Include="Domain\CheckIn.cs" />
     <Compile Include="Domain\CheckInDetail.cs" />
     <Compile Include="Connection.cs" />
-    <Compile Include="Domain\ConfigDAO.cs" />
-    <Compile Include="Core\IUnitOfWork.cs" />
+    <Compile Include="ConfigDAO.cs" />
     <Compile Include="Domain\Customer.cs" />
     <Compile Include="Domain\Employee.cs" />
     <Compile Include="HotelContext.cs" />
@@ -70,20 +69,12 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Domain\Report.cs" />
-    <Compile Include="Repositories\BookingRepository.cs" />
-    <Compile Include="Repositories\BookingDetailRepository.cs" />
-    <Compile Include="Repositories\CustomerRepository.cs" />
-    <Compile Include="Repositories\EmployeeRepository.cs" />
-    <Compile Include="Repositories\Repository.cs" />
-    <Compile Include="Repositories\RoomRepository.cs" />
-    <Compile Include="Repositories\ServiceRepository.cs" />
     <Compile Include="Domain\Room.cs" />
     <Compile Include="Domain\RoomType.cs" />
     <Compile Include="Domain\Service.cs" />
     <Compile Include="Domain\ServiceDetail.cs" />
     <Compile Include="Domain\TypePrice.cs" />
     <Compile Include="Domain\TypePriceDetail.cs" />
-    <Compile Include="UnitOfWork.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DTO\DTO.csproj">

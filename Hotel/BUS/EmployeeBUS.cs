@@ -4,26 +4,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DAO;
-using DTO.Domain;
+using DAO.Domain;
+using DTO;
+using AutoMapper;
 
 namespace BUS
 {
     public static class EmployeeBUS
     {
-		public static Employee GetEmployeeById(string employeeId)
+		public static bool IsValid(EmployeeDTO employee)
 		{
-			using (var unitOfWork = new UnitOfWork())
+			using (var context = new HotelContext())
 			{
-				return unitOfWork.Employees.Find(employeeId);
+				return context.Employees.Any(e => e.EmployeeId == employee.EmployeeId && e.Password == employee.Password);
 			}
 		}
-
-		public static bool IsValid(Employee employee)
-		{
-			using (var unitOfWork = new UnitOfWork())
-			{
-				return unitOfWork.Employees.Any(e => e.EmployeeId == employee.EmployeeId && e.Password == employee.Password);
-			}
-		}
-    }
+	}
 }

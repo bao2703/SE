@@ -1,6 +1,7 @@
 C:\Users\Neptune\OneDrive\GitHub\SE\Hotel\BUSTests\bin\Debug\BUSTests.dll.config
 C:\Users\Neptune\OneDrive\GitHub\SE\Hotel\BUSTests\bin\Debug\BUSTests.dll
 C:\Users\Neptune\OneDrive\GitHub\SE\Hotel\BUSTests\bin\Debug\BUSTests.pdb
+C:\Users\Neptune\OneDrive\GitHub\SE\Hotel\BUSTests\bin\Debug\AutoMapper.dll
 C:\Users\Neptune\OneDrive\GitHub\SE\Hotel\BUSTests\bin\Debug\BUS.dll
 C:\Users\Neptune\OneDrive\GitHub\SE\Hotel\BUSTests\bin\Debug\DAO.dll
 C:\Users\Neptune\OneDrive\GitHub\SE\Hotel\BUSTests\bin\Debug\DTO.dll
@@ -10,6 +11,7 @@ C:\Users\Neptune\OneDrive\GitHub\SE\Hotel\BUSTests\bin\Debug\Microsoft.VisualStu
 C:\Users\Neptune\OneDrive\GitHub\SE\Hotel\BUSTests\bin\Debug\BUS.pdb
 C:\Users\Neptune\OneDrive\GitHub\SE\Hotel\BUSTests\bin\Debug\DAO.pdb
 C:\Users\Neptune\OneDrive\GitHub\SE\Hotel\BUSTests\bin\Debug\DTO.pdb
+C:\Users\Neptune\OneDrive\GitHub\SE\Hotel\BUSTests\bin\Debug\AutoMapper.xml
 C:\Users\Neptune\OneDrive\GitHub\SE\Hotel\BUSTests\bin\Debug\EntityFramework.xml
 C:\Users\Neptune\OneDrive\GitHub\SE\Hotel\BUSTests\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\Neptune\OneDrive\GitHub\SE\Hotel\BUSTests\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.xml
