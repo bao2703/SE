@@ -1,4 +1,4 @@
-namespace DTO.Domain
+namespace DAO.Domain
 {
     using System;
     using System.Collections.Generic;
@@ -8,6 +8,7 @@ namespace DTO.Domain
 
     public partial class Service
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Service()
         {
             ServiceDetails = new HashSet<ServiceDetail>();
@@ -21,6 +22,7 @@ namespace DTO.Domain
 
         public decimal Price { get; set; }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ServiceDetail> ServiceDetails { get; set; }
     }
 }

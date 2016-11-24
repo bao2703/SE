@@ -1,0 +1,413 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="HotelManagementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="__MigrationHistory">
+    <Key>
+      <PropertyRef Name="MigrationId" />
+      <PropertyRef Name="ContextKey" />
+    </Key>
+    <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+    <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+    <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="BookingDetails">
+    <Key>
+      <PropertyRef Name="BookingId" />
+      <PropertyRef Name="RoomId" />
+    </Key>
+    <Property Name="BookingId" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="RoomId" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="BookingStart" Type="datetime" Nullable="false" />
+    <Property Name="BookingEnd" Type="datetime" Nullable="false" />
+    <Property Name="NumOfCustomer" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Bookings">
+    <Key>
+      <PropertyRef Name="BookingId" />
+    </Key>
+    <Property Name="BookingId" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="CustomerId" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="EmployeeId" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CheckInDetails">
+    <Key>
+      <PropertyRef Name="CheckInId" />
+      <PropertyRef Name="RoomId" />
+    </Key>
+    <Property Name="CheckInId" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="RoomId" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="RoomPrice" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="NumOfCustomer" Type="int" Nullable="false" />
+    <Property Name="CheckInDate" Type="datetime" Nullable="false" />
+    <Property Name="CheckOutDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CheckIns">
+    <Key>
+      <PropertyRef Name="CheckInId" />
+    </Key>
+    <Property Name="CheckInId" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="CustomerId" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="EmployeeId" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="BookingId" Type="nvarchar" MaxLength="10" />
+    <Property Name="CreatedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Customers">
+    <Key>
+      <PropertyRef Name="CustomerId" />
+    </Key>
+    <Property Name="CustomerId" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Address" Type="nvarchar" MaxLength="50" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+    <Property Name="Fax" Type="nvarchar" MaxLength="50" />
+    <Property Name="Telex" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Employees">
+    <Key>
+      <PropertyRef Name="EmployeeId" />
+    </Key>
+    <Property Name="EmployeeId" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Password" Type="nvarchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Invoices">
+    <Key>
+      <PropertyRef Name="InvoiceId" />
+    </Key>
+    <Property Name="InvoiceId" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="CheckInId" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="EmployeeId" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="TotalPrice" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Reports">
+    <Key>
+      <PropertyRef Name="ReportId" />
+    </Key>
+    <Property Name="ReportId" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Rooms">
+    <Key>
+      <PropertyRef Name="RoomId" />
+    </Key>
+    <Property Name="RoomId" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="TypeId" Type="nvarchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="RoomTypes">
+    <Key>
+      <PropertyRef Name="TypeId" />
+    </Key>
+    <Property Name="TypeId" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="TypeName" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ServiceDetails">
+    <Key>
+      <PropertyRef Name="ServiceId" />
+      <PropertyRef Name="CheckInId" />
+    </Key>
+    <Property Name="ServiceId" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="CheckInId" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="Quantity" Type="int" Nullable="false" />
+    <Property Name="ServicePrice" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Services">
+    <Key>
+      <PropertyRef Name="ServiceId" />
+    </Key>
+    <Property Name="ServiceId" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Price" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TypePriceDetails">
+    <Key>
+      <PropertyRef Name="TypePriceId" />
+      <PropertyRef Name="TypeId" />
+    </Key>
+    <Property Name="TypePriceId" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="TypeId" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="NumOfCustomer" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TypePrices">
+    <Key>
+      <PropertyRef Name="TypePriceId" />
+    </Key>
+    <Property Name="TypePriceId" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="Price" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_dbo_BookingDetails_dbo_Bookings_BookingId">
+    <End Role="Bookings" Type="Self.Bookings" Multiplicity="1" />
+    <End Role="BookingDetails" Type="Self.BookingDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bookings">
+        <PropertyRef Name="BookingId" />
+      </Principal>
+      <Dependent Role="BookingDetails">
+        <PropertyRef Name="BookingId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_BookingDetails_dbo_Rooms_RoomId">
+    <End Role="Rooms" Type="Self.Rooms" Multiplicity="1" />
+    <End Role="BookingDetails" Type="Self.BookingDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Rooms">
+        <PropertyRef Name="RoomId" />
+      </Principal>
+      <Dependent Role="BookingDetails">
+        <PropertyRef Name="RoomId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Bookings_dbo_Customers_CustomerId">
+    <End Role="Customers" Type="Self.Customers" Multiplicity="1" />
+    <End Role="Bookings" Type="Self.Bookings" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customers">
+        <PropertyRef Name="CustomerId" />
+      </Principal>
+      <Dependent Role="Bookings">
+        <PropertyRef Name="CustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Bookings_dbo_Employees_EmployeeId">
+    <End Role="Employees" Type="Self.Employees" Multiplicity="1" />
+    <End Role="Bookings" Type="Self.Bookings" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employees">
+        <PropertyRef Name="EmployeeId" />
+      </Principal>
+      <Dependent Role="Bookings">
+        <PropertyRef Name="EmployeeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_CheckInDetails_dbo_CheckIns_CheckInId">
+    <End Role="CheckIns" Type="Self.CheckIns" Multiplicity="1" />
+    <End Role="CheckInDetails" Type="Self.CheckInDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CheckIns">
+        <PropertyRef Name="CheckInId" />
+      </Principal>
+      <Dependent Role="CheckInDetails">
+        <PropertyRef Name="CheckInId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_CheckInDetails_dbo_Rooms_RoomId">
+    <End Role="Rooms" Type="Self.Rooms" Multiplicity="1" />
+    <End Role="CheckInDetails" Type="Self.CheckInDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Rooms">
+        <PropertyRef Name="RoomId" />
+      </Principal>
+      <Dependent Role="CheckInDetails">
+        <PropertyRef Name="RoomId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_CheckIns_dbo_Bookings_BookingId">
+    <End Role="Bookings" Type="Self.Bookings" Multiplicity="0..1" />
+    <End Role="CheckIns" Type="Self.CheckIns" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bookings">
+        <PropertyRef Name="BookingId" />
+      </Principal>
+      <Dependent Role="CheckIns">
+        <PropertyRef Name="BookingId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_CheckIns_dbo_Customers_CustomerId">
+    <End Role="Customers" Type="Self.Customers" Multiplicity="1" />
+    <End Role="CheckIns" Type="Self.CheckIns" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customers">
+        <PropertyRef Name="CustomerId" />
+      </Principal>
+      <Dependent Role="CheckIns">
+        <PropertyRef Name="CustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_CheckIns_dbo_Employees_EmployeeId">
+    <End Role="Employees" Type="Self.Employees" Multiplicity="1" />
+    <End Role="CheckIns" Type="Self.CheckIns" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employees">
+        <PropertyRef Name="EmployeeId" />
+      </Principal>
+      <Dependent Role="CheckIns">
+        <PropertyRef Name="EmployeeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Invoices_dbo_CheckIns_CheckInId">
+    <End Role="CheckIns" Type="Self.CheckIns" Multiplicity="1" />
+    <End Role="Invoices" Type="Self.Invoices" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CheckIns">
+        <PropertyRef Name="CheckInId" />
+      </Principal>
+      <Dependent Role="Invoices">
+        <PropertyRef Name="CheckInId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Invoices_dbo_Employees_EmployeeId">
+    <End Role="Employees" Type="Self.Employees" Multiplicity="1" />
+    <End Role="Invoices" Type="Self.Invoices" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employees">
+        <PropertyRef Name="EmployeeId" />
+      </Principal>
+      <Dependent Role="Invoices">
+        <PropertyRef Name="EmployeeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Rooms_dbo_RoomTypes_TypeId">
+    <End Role="RoomTypes" Type="Self.RoomTypes" Multiplicity="0..1" />
+    <End Role="Rooms" Type="Self.Rooms" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RoomTypes">
+        <PropertyRef Name="TypeId" />
+      </Principal>
+      <Dependent Role="Rooms">
+        <PropertyRef Name="TypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_ServiceDetails_dbo_CheckIns_CheckInId">
+    <End Role="CheckIns" Type="Self.CheckIns" Multiplicity="1" />
+    <End Role="ServiceDetails" Type="Self.ServiceDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CheckIns">
+        <PropertyRef Name="CheckInId" />
+      </Principal>
+      <Dependent Role="ServiceDetails">
+        <PropertyRef Name="CheckInId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_ServiceDetails_dbo_Services_ServiceId">
+    <End Role="Services" Type="Self.Services" Multiplicity="1" />
+    <End Role="ServiceDetails" Type="Self.ServiceDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Services">
+        <PropertyRef Name="ServiceId" />
+      </Principal>
+      <Dependent Role="ServiceDetails">
+        <PropertyRef Name="ServiceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_TypePriceDetails_dbo_RoomTypes_TypeId">
+    <End Role="RoomTypes" Type="Self.RoomTypes" Multiplicity="1" />
+    <End Role="TypePriceDetails" Type="Self.TypePriceDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RoomTypes">
+        <PropertyRef Name="TypeId" />
+      </Principal>
+      <Dependent Role="TypePriceDetails">
+        <PropertyRef Name="TypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_TypePriceDetails_dbo_TypePrices_TypePriceId">
+    <End Role="TypePrices" Type="Self.TypePrices" Multiplicity="1" />
+    <End Role="TypePriceDetails" Type="Self.TypePriceDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TypePrices">
+        <PropertyRef Name="TypePriceId" />
+      </Principal>
+      <Dependent Role="TypePriceDetails">
+        <PropertyRef Name="TypePriceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="HotelManagementModelStoreContainer">
+    <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BookingDetails" EntityType="Self.BookingDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Bookings" EntityType="Self.Bookings" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CheckInDetails" EntityType="Self.CheckInDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CheckIns" EntityType="Self.CheckIns" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Customers" EntityType="Self.Customers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Employees" EntityType="Self.Employees" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Invoices" EntityType="Self.Invoices" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Reports" EntityType="Self.Reports" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Rooms" EntityType="Self.Rooms" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RoomTypes" EntityType="Self.RoomTypes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ServiceDetails" EntityType="Self.ServiceDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Services" EntityType="Self.Services" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TypePriceDetails" EntityType="Self.TypePriceDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TypePrices" EntityType="Self.TypePrices" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_dbo_BookingDetails_dbo_Bookings_BookingId" Association="Self.FK_dbo_BookingDetails_dbo_Bookings_BookingId">
+      <End Role="Bookings" EntitySet="Bookings" />
+      <End Role="BookingDetails" EntitySet="BookingDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_BookingDetails_dbo_Rooms_RoomId" Association="Self.FK_dbo_BookingDetails_dbo_Rooms_RoomId">
+      <End Role="Rooms" EntitySet="Rooms" />
+      <End Role="BookingDetails" EntitySet="BookingDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Bookings_dbo_Customers_CustomerId" Association="Self.FK_dbo_Bookings_dbo_Customers_CustomerId">
+      <End Role="Customers" EntitySet="Customers" />
+      <End Role="Bookings" EntitySet="Bookings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Bookings_dbo_Employees_EmployeeId" Association="Self.FK_dbo_Bookings_dbo_Employees_EmployeeId">
+      <End Role="Employees" EntitySet="Employees" />
+      <End Role="Bookings" EntitySet="Bookings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_CheckInDetails_dbo_CheckIns_CheckInId" Association="Self.FK_dbo_CheckInDetails_dbo_CheckIns_CheckInId">
+      <End Role="CheckIns" EntitySet="CheckIns" />
+      <End Role="CheckInDetails" EntitySet="CheckInDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_CheckInDetails_dbo_Rooms_RoomId" Association="Self.FK_dbo_CheckInDetails_dbo_Rooms_RoomId">
+      <End Role="Rooms" EntitySet="Rooms" />
+      <End Role="CheckInDetails" EntitySet="CheckInDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_CheckIns_dbo_Bookings_BookingId" Association="Self.FK_dbo_CheckIns_dbo_Bookings_BookingId">
+      <End Role="Bookings" EntitySet="Bookings" />
+      <End Role="CheckIns" EntitySet="CheckIns" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_CheckIns_dbo_Customers_CustomerId" Association="Self.FK_dbo_CheckIns_dbo_Customers_CustomerId">
+      <End Role="Customers" EntitySet="Customers" />
+      <End Role="CheckIns" EntitySet="CheckIns" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_CheckIns_dbo_Employees_EmployeeId" Association="Self.FK_dbo_CheckIns_dbo_Employees_EmployeeId">
+      <End Role="Employees" EntitySet="Employees" />
+      <End Role="CheckIns" EntitySet="CheckIns" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Invoices_dbo_CheckIns_CheckInId" Association="Self.FK_dbo_Invoices_dbo_CheckIns_CheckInId">
+      <End Role="CheckIns" EntitySet="CheckIns" />
+      <End Role="Invoices" EntitySet="Invoices" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Invoices_dbo_Employees_EmployeeId" Association="Self.FK_dbo_Invoices_dbo_Employees_EmployeeId">
+      <End Role="Employees" EntitySet="Employees" />
+      <End Role="Invoices" EntitySet="Invoices" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Rooms_dbo_RoomTypes_TypeId" Association="Self.FK_dbo_Rooms_dbo_RoomTypes_TypeId">
+      <End Role="RoomTypes" EntitySet="RoomTypes" />
+      <End Role="Rooms" EntitySet="Rooms" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_ServiceDetails_dbo_CheckIns_CheckInId" Association="Self.FK_dbo_ServiceDetails_dbo_CheckIns_CheckInId">
+      <End Role="CheckIns" EntitySet="CheckIns" />
+      <End Role="ServiceDetails" EntitySet="ServiceDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_ServiceDetails_dbo_Services_ServiceId" Association="Self.FK_dbo_ServiceDetails_dbo_Services_ServiceId">
+      <End Role="Services" EntitySet="Services" />
+      <End Role="ServiceDetails" EntitySet="ServiceDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_TypePriceDetails_dbo_RoomTypes_TypeId" Association="Self.FK_dbo_TypePriceDetails_dbo_RoomTypes_TypeId">
+      <End Role="RoomTypes" EntitySet="RoomTypes" />
+      <End Role="TypePriceDetails" EntitySet="TypePriceDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_TypePriceDetails_dbo_TypePrices_TypePriceId" Association="Self.FK_dbo_TypePriceDetails_dbo_TypePrices_TypePriceId">
+      <End Role="TypePrices" EntitySet="TypePrices" />
+      <End Role="TypePriceDetails" EntitySet="TypePriceDetails" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

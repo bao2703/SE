@@ -4,15 +4,11 @@ namespace DAO
 	using System.Data.Entity;
 	using System.ComponentModel.DataAnnotations.Schema;
 	using System.Linq;
-	using DTO.Domain;
+	using DAO.Domain;
 
 	public partial class HotelContext : DbContext
 	{
 		public HotelContext() : base(Connection.ConnectionString)
-		{
-		}
-
-		public HotelContext(string connectionString) : base (connectionString)
 		{
 		}
 

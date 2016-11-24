@@ -4,7 +4,9 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DTO.Domain;
+using DAO.Domain;
+using AutoMapper;
+using DTO;
 
 namespace DAO.Repositories
 {
@@ -16,6 +18,7 @@ namespace DAO.Repositories
 
 		public IEnumerable<Room> GetAvailableRooms(DateTime startDate, DateTime endDate)
 		{
+			Mapper.Map<Room>(new RoomDTO());
 			return HotelContext.Rooms.Where(r =>
 				!(r.BookingDetails.Any(b => !(b.BookingStart.CompareTo(endDate) == 1 || b.BookingEnd.CompareTo(startDate) == -1)) ||
 				(r.CheckInDetails.Any(c => !(c.CheckInDate.CompareTo(endDate) == 1 || c.CheckOutDate.CompareTo(startDate) == -1)))))

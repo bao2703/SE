@@ -1,4 +1,4 @@
-namespace DTO.Domain
+namespace DAO.Domain
 {
     using System;
     using System.Collections.Generic;

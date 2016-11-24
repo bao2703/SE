@@ -5,13 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using DAO.Core;
 using DAO.Repositories;
-using DTO.Domain;
 
 namespace DAO
 {
 	public class UnitOfWork : IUnitOfWork
 	{
-		private readonly HotelContext hotelContext;
+		private readonly HotelContext  hotelContext;
 
 		public UnitOfWork()
 		{

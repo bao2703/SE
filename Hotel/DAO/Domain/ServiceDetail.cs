@@ -1,4 +1,4 @@
-namespace DTO.Domain
+namespace DAO.Domain
 {
     using System;
     using System.Collections.Generic;
@@ -6,25 +6,24 @@ namespace DTO.Domain
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class Invoice
+    public partial class ServiceDetail
     {
+        [Key]
+        [Column(Order = 0)]
         [StringLength(10)]
-        public string InvoiceId { get; set; }
+        public string ServiceId { get; set; }
 
-        [Required]
+        [Key]
+        [Column(Order = 1)]
         [StringLength(10)]
         public string CheckInId { get; set; }
 
-        [Required]
-        [StringLength(10)]
-        public string EmployeeId { get; set; }
+        public int Quantity { get; set; }
 
-        public DateTime CreatedDate { get; set; }
-
-        public decimal TotalPrice { get; set; }
+        public decimal ServicePrice { get; set; }
 
         public virtual CheckIn CheckIn { get; set; }
 
-        public virtual Employee Employee { get; set; }
+        public virtual Service Service { get; set; }
     }
 }

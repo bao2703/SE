@@ -1,4 +1,4 @@
-namespace DTO.Domain
+namespace DAO.Domain
 {
     using System;
     using System.Collections.Generic;
@@ -14,7 +14,7 @@ namespace DTO.Domain
 		D
 	}
 
-	public partial class RoomType
+    public partial class RoomType
     {
         public RoomType()
         {

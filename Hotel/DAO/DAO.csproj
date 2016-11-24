@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=5.2.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.5.2.0\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
@@ -52,12 +56,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Domain\Booking.cs" />
+    <Compile Include="Domain\BookingDetail.cs" />
+    <Compile Include="Domain\CheckIn.cs" />
+    <Compile Include="Domain\CheckInDetail.cs" />
     <Compile Include="Connection.cs" />
-    <Compile Include="ConfigDAO.cs" />
-    <Compile Include="HotelContext.cs" />
+    <Compile Include="Domain\ConfigDAO.cs" />
     <Compile Include="Core\IUnitOfWork.cs" />
+    <Compile Include="Domain\Customer.cs" />
+    <Compile Include="Domain\Employee.cs" />
+    <Compile Include="HotelContext.cs" />
+    <Compile Include="Domain\Invoice.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Domain\Report.cs" />
     <Compile Include="Repositories\BookingRepository.cs" />
     <Compile Include="Repositories\BookingDetailRepository.cs" />
     <Compile Include="Repositories\CustomerRepository.cs" />
@@ -65,6 +77,12 @@
     <Compile Include="Repositories\Repository.cs" />
     <Compile Include="Repositories\RoomRepository.cs" />
     <Compile Include="Repositories\ServiceRepository.cs" />
+    <Compile Include="Domain\Room.cs" />
+    <Compile Include="Domain\RoomType.cs" />
+    <Compile Include="Domain\Service.cs" />
+    <Compile Include="Domain\ServiceDetail.cs" />
+    <Compile Include="Domain\TypePrice.cs" />
+    <Compile Include="Domain\TypePriceDetail.cs" />
     <Compile Include="UnitOfWork.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -73,9 +91,11 @@
       <Name>DTO</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

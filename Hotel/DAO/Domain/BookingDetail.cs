@@ -1,4 +1,4 @@
-namespace DTO.Domain
+namespace DAO.Domain
 {
     using System;
     using System.Collections.Generic;
@@ -6,27 +6,25 @@ namespace DTO.Domain
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class CheckInDetail
+    public partial class BookingDetail
     {
         [Key]
         [Column(Order = 0)]
         [StringLength(10)]
-        public string CheckInId { get; set; }
+        public string BookingId { get; set; }
 
         [Key]
         [Column(Order = 1)]
         [StringLength(10)]
         public string RoomId { get; set; }
 
-        public decimal RoomPrice { get; set; }
+        public DateTime BookingStart { get; set; }
+
+        public DateTime BookingEnd { get; set; }
 
         public int NumOfCustomer { get; set; }
 
-        public DateTime CheckInDate { get; set; }
-
-        public DateTime CheckOutDate { get; set; }
-
-        public virtual CheckIn CheckIn { get; set; }
+        public virtual Booking Booking { get; set; }
 
         public virtual Room Room { get; set; }
     }

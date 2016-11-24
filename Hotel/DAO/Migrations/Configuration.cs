@@ -4,7 +4,7 @@ namespace DAO.Migrations
 	using System.Data.Entity;
 	using System.Data.Entity.Migrations;
 	using System.Linq;
-	using DTO.Domain;
+	using DAO.Domain;
 	using System.Collections.Generic;
 
 	public class Configuration : DbMigrationsConfiguration<HotelContext>
