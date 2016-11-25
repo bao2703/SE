@@ -24,8 +24,8 @@ namespace BUS
 				c.CreateMap<Booking, BookingDTO>();
 				c.CreateMap<Customer, CustomerDTO>();
 				c.CreateMap<Employee, EmployeeDTO>();
-				c.CreateMap<RoomType, RoomTypeDTO>();
 				c.CreateMap<Room, RoomDTO>();
+				c.CreateMap<RoomType, RoomTypeDTO>();
 			});
 		}
 	}

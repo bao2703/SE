@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using BUS;
 using DTO;
 using AutoMapper;
+using System.Reflection;
 
 namespace GUI
 {
@@ -25,8 +26,51 @@ namespace GUI
 			this.employee = employee;
 			this.comboBoxRoomType.DropDownStyle = ComboBoxStyle.DropDownList;
 			this.comboBoxRoomType.Items.AddRange(new object[] { "None", TypeOfRoom.A, TypeOfRoom.B, TypeOfRoom.C, TypeOfRoom.D });
-			dgvBookingList.DataSource = BookingTable(BookingBUS.GetBookings());
-			ReloadRoomTable();
+			BindingSource bs = new BindingSource();
+			bs.DataSource = BookingBUS.GetBookings();
+			dgvBookingList.DataSource = bs;
+			//ReloadRoomTable();
+		}
+		private void dgvBookingList_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+		{
+			if ((dgvBookingList.Rows[e.RowIndex].DataBoundItem != null) && (dgvBookingList.Columns[e.ColumnIndex].DataPropertyName.Contains(".")))
+				e.Value = BindProperty(dgvBookingList.Rows[e.RowIndex].DataBoundItem, dgvBookingList.Columns[e.ColumnIndex].DataPropertyName);
+		}
+
+		private string BindProperty(object property, string propertyName)
+		{
+			string retValue;
+
+			retValue = "";
+
+			if (propertyName.Contains("."))
+			{
+				PropertyInfo[] arrayProperties;
+				string leftPropertyName;
+
+				leftPropertyName = propertyName.Substring(0, propertyName.IndexOf("."));
+				arrayProperties = property.GetType().GetProperties();
+
+				foreach (PropertyInfo propertyInfo in arrayProperties)
+				{
+					if (propertyInfo.Name == leftPropertyName)
+					{
+						retValue = BindProperty(propertyInfo.GetValue(property, null), propertyName.Substring(propertyName.IndexOf(".") + 1));
+						break;
+					}
+				}
+			}
+			else
+			{
+				Type propertyType;
+				PropertyInfo propertyInfo;
+
+				propertyType = property.GetType();
+				propertyInfo = propertyType.GetProperty(propertyName);
+				retValue = propertyInfo.GetValue(property, null).ToString();
+			}
+
+			return retValue;
 		}
 
 		private DataTable RoomTable(List<RoomDTO> rooms)
@@ -102,11 +146,11 @@ namespace GUI
 
 		private void ReloadRoomTable()
 		{
-			this.comboBoxRoomType.SelectedIndex = 0;
-			availableRoom = RoomBUS.GetAvailableRooms(dateTimePickerBookingStart.Value, dateTimePickerBookingEnd.Value);
-			bookingRoomDetails = new List<BookingDetailDTO>();
-			dgvAvailableRooms.DataSource = RoomTable(availableRoom);
-			dgvBookingRooms.DataSource = BookingRoomTale(bookingRoomDetails);
+			//this.comboBoxRoomType.SelectedIndex = 0;
+			//availableRoom = RoomBUS.GetAvailableRooms(dateTimePickerBookingStart.Value, dateTimePickerBookingEnd.Value);
+			//bookingRoomDetails = new List<BookingDetailDTO>();
+			//dgvAvailableRooms.DataSource = RoomTable(availableRoom);
+			//dgvBookingRooms.DataSource = BookingRoomTale(bookingRoomDetails);
 		}
 
 		private void MainForm_Load(object sender, EventArgs e)

@@ -300,15 +300,16 @@
 			this.groupBox6.TabStop = false;
 			this.groupBox6.Text = "Reservation List";
 			// 
-			// dgvReservationList
+			// dgvBookingList
 			// 
 			this.dgvBookingList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dgvBookingList.Location = new System.Drawing.Point(7, 20);
 			this.dgvBookingList.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-			this.dgvBookingList.Name = "dgvReservationList";
+			this.dgvBookingList.Name = "dgvBookingList";
 			this.dgvBookingList.RowTemplate.Height = 24;
 			this.dgvBookingList.Size = new System.Drawing.Size(933, 214);
 			this.dgvBookingList.TabIndex = 0;
+			this.dgvBookingList.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvBookingList_CellFormatting);
 			// 
 			// groupBox3
 			// 

@@ -19,6 +19,9 @@ namespace BUS
 			using (var context = new HotelContext())
 			{
 				var booking = context.Bookings.ToList();
+				int a = 0;
+				if (5 == 5)
+					a = 10 + a;
 				return Mapper.Map<List<Booking>, List<BookingDTO>>(booking);
 			}
 		}
@@ -27,8 +30,10 @@ namespace BUS
 		{
 			using (var context = new HotelContext())
 			{
-				context.Bookings.Add(Mapper.Map<BookingDTO, Booking>(booking));
-				context.SaveChanges();
+				//booking.BookingDetails.ForEach(x => context.Rooms.Attach(Mapper.Map<RoomDTO, Room>(x.Room)));
+				//booking.BookingDetails.ForEach(x => x.Room.RoomType = null);
+				//context.Bookings.Add(Mapper.Map<BookingDTO, Booking>(booking));
+				//context.SaveChanges();
 			}
 		}
 
