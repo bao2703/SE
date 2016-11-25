@@ -17,11 +17,9 @@ namespace DAO.Domain
         [StringLength(10)]
         public string BookingId { get; set; }
 
-        //[Required]
         [StringLength(10)]
         public string CustomerId { get; set; }
 
-        //[Required]
         [StringLength(10)]
         public string EmployeeId { get; set; }
 

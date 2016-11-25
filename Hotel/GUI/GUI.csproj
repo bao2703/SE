@@ -89,6 +89,9 @@
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\DTO.BookingDetailDTO.datasource" />
+    <None Include="Properties\DataSources\DTO.BookingDTO.datasource" />
+    <None Include="Properties\DataSources\DTO.RoomDTO.datasource" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

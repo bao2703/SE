@@ -30,10 +30,10 @@ namespace BUS
 		{
 			using (var context = new HotelContext())
 			{
-				//booking.BookingDetails.ForEach(x => context.Rooms.Attach(Mapper.Map<RoomDTO, Room>(x.Room)));
-				//booking.BookingDetails.ForEach(x => x.Room.RoomType = null);
-				//context.Bookings.Add(Mapper.Map<BookingDTO, Booking>(booking));
-				//context.SaveChanges();
+				//booking.BookingDetails.ForEach(x => context.RoomTypes.Attach(Mapper.Map<RoomTypeDTO, RoomType>(x.Room.RoomType)));
+				booking.BookingDetails.ForEach(b => b.Room = null);
+				context.Bookings.Add(Mapper.Map<BookingDTO, Booking>(booking));
+				context.SaveChanges();
 			}
 		}
 

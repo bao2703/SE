@@ -15,11 +15,5 @@ namespace BUS.Tests
 		{
 			AutoMapperConfiguration.Configure();
 		}
-
-		[TestMethod()]
-		public void GetBookingsTest()
-		{
-			Assert.Fail();
-		}
 	}
 }

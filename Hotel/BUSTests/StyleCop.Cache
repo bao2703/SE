@@ -7,7 +7,7 @@
     <timestamps>
       <styleCop>2016/05/12 20:26:32.000</styleCop>
       <settingsFile>2016/04/20 21:35:08.000</settingsFile>
-      <sourceFile>2016/11/25 13:45:12.402</sourceFile>
+      <sourceFile>2016/11/25 20:22:52.309</sourceFile>
       <parser>2016/05/12 20:26:32.000</parser>
       <StyleCop.CSharp.DocumentationRules>2016/05/12 20:26:32.000</StyleCop.CSharp.DocumentationRules>
       <StyleCop.CSharp.DocumentationRules.FilesHashCode>-221033329</StyleCop.CSharp.DocumentationRules.FilesHashCode>
@@ -131,23 +131,12 @@
       </violation>
       <violation namespace="StyleCop.CSharp.SpacingRules" rule="TabsMustNotBeUsed" ruleCheckId="SA1027">
         <context>Tabs are not allowed. Use spaces instead.</context>
-        <line>19</line>
-        <index>344</index>
-        <endIndex>345</endIndex>
-        <startLine>19</startLine>
+        <line>18</line>
+        <index>342</index>
+        <endIndex>342</endIndex>
+        <startLine>18</startLine>
         <startColumn>1</startColumn>
-        <endLine>19</endLine>
-        <endColumn>2</endColumn>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.SpacingRules" rule="TabsMustNotBeUsed" ruleCheckId="SA1027">
-        <context>Tabs are not allowed. Use spaces instead.</context>
-        <line>24</line>
-        <index>424</index>
-        <endIndex>424</endIndex>
-        <startLine>24</startLine>
-        <startColumn>1</startColumn>
-        <endLine>24</endLine>
+        <endLine>18</endLine>
         <endColumn>1</endColumn>
         <warning>False</warning>
       </violation>
@@ -186,60 +175,6 @@
         <startLine>17</startLine>
         <startColumn>1</startColumn>
         <endLine>17</endLine>
-        <endColumn>2</endColumn>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
-        <context>The method must have a documentation header.</context>
-        <line>20</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.MaintainabilityRules" rule="AttributeConstructorMustNotUseUnnecessaryParenthesis" ruleCheckId="SA1411">
-        <context>The attribute constructor does not need parenthesis, since it's parameter list is empty.</context>
-        <line>19</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.SpacingRules" rule="TabsMustNotBeUsed" ruleCheckId="SA1027">
-        <context>Tabs are not allowed. Use spaces instead.</context>
-        <line>20</line>
-        <index>362</index>
-        <endIndex>363</endIndex>
-        <startLine>20</startLine>
-        <startColumn>1</startColumn>
-        <endLine>20</endLine>
-        <endColumn>2</endColumn>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.SpacingRules" rule="TabsMustNotBeUsed" ruleCheckId="SA1027">
-        <context>Tabs are not allowed. Use spaces instead.</context>
-        <line>21</line>
-        <index>395</index>
-        <endIndex>396</endIndex>
-        <startLine>21</startLine>
-        <startColumn>1</startColumn>
-        <endLine>21</endLine>
-        <endColumn>2</endColumn>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.SpacingRules" rule="TabsMustNotBeUsed" ruleCheckId="SA1027">
-        <context>Tabs are not allowed. Use spaces instead.</context>
-        <line>22</line>
-        <index>400</index>
-        <endIndex>402</endIndex>
-        <startLine>22</startLine>
-        <startColumn>1</startColumn>
-        <endLine>22</endLine>
-        <endColumn>3</endColumn>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.SpacingRules" rule="TabsMustNotBeUsed" ruleCheckId="SA1027">
-        <context>Tabs are not allowed. Use spaces instead.</context>
-        <line>23</line>
-        <index>419</index>
-        <endIndex>420</endIndex>
-        <startLine>23</startLine>
-        <startColumn>1</startColumn>
-        <endLine>23</endLine>
         <endColumn>2</endColumn>
         <warning>False</warning>
       </violation>
