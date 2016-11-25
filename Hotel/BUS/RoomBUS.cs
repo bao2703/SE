@@ -17,11 +17,13 @@ namespace BUS
 		{
 			using (var context = new HotelContext())
 			{
-				Mapper.Initialize(cfg => cfg.CreateMap<List<Room>, List<RoomDTO>>());
 				var rooms = context.Rooms.Where(r =>
-				!(r.BookingDetails.Any(b => !(b.BookingStart.CompareTo(endDate) == 1 || b.BookingEnd.CompareTo(startDate) == -1)) ||
-				(r.CheckInDetails.Any(c => !(c.CheckInDate.CompareTo(endDate) == 1 || c.CheckOutDate.CompareTo(startDate) == -1)))));
-				return Mapper.Map<List<RoomDTO>>(rooms.ToList());
+					!(r.BookingDetails.Any(b => !(b.BookingStart.CompareTo(endDate) == 1 || b.BookingEnd.CompareTo(startDate) == -1)) ||
+					(r.CheckInDetails.Any(c => !(c.CheckInDate.CompareTo(endDate) == 1 || c.CheckOutDate.CompareTo(startDate) == -1)))))
+				.OrderBy(r => r.RoomId.Length)
+				.ThenBy(r => r.RoomId)
+				.ToList();
+				return Mapper.Map<List<Room>, List<RoomDTO>>(rooms);
 			}
 		}
 	}

@@ -8,14 +8,25 @@ using System.Data;
 
 namespace BUS
 {
-	public static class MapperConfiguration
+	public static class AutoMapperConfiguration
 	{
 		public static void Configure()
 		{
-			Mapper.Initialize(cfg => cfg.CreateMap<Customer, CustomerDTO>());
-			Mapper.Initialize(cfg => cfg.CreateMap<Booking, BookingDTO>()
-				.ForMember(d => d.Customer, o => o.())
-			);
+			Mapper.Initialize(c => 
+			{
+				c.CreateMap<BookingDetailDTO, BookingDetail>();
+				c.CreateMap<BookingDTO, Booking>();
+				c.CreateMap<CustomerDTO, Customer>();
+				c.CreateMap<RoomDTO, Room>();
+				c.CreateMap<RoomTypeDTO, RoomType>();
+
+				c.CreateMap<BookingDetail, BookingDetailDTO>();
+				c.CreateMap<Booking, BookingDTO>();
+				c.CreateMap<Customer, CustomerDTO>();
+				c.CreateMap<Employee, EmployeeDTO>();
+				c.CreateMap<RoomType, RoomTypeDTO>();
+				c.CreateMap<Room, RoomDTO>();
+			});
 		}
 	}
 }

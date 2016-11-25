@@ -47,6 +47,7 @@ namespace GUI
 				this.Dispose();
 				return;
 			}
+			new MainForm(employee).Show();
 			//this.Hide();
 		}
 

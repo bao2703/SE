@@ -13,15 +13,7 @@ namespace BUS.Tests
 	{
 		public BookingBUSTests()
 		{
-			MapperConfiguration.Configure();
-		}
-
-		[TestMethod()]
-		public void GetBookingByIdTest()
-		{
-			var actual = BookingBUS.GetBookingById("B0001");
-			var expected = "B0001";
-			Assert.AreEqual(expected, actual.BookingId);
+			AutoMapperConfiguration.Configure();
 		}
 	}
 }

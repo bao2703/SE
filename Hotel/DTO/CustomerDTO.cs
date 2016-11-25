@@ -12,6 +12,8 @@ namespace DTO
 		{
 		}
 
+		public static string PrefixId { get { return "C"; } }
+
 		public string CustomerId { get; set; }
 
 		public string Name { get; set; }

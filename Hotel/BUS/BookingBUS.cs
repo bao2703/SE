@@ -14,44 +14,36 @@ namespace BUS
 {
 	public static class BookingBUS
 	{
-		//public static List<BookingDTO> GetBookings()
-		//{
-		//	using (var context = new HotelContext())
-		//	{
-				
-		//	}
-		//}
-
-		public static BookingDTO GetBookingById(string bookingId)
+		public static List<BookingDTO> GetBookings()
 		{
 			using (var context = new HotelContext())
 			{
-				var booking = context.Bookings.Where(b => b.BookingId == bookingId).Single();
-				return Mapper.Map<BookingDTO>(booking);
+				var booking = context.Bookings.ToList();
+				return Mapper.Map<List<Booking>, List<BookingDTO>>(booking);
 			}
 		}
 
-		//public static void Add(Booking booking)
-		//{
-		//	using (var unitOfWork = new UnitOfWork())
-		//	{
-		//		unitOfWork.Bookings.Add(booking);
-		//		unitOfWork.SaveChanges();
-		//	}
-		//}
+		public static void Add(BookingDTO booking)
+		{
+			using (var context = new HotelContext())
+			{
+				context.Bookings.Add(Mapper.Map<BookingDTO, Booking>(booking));
+				context.SaveChanges();
+			}
+		}
 
-		//public static string NextId()
-		//{
-		//	using (var unitOfWork = new UnitOfWork())
-		//	{
-		//		var query = unitOfWork.Customers.OrderByDescending(c => c.CustomerId).FirstOrDefault();
-		//		var prefixId = Booking.PrefixId;
-		//		if (query == null)
-		//		{
-		//			return Utilities.NextId("", prefixId);
-		//		}
-		//		return Utilities.NextId(query.CustomerId, prefixId);
-		//	}
-		//}
+		public static string NextId()
+		{
+			using (var context = new HotelContext())
+			{
+				var query = context.Customers.OrderByDescending(c => c.CustomerId).FirstOrDefault();
+				var prefixId = BookingDTO.PrefixId;
+				if (query == null)
+				{
+					return Utilities.NextId("", prefixId);
+				}
+				return Utilities.NextId(query.CustomerId, prefixId);
+			}
+		}
 	}
 }

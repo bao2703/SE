@@ -20,13 +20,6 @@ namespace BUS.Tests
 		};
 
 		[TestMethod()]
-		public void GetCustomerByIdTest()
-		{
-			//var actual = CustomerBUS.GetCustomerById("C0001");
-			//Assert.AreEqual(expected.CustomerId, actual.CustomerId);
-		}
-
-		[TestMethod()]
 		public void AddCustomerTest()
 		{
 			var id = "C0003";
@@ -42,17 +35,17 @@ namespace BUS.Tests
 		[TestMethod()]
 		public void NextCustomerIdTest_TC1()
 		{
-			//var actual = CustomerBUS.NextId();
+			var actual = CustomerBUS.NextId();
 			var expected = "C0001";
-			//Assert.AreEqual(expected, actual);
+			Assert.AreEqual(expected, actual);
 		}
 
 		[TestMethod()]
 		public void NextCustomerIdTest_TC2()
 		{
-			//var actual = CustomerBUS.NextId();
-			var expected = "C0004";
-			//Assert.AreEqual(expected, actual);
+			var actual = CustomerBUS.NextId();
+			var expected = "C0003";
+			Assert.AreEqual(expected, actual);
 		}
 	}
 }

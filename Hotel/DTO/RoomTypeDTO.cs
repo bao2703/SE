@@ -23,7 +23,5 @@ namespace DTO
 		public string TypeId { get; set; }
 
 		public TypeOfRoom TypeName { get; set; }
-
-		public virtual List<TypePriceDTO> TypePrices { get; set; }
 	}
 }

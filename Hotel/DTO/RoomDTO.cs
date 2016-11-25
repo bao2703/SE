@@ -14,7 +14,8 @@ namespace DTO
 
 		public string RoomId { get; set; }
 
-		public RoomTypeDTO RoomType { get; set; }
+		public string TypeId { get; set; }
 
+		public RoomTypeDTO RoomType { get; set; }
 	}
 }

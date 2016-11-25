@@ -16,7 +16,15 @@ namespace BUS.Tests
 	{
 		public EmployeeBUSTests()
 		{
-			MapperConfiguration.Configure();
+			AutoMapperConfiguration.Configure();
+		}
+		
+		[TestMethod()]
+		public void GetEmployeeByIdTest()
+		{
+			var actual = EmployeeBUS.GetEmployeeById("1");
+			var expected = "1";
+			Assert.AreEqual(expected, actual.EmployeeId);
 		}
 
 		#region IsValidTest
