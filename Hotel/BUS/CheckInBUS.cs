@@ -12,6 +12,17 @@
 
 	public static class CheckInBUS
 	{
+		public static List<CheckInDTO> GetCheckIns()
+		{
+			using (var context = new HotelContext())
+			{
+				var checkIns = context.CheckIns
+					.Where(c => !context.Invoices.Any(i => c.CheckInId == i.CheckInId))
+					.ToList();
+				return Mapper.Map<List<CheckIn>, List<CheckInDTO>>(checkIns);
+			}
+		}
+
 		public static void AddCheckIn(CheckInDTO checkIn)
 		{
 			using (var context = new HotelContext())

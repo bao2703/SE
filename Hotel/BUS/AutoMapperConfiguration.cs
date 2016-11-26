@@ -31,6 +31,8 @@
 
 				c.CreateMap<CheckIn, CheckInDTO>();
 
+				c.CreateMap<CheckInDetail, CheckInDetailDTO>();
+
 				c.CreateMap<Employee, EmployeeDTO>();
 
 				c.CreateMap<Room, RoomDTO>();

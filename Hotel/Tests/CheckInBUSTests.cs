@@ -19,7 +19,7 @@
 		[TestMethod]
 		public void AddCheckInBaseOnBookingTest_TC1()
 		{
-			CheckInBUS.AddCheckInBaseOnBooking("B0001");
+			CheckInBUS.AddCheckInBaseOnBooking("B0006");
 			Assert.IsTrue(true);
 		}
 

@@ -27,6 +27,14 @@
 
 		public DateTime CreatedDate { get; set; }
 
+		public int TotalRoom
+		{
+			get
+			{
+				return CheckInDetails.Count;
+			}
+		}
+
 		public CustomerDTO Customer { get; set; }
 
 		public List<CheckInDetailDTO> CheckInDetails { get; set; }

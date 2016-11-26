@@ -28,6 +28,8 @@
 			this.comboBoxRoomType.Items.AddRange(new object[] { "None", TypeOfRoom.A, TypeOfRoom.B, TypeOfRoom.C, TypeOfRoom.D });
 
 			this.bookingDTOBindingSource.DataSource = BookingBUS.GetBookings();
+			this.checkInDTOBindingSource.DataSource = CheckInBUS.GetCheckIns();
+
 			this.ReloadGridViewRoomAndBookingDetail();
 		}
 
@@ -52,6 +54,11 @@
 		private void dgvBookingDetail_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
 		{
 			this.CellFormatting(sender, e, this.dgvBookingDetail);
+		}
+
+		private void dgvCheckIn_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+		{
+			this.CellFormatting(sender, e, this.dgvCheckIn);
 		}
 
 		private string BindProperty(object property, string propertyName)
@@ -90,9 +97,9 @@
 		private DataTable BookingRoomTale(List<BookingDetailDTO> bookingRoomDetails)
 		{
 			DataTable dt = new DataTable();
-			dt.Columns.Add("roomId");
-			dt.Columns.Add("roomType");
-			dt.Columns.Add("numOfCustomer");
+			dt.Columns.Add("RoomId");
+			dt.Columns.Add("RoomType");
+			dt.Columns.Add("NumOfCustomer");
 			if (bookingRoomDetails == null)
 			{
 				return dt;
@@ -100,9 +107,9 @@
 			foreach (var item in bookingRoomDetails)
 			{
 				DataRow row = dt.NewRow();
-				row["roomId"] = item.RoomId;
-				row["roomType"] = item.Room.RoomType.TypeName;
-				row["numOfCustomer"] = item.NumOfCustomer;
+				row["RoomId"] = item.RoomId;
+				row["RoomType"] = item.Room.RoomType.TypeName;
+				row["NumOfCustomer"] = item.NumOfCustomer;
 				dt.Rows.Add(row);
 			}
 			return dt;
@@ -119,10 +126,11 @@
 
 		private void MainForm_Load(object sender, EventArgs e)
 		{
-			DataGridView[] dataGridViews = new DataGridView[3];
-			dataGridViews[0] = this.dgvBookingList;
-			dataGridViews[1] = this.dgvAvailableRooms;
-			dataGridViews[2] = this.dgvBookingDetail;
+			List<DataGridView> dataGridViews = new List<DataGridView>();
+			dataGridViews.Add(this.dgvBookingList);
+			dataGridViews.Add(this.dgvAvailableRooms);
+			dataGridViews.Add(this.dgvBookingDetail);
+			dataGridViews.Add(this.dgvCheckIn);
 			foreach (var item in dataGridViews)
 			{
 				item.MultiSelect = false;
@@ -226,7 +234,7 @@
 			{
 				return;
 			}
-			var selectedRoomId = this.dgvBookingDetail.CurrentRow.Cells["roomId"].Value.ToString();
+			var selectedRoomId = this.dgvBookingDetail.CurrentRow.Cells["RoomId"].Value.ToString();
 			var selectedBookingDetail = this.bookingRoomDetails.Single(r => r.RoomId == selectedRoomId);
 
 			this.availableRoom.Add(selectedBookingDetail.Room);
@@ -247,7 +255,10 @@
 			{
 				return;
 			}
-			string selectedBookingId = this.dgvBookingList.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
+			string selectedBookingId = this.dgvBookingList.Rows[e.RowIndex].Cells[0].Value.ToString();
+			CheckInBUS.AddCheckInBaseOnBooking(selectedBookingId);
+			this.bookingDTOBindingSource.DataSource = BookingBUS.GetBookings();
+			this.checkInDTOBindingSource.DataSource = CheckInBUS.GetCheckIns();
 		}
 	}
 }

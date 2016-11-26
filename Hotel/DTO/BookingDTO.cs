@@ -25,6 +25,14 @@
 
 		public DateTime CreatedDate { get; set; }
 
+		public int TotalRoom
+		{
+			get
+			{
+				return BookingDetails.Count;
+			}
+		}
+
 		public CustomerDTO Customer { get; set; }
 
 		public List<BookingDetailDTO> BookingDetails { get; set; }

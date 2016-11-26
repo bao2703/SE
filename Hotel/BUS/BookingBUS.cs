@@ -17,10 +17,10 @@
 		{
 			using (var context = new HotelContext())
 			{
-				var booking = context.Bookings
+				var bookings = context.Bookings
 					.Where(b => !context.CheckIns.Any(c => b.BookingId == c.BookingId))
 					.ToList();
-				return Mapper.Map<List<Booking>, List<BookingDTO>>(booking);
+				return Mapper.Map<List<Booking>, List<BookingDTO>>(bookings);
 			}
 		}
 
