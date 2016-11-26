@@ -54,7 +54,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MapperConfiguration.cs" />
+    <Compile Include="AutoMapperConfiguration.cs" />
     <Compile Include="BookingBUS.cs" />
     <Compile Include="ConfigBUS.cs" />
     <Compile Include="CustomerBUS.cs" />
