@@ -1,17 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DAO;
-using DTO;
-using DAO.Domain;
-using AutoMapper;
-using System.ComponentModel;
-using System.Windows.Forms;
-
-namespace BUS
+﻿namespace BUS
 {
+	using System;
+	using System.Collections.Generic;
+	using System.Linq;
+	using System.Text;
+	using System.Threading.Tasks;
+	using System.Windows.Forms;
+	using AutoMapper;
+	using DAO;
+	using DAO.Domain;
+	using DTO;
+
 	public static class BookingBUS
 	{
 		public static List<BookingDTO> GetBookings()
@@ -19,9 +18,6 @@ namespace BUS
 			using (var context = new HotelContext())
 			{
 				var booking = context.Bookings.ToList();
-				int a = 0;
-				if (5 == 5)
-					a = 10 + a;
 				return Mapper.Map<List<Booking>, List<BookingDTO>>(booking);
 			}
 		}
@@ -30,17 +26,16 @@ namespace BUS
 		{
 			using (var context = new HotelContext())
 			{
-				//booking.BookingDetails.ForEach(x => context.RoomTypes.Attach(Mapper.Map<RoomTypeDTO, RoomType>(x.Room.RoomType)));
 				booking.BookingDetails.ForEach(b => b.Room = null);
 				context.Bookings.Add(Mapper.Map<BookingDTO, Booking>(booking));
 				context.SaveChanges();
 			}
 		}
 
-        /// <summary>
-        /// Tìm mã khách hàng tiếp theo
-        /// </summary>
-        /// <returns></returns>
+		/// <summary>
+		/// Tìm mã dặt phòng tiếp theo
+		/// </summary>
+		/// <returns></returns>
 		public static string NextId()
 		{
 			using (var context = new HotelContext())
@@ -49,7 +44,7 @@ namespace BUS
 				var prefixId = BookingDTO.PrefixId;
 				if (query == null)
 				{
-					return Utilities.NextId("", prefixId);
+					return Utilities.NextId(string.Empty, prefixId);
 				}
 				return Utilities.NextId(query.CustomerId, prefixId);
 			}

@@ -1,18 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using DTO;
-using DAO.Domain;
-using AutoMapper;
-using System.Windows.Forms;
-using System.Data;
-
-namespace BUS
+﻿namespace BUS
 {
+	using System;
+	using AutoMapper;
+	using DAO.Domain;
+	using DTO;
+
 	public static class AutoMapperConfiguration
 	{
 		public static void Configure()
 		{
-			Mapper.Initialize(c => 
+			Mapper.Initialize(c =>
 			{
 				c.CreateMap<BookingDetailDTO, BookingDetail>();
 				c.CreateMap<BookingDTO, Booking>();

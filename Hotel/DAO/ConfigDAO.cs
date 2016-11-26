@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Configuration;
-
-namespace DAO
+﻿namespace DAO
 {
+	using System;
+	using System.Configuration;
+
 	public class ConfigDAO
 	{
 		public static void ChangeConnectionString(string connectionString)

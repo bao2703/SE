@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DTO
+﻿namespace DTO
 {
+	using System;
+	using System.Collections.Generic;
+
 	public class BookingDetailDTO
 	{
 		public string BookingId { get; set; }
@@ -17,7 +14,7 @@ namespace DTO
 		public DateTime BookingEnd { get; set; }
 
 		public int NumOfCustomer { get; set; }
-	
+
 		public RoomDTO Room { get; set; }
 	}
 }

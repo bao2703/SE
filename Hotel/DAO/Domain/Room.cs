@@ -10,8 +10,8 @@ namespace DAO.Domain
     {
         public Room()
         {
-            BookingDetails = new HashSet<BookingDetail>();
-            CheckInDetails = new HashSet<CheckInDetail>();
+			this.BookingDetails = new HashSet<BookingDetail>();
+			this.CheckInDetails = new HashSet<CheckInDetail>();
         }
 
         [StringLength(10)]

@@ -11,7 +11,7 @@ namespace DAO.Domain
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Service()
         {
-            ServiceDetails = new HashSet<ServiceDetail>();
+			this.ServiceDetails = new HashSet<ServiceDetail>();
         }
 
         [StringLength(10)]

@@ -193,4 +193,3 @@
 		private System.Windows.Forms.GroupBox groupBox1;
 	}
 }
-

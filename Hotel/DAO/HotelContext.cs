@@ -1,8 +1,8 @@
 namespace DAO
 {
 	using System;
-	using System.Data.Entity;
 	using System.ComponentModel.DataAnnotations.Schema;
+	using System.Data.Entity;
 	using System.Linq;
 	using DAO.Domain;
 
@@ -13,18 +13,31 @@ namespace DAO
 		}
 
 		public virtual DbSet<BookingDetail> BookingDetails { get; set; }
+
 		public virtual DbSet<Booking> Bookings { get; set; }
+
 		public virtual DbSet<CheckInDetail> CheckInDetails { get; set; }
+
 		public virtual DbSet<CheckIn> CheckIns { get; set; }
+
 		public virtual DbSet<Customer> Customers { get; set; }
+
 		public virtual DbSet<Employee> Employees { get; set; }
+
 		public virtual DbSet<Invoice> Invoices { get; set; }
+
 		public virtual DbSet<Report> Reports { get; set; }
+
 		public virtual DbSet<Room> Rooms { get; set; }
+
 		public virtual DbSet<RoomType> RoomTypes { get; set; }
+
 		public virtual DbSet<ServiceDetail> ServiceDetails { get; set; }
+
 		public virtual DbSet<Service> Services { get; set; }
+
 		public virtual DbSet<TypePriceDetail> TypePriceDetails { get; set; }
+
 		public virtual DbSet<TypePrice> TypePrices { get; set; }
 
 		protected override void OnModelCreating(DbModelBuilder modelBuilder)

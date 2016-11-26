@@ -10,9 +10,9 @@ namespace DAO.Domain
     {
         public CheckIn()
         {
-            CheckInDetails = new HashSet<CheckInDetail>();
-            Invoices = new HashSet<Invoice>();
-            ServiceDetails = new HashSet<ServiceDetail>();
+			this.CheckInDetails = new HashSet<CheckInDetail>();
+			this.Invoices = new HashSet<Invoice>();
+			this.ServiceDetails = new HashSet<ServiceDetail>();
         }
 
         [StringLength(10)]

@@ -1,25 +1,23 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using BUS;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DTO;
-using DAO;
-using DAO.Domain;
-
-namespace BUS.Tests
+﻿namespace BUS.Tests
 {
-	[TestClass()]
+	using System;
+	using System.Collections.Generic;
+	using System.Linq;
+	using System.Text;
+	using System.Threading.Tasks;
+	using BUS;
+	using DTO;
+	using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+	[TestClass]
 	public class EmployeeBUSTests
 	{
 		public EmployeeBUSTests()
 		{
 			AutoMapperConfiguration.Configure();
 		}
-		
-		[TestMethod()]
+
+		[TestMethod]
 		public void GetEmployeeByIdTest()
 		{
 			var actual = EmployeeBUS.GetEmployeeById("1");
@@ -28,7 +26,7 @@ namespace BUS.Tests
 		}
 
 		#region IsValidTest
-		[TestMethod()]
+		[TestMethod]
 		public void IsValidEmployeeTest_TC1()
 		{
 			var emp = new EmployeeDTO()
@@ -40,7 +38,7 @@ namespace BUS.Tests
 			Assert.IsTrue(actual);
 		}
 
-		[TestMethod()]
+		[TestMethod]
 		public void IsValidEmployeeTest_TC2()
 		{
 			var emp = new EmployeeDTO()

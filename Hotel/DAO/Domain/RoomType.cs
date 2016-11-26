@@ -18,8 +18,8 @@ namespace DAO.Domain
     {
         public RoomType()
         {
-            Rooms = new HashSet<Room>();
-            TypePriceDetails = new HashSet<TypePriceDetail>();
+			this.Rooms = new HashSet<Room>();
+			this.TypePriceDetails = new HashSet<TypePriceDetail>();
         }
 
         [Key]

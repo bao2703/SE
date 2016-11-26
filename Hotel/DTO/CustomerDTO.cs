@@ -1,18 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DTO
+﻿namespace DTO
 {
+	using System;
+	using System.Collections.Generic;
+
 	public class CustomerDTO
 	{
 		public CustomerDTO()
 		{
 		}
 
-		public static string PrefixId { get { return "C"; } }
+		public static string PrefixId
+		{
+			get
+			{
+				return "C";
+			}
+		}
 
 		public string CustomerId { get; set; }
 

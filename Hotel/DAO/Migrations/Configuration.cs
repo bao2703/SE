@@ -1,37 +1,42 @@
 namespace DAO.Migrations
 {
 	using System;
+	using System.Collections.Generic;
 	using System.Data.Entity;
 	using System.Data.Entity.Migrations;
 	using System.Linq;
 	using DAO.Domain;
-	using System.Collections.Generic;
 
 	public class Configuration : DbMigrationsConfiguration<HotelContext>
 	{
 		public Configuration()
 		{
-			AutomaticMigrationsEnabled = true;
-			AutomaticMigrationDataLossAllowed = true;
+			this.AutomaticMigrationsEnabled = true;
+			this.AutomaticMigrationDataLossAllowed = true;
 		}
 
 		protected override void Seed(HotelContext context)
 		{
 			#region Add Employees
+
 			var employee = new Employee { EmployeeId = "1", Name = "Neptune", Password = "1" };
 			context.Employees.AddOrUpdate(p => p.EmployeeId, employee);
+
 			#endregion
 
 			#region Add RoomTypes
+
 			var roomTypes = new List<RoomType>();
 			roomTypes.Add(new RoomType() { TypeId = "0", TypeName = TypeOfRoom.A });
 			roomTypes.Add(new RoomType() { TypeId = "1", TypeName = TypeOfRoom.B });
 			roomTypes.Add(new RoomType() { TypeId = "2", TypeName = TypeOfRoom.C });
 			roomTypes.Add(new RoomType() { TypeId = "3", TypeName = TypeOfRoom.D });
-			roomTypes.ForEach(t => context.RoomTypes.AddOrUpdate(p=>p.TypeName, t));
+			roomTypes.ForEach(t => context.RoomTypes.AddOrUpdate(p => p.TypeName, t));
+
 			#endregion
 
 			#region Add Rooms
+
 			var rooms = new List<Room>();
 			var typeId = roomTypes[0].TypeId;
 			for (int i = 1; i <= 120; i++)
@@ -51,22 +56,28 @@ namespace DAO.Migrations
 				rooms.Add(new Room() { RoomId = i.ToString(), TypeId = typeId });
 			}
 			rooms.ForEach(r => context.Rooms.AddOrUpdate(r));
+
 			#endregion
 
 			#region Add Customers
+
 			var customer1 = new Customer() { CustomerId = "C0001", Name = "yaxu", Address = "20 phut", Phone = "gank", Fax = "tem", Telex = "GG" };
 			var customer2 = new Customer() { CustomerId = "C0002", Name = "Neptune", Address = "20 phut", Phone = "gank", Fax = "tem", Telex = "GG" };
 			context.Customers.AddOrUpdate(p => p.CustomerId, customer1, customer2);
+
 			#endregion
 
 			#region Add Bookings
+
 			var bookings = new List<Booking>();
 			bookings.Add(new Booking() { BookingId = "B0001", CustomerId = customer1.CustomerId, EmployeeId = employee.EmployeeId, CreatedDate = DateTime.Now });
 			bookings.Add(new Booking() { BookingId = "B0002", CustomerId = customer2.CustomerId, EmployeeId = employee.EmployeeId, CreatedDate = DateTime.Now });
 			bookings.ForEach(b => context.Bookings.AddOrUpdate(b));
+
 			#endregion
 
 			#region Add BookingDetails
+
 			var bookingDetails = new List<BookingDetail>();
 			bookingDetails.Add(new BookingDetail
 			{
@@ -110,6 +121,7 @@ namespace DAO.Migrations
 				NumOfCustomer = 2,
 			});
 			bookingDetails.ForEach(b => context.BookingDetails.AddOrUpdate(b));
+
 			#endregion
 		}
 	}

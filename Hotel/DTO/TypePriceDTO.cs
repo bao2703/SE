@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DTO
+﻿namespace DTO
 {
+	using System;
+	using System.Collections.Generic;
+
 	public class TypePriceDTO
 	{
 		public TypePriceDTO()
@@ -13,6 +10,7 @@ namespace DTO
 		}
 
 		public decimal Price { get; set; }
+
 		public int NumOfCustomer { get; set; }
 	}
 }

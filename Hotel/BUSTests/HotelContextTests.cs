@@ -1,14 +1,14 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using DAO;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data.Entity;
-
-namespace DAO.Tests
+﻿namespace DAO.Tests
 {
+	using System;
+	using System.Collections.Generic;
+	using System.Data.Entity;
+	using System.Linq;
+	using System.Text;
+	using System.Threading.Tasks;
+	using DAO;
+	using Microsoft.VisualStudio.TestTools.UnitTesting;
+
 	public static class DbClear
 	{
 		public static void Exec<T>(this DbSet<T> dbSet) where T : class
@@ -16,10 +16,11 @@ namespace DAO.Tests
 			dbSet.RemoveRange(dbSet);
 		}
 	}
-	[TestClass()]
+
+	[TestClass]
 	public class HotelContextTests
 	{
-		[TestMethod()]
+		[TestMethod]
 		public void ClearAllData()
 		{
 			using (var context = new HotelContext())

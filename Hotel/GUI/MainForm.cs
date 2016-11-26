@@ -1,19 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using BUS;
-using DTO;
-using AutoMapper;
-using System.Reflection;
-
-namespace GUI
+﻿namespace GUI
 {
+	using System;
+	using System.Collections.Generic;
+	using System.ComponentModel;
+	using System.Data;
+	using System.Drawing;
+	using System.Linq;
+	using System.Reflection;
+	using System.Text;
+	using System.Threading.Tasks;
+	using System.Windows.Forms;
+	using AutoMapper;
+	using BUS;
+	using DTO;
+
 	public partial class MainForm : Form
 	{
 		private EmployeeDTO employee;
@@ -22,41 +22,41 @@ namespace GUI
 
 		public MainForm(EmployeeDTO employee)
 		{
-			InitializeComponent();
+			this.InitializeComponent();
 			this.employee = employee;
 			this.comboBoxRoomType.DropDownStyle = ComboBoxStyle.DropDownList;
 			this.comboBoxRoomType.Items.AddRange(new object[] { "None", TypeOfRoom.A, TypeOfRoom.B, TypeOfRoom.C, TypeOfRoom.D });
 
-			bookingDTOBindingSource.DataSource = BookingBUS.GetBookings();
-
-			ReloadGridViewRoomAndBookingDetail();
+			this.bookingDTOBindingSource.DataSource = BookingBUS.GetBookings();
+			this.ReloadGridViewRoomAndBookingDetail();
 		}
+
 		private void CellFormatting(object sender, DataGridViewCellFormattingEventArgs e, DataGridView dataGridView)
 		{
-			if ((dataGridView.Rows[e.RowIndex].DataBoundItem != null) && (dataGridView.Columns[e.ColumnIndex].DataPropertyName.Contains(".")))
-				e.Value = BindProperty(dataGridView.Rows[e.RowIndex].DataBoundItem, dataGridView.Columns[e.ColumnIndex].DataPropertyName);
+			if (dataGridView.Rows[e.RowIndex].DataBoundItem != null && dataGridView.Columns[e.ColumnIndex].DataPropertyName.Contains("."))
+			{
+				e.Value = this.BindProperty(dataGridView.Rows[e.RowIndex].DataBoundItem, dataGridView.Columns[e.ColumnIndex].DataPropertyName);
+			}
 		}
 
 		private void dgvBookingList_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
 		{
-			CellFormatting(sender, e, dgvBookingList);
+			this.CellFormatting(sender, e, this.dgvBookingList);
 		}
 
 		private void dgvAvailableRooms_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
 		{
-			CellFormatting(sender, e, dgvAvailableRooms);
+			this.CellFormatting(sender, e, this.dgvAvailableRooms);
 		}
 
 		private void dgvBookingDetail_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
 		{
-			CellFormatting(sender, e, dgvBookingDetail);
+			this.CellFormatting(sender, e, this.dgvBookingDetail);
 		}
 
 		private string BindProperty(object property, string propertyName)
 		{
-			string retValue;
-
-			retValue = "";
+			string retValue = string.Empty;
 
 			if (propertyName.Contains("."))
 			{
@@ -70,7 +70,7 @@ namespace GUI
 				{
 					if (propertyInfo.Name == leftPropertyName)
 					{
-						retValue = BindProperty(propertyInfo.GetValue(property, null), propertyName.Substring(propertyName.IndexOf(".") + 1));
+						retValue = this.BindProperty(propertyInfo.GetValue(property, null), propertyName.Substring(propertyName.IndexOf(".") + 1));
 						break;
 					}
 				}
@@ -84,7 +84,6 @@ namespace GUI
 				propertyInfo = propertyType.GetProperty(propertyName);
 				retValue = propertyInfo.GetValue(property, null).ToString();
 			}
-
 			return retValue;
 		}
 
@@ -112,18 +111,18 @@ namespace GUI
 		private void ReloadGridViewRoomAndBookingDetail()
 		{
 			this.comboBoxRoomType.SelectedIndex = 0;
-			availableRoom = RoomBUS.GetAvailableRooms(dateTimePickerBookingStart.Value, dateTimePickerBookingEnd.Value);
-			roomDTOBindingSource.DataSource = availableRoom;
-			bookingRoomDetails = new List<BookingDetailDTO>();
-			dgvBookingDetail.DataSource = BookingRoomTale(bookingRoomDetails);
+			this.availableRoom = RoomBUS.GetAvailableRooms(this.dateTimePickerBookingStart.Value, this.dateTimePickerBookingEnd.Value);
+			this.roomDTOBindingSource.DataSource = this.availableRoom;
+			this.bookingRoomDetails = new List<BookingDetailDTO>();
+			this.dgvBookingDetail.DataSource = this.BookingRoomTale(this.bookingRoomDetails);
 		}
 
 		private void MainForm_Load(object sender, EventArgs e)
 		{
 			DataGridView[] dataGridViews = new DataGridView[3];
-			dataGridViews[0] = dgvBookingList;
-			dataGridViews[1] = dgvAvailableRooms;
-			dataGridViews[2] = dgvBookingDetail;
+			dataGridViews[0] = this.dgvBookingList;
+			dataGridViews[1] = this.dgvAvailableRooms;
+			dataGridViews[2] = this.dgvBookingDetail;
 			foreach (var item in dataGridViews)
 			{
 				item.MultiSelect = false;
@@ -140,7 +139,7 @@ namespace GUI
 			var newBooking = new BookingDTO()
 			{
 				BookingId = BookingBUS.NextId(),
-				EmployeeId = employee.EmployeeId,
+				EmployeeId = this.employee.EmployeeId,
 				Customer = new CustomerDTO()
 				{
 					CustomerId = CustomerBUS.NextId(),
@@ -151,79 +150,83 @@ namespace GUI
 					Telex = txtTelex.Text
 				},
 				CreatedDate = DateTime.Now,
-				BookingDetails = bookingRoomDetails
+				BookingDetails = this.bookingRoomDetails
 			};
 			BookingBUS.Add(newBooking);
-			bookingDTOBindingSource.DataSource = BookingBUS.GetBookings();
+			this.bookingDTOBindingSource.DataSource = BookingBUS.GetBookings();
 		}
 
 		private void comboBoxRoomType_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			if (!comboBoxRoomType.SelectedItem.Equals("None"))
+			if (!this.comboBoxRoomType.SelectedItem.Equals("None"))
 			{
-				TypeOfRoom roomType = (TypeOfRoom)comboBoxRoomType.SelectedItem;
-				var selectedTypeRoom = availableRoom.Where(r => r.RoomType.TypeName == roomType).ToList();
-				roomDTOBindingSource.DataSource = selectedTypeRoom;
+				TypeOfRoom roomType = (TypeOfRoom)this.comboBoxRoomType.SelectedItem;
+				var selectedTypeRoom = this.availableRoom.Where(r => r.RoomType.TypeName == roomType).ToList();
+				this.roomDTOBindingSource.DataSource = selectedTypeRoom;
 			}
 			else
 			{
-				roomDTOBindingSource.DataSource = availableRoom;
+				this.roomDTOBindingSource.DataSource = this.availableRoom;
 			}
 		}
 
 		private void dateTimePickerBookingStart_ValueChanged(object sender, EventArgs e)
 		{
-			if (!Utilities.IsValidStartAndEndDate(dateTimePickerBookingStart.Value, dateTimePickerBookingEnd.Value))
+			if (!Utilities.IsValidStartAndEndDate(this.dateTimePickerBookingStart.Value, this.dateTimePickerBookingEnd.Value))
 			{
-				dateTimePickerBookingEnd.Value = dateTimePickerBookingStart.Value;
+				this.dateTimePickerBookingEnd.Value = this.dateTimePickerBookingStart.Value;
 			}
-			ReloadGridViewRoomAndBookingDetail();
+			this.ReloadGridViewRoomAndBookingDetail();
 		}
 
 		private void dateTimePickerBookingEnd_ValueChanged(object sender, EventArgs e)
 		{
-			if (!Utilities.IsValidStartAndEndDate(dateTimePickerBookingStart.Value, dateTimePickerBookingEnd.Value))
+			if (!Utilities.IsValidStartAndEndDate(this.dateTimePickerBookingStart.Value, this.dateTimePickerBookingEnd.Value))
 			{
-				dateTimePickerBookingStart.Value = dateTimePickerBookingEnd.Value;
+				this.dateTimePickerBookingStart.Value = this.dateTimePickerBookingEnd.Value;
 			}
-			ReloadGridViewRoomAndBookingDetail();
+			this.ReloadGridViewRoomAndBookingDetail();
 		}
 
 		private void btnAddBookingRoom_Click(object sender, EventArgs e)
 		{
-			if (dgvAvailableRooms.Rows.Count <= 0)
+			if (this.dgvAvailableRooms.Rows.Count <= 0)
 			{
 				return;
 			}
-			var selectedRoomId = dgvAvailableRooms.CurrentRow.Cells["RoomId"].Value.ToString();
-			var selectedRoom = availableRoom.Single(r => r.RoomId == selectedRoomId);
-			bookingRoomDetails.Add(new BookingDetailDTO()
+			var selectedRoomId = this.dgvAvailableRooms.CurrentRow.Cells["RoomId"].Value.ToString();
+			var selectedRoom = this.availableRoom.Single(r => r.RoomId == selectedRoomId);
+
+			this.bookingRoomDetails.Add(new BookingDetailDTO()
 			{
 				RoomId = selectedRoomId,
-				BookingStart = dateTimePickerBookingStart.Value,
-				BookingEnd = dateTimePickerBookingStart.Value,
-				NumOfCustomer = int.Parse(numericUpDownCustomerAmount.Value.ToString()),
+				BookingStart = this.dateTimePickerBookingStart.Value,
+				BookingEnd = this.dateTimePickerBookingStart.Value,
+				NumOfCustomer = int.Parse(this.numericUpDownCustomerAmount.Value.ToString()),
 				Room = selectedRoom
 			});
-			availableRoom.Remove(selectedRoom);
-			roomDTOBindingSource.DataSource = availableRoom;
-			dgvBookingDetail.DataSource = BookingRoomTale(bookingRoomDetails);
-			dgvAvailableRooms.Refresh();
-			comboBoxRoomType_SelectedIndexChanged(sender, e);
+			this.availableRoom.Remove(selectedRoom);
+			this.roomDTOBindingSource.DataSource = this.availableRoom;
+			this.dgvBookingDetail.DataSource = this.BookingRoomTale(this.bookingRoomDetails);
+			this.dgvAvailableRooms.Refresh();
+
+			this.comboBoxRoomType_SelectedIndexChanged(sender, e);
 		}
 
 		private void btnRemoveBookingRoom_Click(object sender, EventArgs e)
 		{
-			if (dgvBookingDetail.Rows.Count <= 0)
+			if (this.dgvBookingDetail.Rows.Count <= 0)
 			{
 				return;
 			}
-			var selectedRoomId = dgvBookingDetail.CurrentRow.Cells["RoomId"].Value.ToString();
-			var selectedBookingDetail = bookingRoomDetails.Single(r => r.RoomId == selectedRoomId);
-			availableRoom.Add(selectedBookingDetail.Room);
-			bookingRoomDetails.Remove(selectedBookingDetail);
-			dgvBookingDetail.DataSource = BookingRoomTale(bookingRoomDetails);
-			comboBoxRoomType_SelectedIndexChanged(sender, e);
+			var selectedRoomId = this.dgvBookingDetail.CurrentRow.Cells["RoomId"].Value.ToString();
+			var selectedBookingDetail = this.bookingRoomDetails.Single(r => r.RoomId == selectedRoomId);
+
+			this.availableRoom.Add(selectedBookingDetail.Room);
+			this.bookingRoomDetails.Remove(selectedBookingDetail);
+			this.dgvBookingDetail.DataSource = this.BookingRoomTale(this.bookingRoomDetails);
+
+			this.comboBoxRoomType_SelectedIndexChanged(sender, e);
 		}
 	}
 }

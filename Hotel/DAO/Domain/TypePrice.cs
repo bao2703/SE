@@ -10,7 +10,7 @@ namespace DAO.Domain
     {
         public TypePrice()
         {
-            TypePriceDetails = new HashSet<TypePriceDetail>();
+			this.TypePriceDetails = new HashSet<TypePriceDetail>();
         }
 
         [StringLength(10)]

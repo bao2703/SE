@@ -64,10 +64,11 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="BookingBUSTests.cs" />
     <Compile Include="CustomerBUSTests.cs" />
     <Compile Include="EmployeeBUSTests.cs" />
-    <Compile Include="HotelContextTests.cs" />
+    <Compile Include="HotelContextTests.cs">
+      <ExcludeFromStyleCop>False</ExcludeFromStyleCop>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

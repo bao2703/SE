@@ -1,19 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-public enum TypeOfRoom
+﻿namespace DTO
 {
-	A,
-	B,
-	C,
-	D
-}
+	using System;
+	using System.Collections.Generic;
 
-namespace DTO
-{
+	public enum TypeOfRoom
+	{
+		A,
+		B,
+		C,
+		D
+	}
+
 	public class RoomTypeDTO
 	{
 		public RoomTypeDTO()
