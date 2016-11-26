@@ -1,4 +1,4 @@
-﻿namespace DAO.Tests
+﻿namespace Tests
 {
 	using System;
 	using System.Collections.Generic;

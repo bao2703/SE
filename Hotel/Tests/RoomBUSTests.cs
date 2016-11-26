@@ -1,5 +1,5 @@
 ﻿
-namespace BUS.Tests
+namespace Tests
 {
 	using BUS;
 	using Microsoft.VisualStudio.TestTools.UnitTesting;

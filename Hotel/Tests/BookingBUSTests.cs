@@ -1,7 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using BUS;
 
-namespace BUS.Tests
+namespace Tests
 {
 	using System;
 	using System.Collections.Generic;
