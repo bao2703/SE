@@ -90,9 +90,9 @@
 		private DataTable BookingRoomTale(List<BookingDetailDTO> bookingRoomDetails)
 		{
 			DataTable dt = new DataTable();
-			dt.Columns.Add("RoomId");
-			dt.Columns.Add("RoomType");
-			dt.Columns.Add("NumOfCustomer");
+			dt.Columns.Add("roomId");
+			dt.Columns.Add("roomType");
+			dt.Columns.Add("numOfCustomer");
 			if (bookingRoomDetails == null)
 			{
 				return dt;
@@ -100,9 +100,9 @@
 			foreach (var item in bookingRoomDetails)
 			{
 				DataRow row = dt.NewRow();
-				row["RoomId"] = item.RoomId;
-				row["RoomType"] = item.Room.RoomType.TypeName;
-				row["NumOfCustomer"] = item.NumOfCustomer;
+				row["roomId"] = item.RoomId;
+				row["roomType"] = item.Room.RoomType.TypeName;
+				row["numOfCustomer"] = item.NumOfCustomer;
 				dt.Rows.Add(row);
 			}
 			return dt;
@@ -154,6 +154,7 @@
 			};
 			BookingBUS.Add(newBooking);
 			this.bookingDTOBindingSource.DataSource = BookingBUS.GetBookings();
+			this.ReloadGridViewRoomAndBookingDetail();
 		}
 
 		private void comboBoxRoomType_SelectedIndexChanged(object sender, EventArgs e)
@@ -194,7 +195,7 @@
 			{
 				return;
 			}
-			var selectedRoomId = this.dgvAvailableRooms.CurrentRow.Cells["RoomId"].Value.ToString();
+			var selectedRoomId = this.dgvAvailableRooms.CurrentRow.Cells["roomId"].Value.ToString();
 			var selectedRoom = this.availableRoom.Single(r => r.RoomId == selectedRoomId);
 
 			this.bookingRoomDetails.Add(new BookingDetailDTO()
@@ -219,7 +220,7 @@
 			{
 				return;
 			}
-			var selectedRoomId = this.dgvBookingDetail.CurrentRow.Cells["RoomId"].Value.ToString();
+			var selectedRoomId = this.dgvBookingDetail.CurrentRow.Cells["roomId"].Value.ToString();
 			var selectedBookingDetail = this.bookingRoomDetails.Single(r => r.RoomId == selectedRoomId);
 
 			this.availableRoom.Add(selectedBookingDetail.Room);

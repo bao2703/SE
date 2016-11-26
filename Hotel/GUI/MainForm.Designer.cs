@@ -42,21 +42,14 @@
 			this.label9 = new System.Windows.Forms.Label();
 			this.groupBox4 = new System.Windows.Forms.GroupBox();
 			this.dgvAvailableRooms = new System.Windows.Forms.DataGridView();
-			this.roomId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.roomType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.roomDTOBindingSource = new System.Windows.Forms.BindingSource(this.components);
 			this.btnRemoveBookingRoom = new System.Windows.Forms.Button();
 			this.groupBox6 = new System.Windows.Forms.GroupBox();
 			this.dgvBookingList = new System.Windows.Forms.DataGridView();
-			this.bookingId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.createdDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.customerId = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.customerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.customerAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.customerPhone = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.customerFax = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.CustomerFax = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.customerTelex = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.bookingDTOBindingSource = new System.Windows.Forms.BindingSource(this.components);
 			this.groupBox3 = new System.Windows.Forms.GroupBox();
 			this.dateTimePickerBookingEnd = new System.Windows.Forms.DateTimePicker();
 			this.dateTimePickerBookingStart = new System.Windows.Forms.DateTimePicker();
@@ -120,16 +113,22 @@
 			this.textBox12 = new System.Windows.Forms.TextBox();
 			this.groupBox8 = new System.Windows.Forms.GroupBox();
 			this.dataGridView5 = new System.Windows.Forms.DataGridView();
+			this.roomDTOBindingSource = new System.Windows.Forms.BindingSource(this.components);
+			this.bookingIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.employeeIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.createdDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.customerIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.bookingDTOBindingSource = new System.Windows.Forms.BindingSource(this.components);
+			this.roomId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.roomTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.tabControl1.SuspendLayout();
 			this.tabPage1.SuspendLayout();
 			this.groupBox2.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dgvBookingDetail)).BeginInit();
 			this.groupBox4.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dgvAvailableRooms)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.roomDTOBindingSource)).BeginInit();
 			this.groupBox6.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dgvBookingList)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.bookingDTOBindingSource)).BeginInit();
 			this.groupBox3.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDownCustomerAmount)).BeginInit();
 			this.groupBox1.SuspendLayout();
@@ -143,6 +142,8 @@
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView6)).BeginInit();
 			this.groupBox8.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.roomDTOBindingSource)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.bookingDTOBindingSource)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// tabControl1
@@ -295,7 +296,7 @@
 			this.dgvAvailableRooms.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dgvAvailableRooms.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.roomId,
-            this.roomType});
+            this.roomTypeDataGridViewTextBoxColumn});
 			this.dgvAvailableRooms.DataSource = this.roomDTOBindingSource;
 			this.dgvAvailableRooms.Location = new System.Drawing.Point(10, 23);
 			this.dgvAvailableRooms.Margin = new System.Windows.Forms.Padding(4);
@@ -304,24 +305,6 @@
 			this.dgvAvailableRooms.Size = new System.Drawing.Size(236, 201);
 			this.dgvAvailableRooms.TabIndex = 0;
 			this.dgvAvailableRooms.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvAvailableRooms_CellFormatting);
-			// 
-			// RoomId
-			// 
-			this.roomId.DataPropertyName = "RoomId";
-			this.roomId.HeaderText = "RoomId";
-			this.roomId.Name = "RoomId";
-			this.roomId.ReadOnly = true;
-			// 
-			// RoomType
-			// 
-			this.roomType.DataPropertyName = "RoomType.TypeName";
-			this.roomType.HeaderText = "RoomType";
-			this.roomType.Name = "RoomType";
-			this.roomType.ReadOnly = true;
-			// 
-			// roomDTOBindingSource
-			// 
-			this.roomDTOBindingSource.DataSource = typeof(DTO.RoomDTO);
 			// 
 			// btnRemoveBookingRoom
 			// 
@@ -353,13 +336,14 @@
 			this.dgvBookingList.AutoGenerateColumns = false;
 			this.dgvBookingList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dgvBookingList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.bookingId,
-            this.createdDate,
-            this.customerId,
+            this.bookingIdDataGridViewTextBoxColumn,
+            this.employeeIdDataGridViewTextBoxColumn,
+            this.createdDateDataGridViewTextBoxColumn,
+            this.customerIdDataGridViewTextBoxColumn,
             this.customerName,
             this.customerAddress,
             this.customerPhone,
-            this.customerFax,
+            this.CustomerFax,
             this.customerTelex});
 			this.dgvBookingList.DataSource = this.bookingDTOBindingSource;
 			this.dgvBookingList.Location = new System.Drawing.Point(7, 20);
@@ -371,65 +355,40 @@
 			this.dgvBookingList.TabIndex = 0;
 			this.dgvBookingList.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvBookingList_CellFormatting);
 			// 
-			// BookingId
-			// 
-			this.bookingId.DataPropertyName = "BookingId";
-			this.bookingId.HeaderText = "BookingId";
-			this.bookingId.Name = "BookingId";
-			this.bookingId.ReadOnly = true;
-			// 
-			// CreatedDate
-			// 
-			this.createdDate.DataPropertyName = "CreatedDate";
-			this.createdDate.HeaderText = "CreatedDate";
-			this.createdDate.Name = "CreatedDate";
-			this.createdDate.ReadOnly = true;
-			// 
-			// CustomerId
-			// 
-			this.customerId.DataPropertyName = "CustomerId";
-			this.customerId.HeaderText = "CustomerId";
-			this.customerId.Name = "CustomerId";
-			this.customerId.ReadOnly = true;
-			// 
-			// CustomerName
+			// customerName
 			// 
 			this.customerName.DataPropertyName = "Customer.Name";
 			this.customerName.HeaderText = "Name";
-			this.customerName.Name = "CustomerName";
+			this.customerName.Name = "customerName";
 			this.customerName.ReadOnly = true;
 			// 
-			// CustomerAddress
+			// customerAddress
 			// 
 			this.customerAddress.DataPropertyName = "Customer.Address";
 			this.customerAddress.HeaderText = "Address";
-			this.customerAddress.Name = "CustomerAddress";
+			this.customerAddress.Name = "customerAddress";
 			this.customerAddress.ReadOnly = true;
 			// 
-			// CustomerPhone
+			// customerPhone
 			// 
 			this.customerPhone.DataPropertyName = "Customer.Phone";
 			this.customerPhone.HeaderText = "Phone";
-			this.customerPhone.Name = "CustomerPhone";
+			this.customerPhone.Name = "customerPhone";
 			this.customerPhone.ReadOnly = true;
 			// 
 			// CustomerFax
 			// 
-			this.customerFax.DataPropertyName = "Customer.Fax";
-			this.customerFax.HeaderText = "Fax";
-			this.customerFax.Name = "CustomerFax";
-			this.customerFax.ReadOnly = true;
+			this.CustomerFax.DataPropertyName = "Customer.Fax";
+			this.CustomerFax.HeaderText = "Fax";
+			this.CustomerFax.Name = "CustomerFax";
+			this.CustomerFax.ReadOnly = true;
 			// 
-			// CustomerTelex
+			// customerTelex
 			// 
 			this.customerTelex.DataPropertyName = "Customer.Telex";
 			this.customerTelex.HeaderText = "Telex";
-			this.customerTelex.Name = "CustomerTelex";
+			this.customerTelex.Name = "customerTelex";
 			this.customerTelex.ReadOnly = true;
-			// 
-			// bookingDTOBindingSource
-			// 
-			this.bookingDTOBindingSource.DataSource = typeof(DTO.BookingDTO);
 			// 
 			// groupBox3
 			// 
@@ -450,7 +409,7 @@
 			// 
 			// dateTimePickerBookingEnd
 			// 
-			this.dateTimePickerBookingEnd.CustomFormat = "dd/MM/yyyy";
+			this.dateTimePickerBookingEnd.CustomFormat = "MM/dd/yyyy";
 			this.dateTimePickerBookingEnd.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
 			this.dateTimePickerBookingEnd.Location = new System.Drawing.Point(162, 68);
 			this.dateTimePickerBookingEnd.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -462,7 +421,7 @@
 			// 
 			// dateTimePickerBookingStart
 			// 
-			this.dateTimePickerBookingStart.CustomFormat = "dd/MM/yyyy";
+			this.dateTimePickerBookingStart.CustomFormat = "MM/dd/yyyy";
 			this.dateTimePickerBookingStart.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
 			this.dateTimePickerBookingStart.Location = new System.Drawing.Point(162, 29);
 			this.dateTimePickerBookingStart.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -689,7 +648,7 @@
 			this.button6.Name = "button6";
 			this.button6.Size = new System.Drawing.Size(87, 44);
 			this.button6.TabIndex = 3;
-			this.button6.Text = "Checkin";
+			this.button6.Text = "CheckIn";
 			this.button6.UseVisualStyleBackColor = true;
 			// 
 			// groupBox7
@@ -1087,6 +1046,56 @@
 			this.dataGridView5.Size = new System.Drawing.Size(939, 227);
 			this.dataGridView5.TabIndex = 0;
 			// 
+			// roomDTOBindingSource
+			// 
+			this.roomDTOBindingSource.DataSource = typeof(DTO.RoomDTO);
+			// 
+			// bookingIdDataGridViewTextBoxColumn
+			// 
+			this.bookingIdDataGridViewTextBoxColumn.DataPropertyName = "BookingId";
+			this.bookingIdDataGridViewTextBoxColumn.HeaderText = "BookingId";
+			this.bookingIdDataGridViewTextBoxColumn.Name = "bookingIdDataGridViewTextBoxColumn";
+			this.bookingIdDataGridViewTextBoxColumn.ReadOnly = true;
+			// 
+			// employeeIdDataGridViewTextBoxColumn
+			// 
+			this.employeeIdDataGridViewTextBoxColumn.DataPropertyName = "EmployeeId";
+			this.employeeIdDataGridViewTextBoxColumn.HeaderText = "EmployeeId";
+			this.employeeIdDataGridViewTextBoxColumn.Name = "employeeIdDataGridViewTextBoxColumn";
+			this.employeeIdDataGridViewTextBoxColumn.ReadOnly = true;
+			// 
+			// createdDateDataGridViewTextBoxColumn
+			// 
+			this.createdDateDataGridViewTextBoxColumn.DataPropertyName = "CreatedDate";
+			this.createdDateDataGridViewTextBoxColumn.HeaderText = "CreatedDate";
+			this.createdDateDataGridViewTextBoxColumn.Name = "createdDateDataGridViewTextBoxColumn";
+			this.createdDateDataGridViewTextBoxColumn.ReadOnly = true;
+			// 
+			// customerIdDataGridViewTextBoxColumn
+			// 
+			this.customerIdDataGridViewTextBoxColumn.DataPropertyName = "CustomerId";
+			this.customerIdDataGridViewTextBoxColumn.HeaderText = "CustomerId";
+			this.customerIdDataGridViewTextBoxColumn.Name = "customerIdDataGridViewTextBoxColumn";
+			this.customerIdDataGridViewTextBoxColumn.ReadOnly = true;
+			// 
+			// bookingDTOBindingSource
+			// 
+			this.bookingDTOBindingSource.DataSource = typeof(DTO.BookingDTO);
+			// 
+			// roomId
+			// 
+			this.roomId.DataPropertyName = "RoomId";
+			this.roomId.HeaderText = "RoomId";
+			this.roomId.Name = "roomId";
+			this.roomId.ReadOnly = true;
+			// 
+			// roomTypeDataGridViewTextBoxColumn
+			// 
+			this.roomTypeDataGridViewTextBoxColumn.DataPropertyName = "RoomType.TypeName";
+			this.roomTypeDataGridViewTextBoxColumn.HeaderText = "RoomType";
+			this.roomTypeDataGridViewTextBoxColumn.Name = "roomTypeDataGridViewTextBoxColumn";
+			this.roomTypeDataGridViewTextBoxColumn.ReadOnly = true;
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1104,10 +1113,8 @@
 			((System.ComponentModel.ISupportInitialize)(this.dgvBookingDetail)).EndInit();
 			this.groupBox4.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.dgvAvailableRooms)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.roomDTOBindingSource)).EndInit();
 			this.groupBox6.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.dgvBookingList)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.bookingDTOBindingSource)).EndInit();
 			this.groupBox3.ResumeLayout(false);
 			this.groupBox3.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDownCustomerAmount)).EndInit();
@@ -1125,6 +1132,8 @@
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView6)).EndInit();
 			this.groupBox8.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.roomDTOBindingSource)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.bookingDTOBindingSource)).EndInit();
 			this.ResumeLayout(false);
 
 		}
@@ -1211,16 +1220,17 @@
 		private System.Windows.Forms.DataGridView dgvBookingList;
 		private System.Windows.Forms.BindingSource bookingDTOBindingSource;
 		private System.Windows.Forms.BindingSource roomDTOBindingSource;
-		private System.Windows.Forms.DataGridViewTextBoxColumn roomId;
-		private System.Windows.Forms.DataGridViewTextBoxColumn roomType;
-		private System.Windows.Forms.DataGridViewTextBoxColumn bookingId;
-		private System.Windows.Forms.DataGridViewTextBoxColumn createdDate;
-		private System.Windows.Forms.DataGridViewTextBoxColumn customerId;
+		private System.Windows.Forms.DataGridView dgvBookingDetail;
+		private System.Windows.Forms.DataGridViewTextBoxColumn bookingIdDataGridViewTextBoxColumn;
+		private System.Windows.Forms.DataGridViewTextBoxColumn employeeIdDataGridViewTextBoxColumn;
+		private System.Windows.Forms.DataGridViewTextBoxColumn createdDateDataGridViewTextBoxColumn;
+		private System.Windows.Forms.DataGridViewTextBoxColumn customerIdDataGridViewTextBoxColumn;
 		private System.Windows.Forms.DataGridViewTextBoxColumn customerName;
 		private System.Windows.Forms.DataGridViewTextBoxColumn customerAddress;
 		private System.Windows.Forms.DataGridViewTextBoxColumn customerPhone;
-		private System.Windows.Forms.DataGridViewTextBoxColumn customerFax;
+		private System.Windows.Forms.DataGridViewTextBoxColumn CustomerFax;
 		private System.Windows.Forms.DataGridViewTextBoxColumn customerTelex;
-		private System.Windows.Forms.DataGridView dgvBookingDetail;
+		private System.Windows.Forms.DataGridViewTextBoxColumn roomId;
+		private System.Windows.Forms.DataGridViewTextBoxColumn roomTypeDataGridViewTextBoxColumn;
 	}
 }
