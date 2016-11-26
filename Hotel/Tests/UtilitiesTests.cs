@@ -8,22 +8,15 @@
 	using System.Text;
 	using System.Threading.Tasks;
 
-	[TestClass]
-	public class RoomBUSTests
+	[TestClass()]
+	public class UtilitiesTests
 	{
-		public RoomBUSTests()
-		{
-			AutoMapperConfiguration.Configure();
-		}
-
-		[TestMethod]
-		public void GetAvailableRoomsTest()
+		[TestMethod()]
+		public void IsValidStartAndEndDateTest()
 		{
 			var start = new DateTime(2016, 11, 20);
 			var end = new DateTime(2016, 11, 30);
-			var actual = RoomBUS.GetAvailableRooms(start, end).Count;
-			var expected = 115;
-			Assert.AreEqual(expected, actual);
+			Assert.IsTrue(Utilities.IsValidStartAndEndDate(start, end));
 		}
 	}
 }

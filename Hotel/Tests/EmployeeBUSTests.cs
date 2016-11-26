@@ -1,4 +1,4 @@
-﻿namespace Tests
+﻿namespace BUS.Tests
 {
 	using System;
 	using System.Collections.Generic;

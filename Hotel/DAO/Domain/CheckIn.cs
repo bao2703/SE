@@ -29,7 +29,7 @@ namespace DAO.Domain
         [StringLength(10)]
         public string BookingId { get; set; }
 
-        public DateTime? CreatedDate { get; set; }
+        public DateTime CreatedDate { get; set; }
 
         public virtual Booking Booking { get; set; }
 

@@ -56,6 +56,7 @@
   <ItemGroup>
     <Compile Include="AutoMapperConfiguration.cs" />
     <Compile Include="BookingBUS.cs" />
+    <Compile Include="CheckInBUS.cs" />
     <Compile Include="ConfigBUS.cs" />
     <Compile Include="CustomerBUS.cs" />
     <Compile Include="EmployeeBUS.cs" />

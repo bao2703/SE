@@ -1,7 +1,4 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using BUS;
-
-namespace Tests
+﻿namespace BUS.Tests
 {
 	using System;
 	using System.Collections.Generic;
@@ -24,6 +21,14 @@ namespace Tests
 		{
 			var actual = BookingBUS.GetBookings().Count;
 			var expected = 2;
+			Assert.AreEqual(expected, actual);
+		}
+
+		[TestMethod]
+		public void GetBookingsByContainsIdTest()
+		{
+			var actual = BookingBUS.GetBookingsByContainsId("1").Count;
+			var expected = 1;
 			Assert.AreEqual(expected, actual);
 		}
 

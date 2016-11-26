@@ -1,4 +1,4 @@
-﻿namespace Tests
+﻿namespace DAO.Tests
 {
 	using System;
 	using System.Collections.Generic;
@@ -28,6 +28,8 @@
 				DbClear.Exec(context.BookingDetails);
 				DbClear.Exec(context.Bookings);
 				DbClear.Exec(context.Customers);
+				DbClear.Exec(context.CheckInDetails);
+				DbClear.Exec(context.CheckIns);
 				context.SaveChanges();
 			}
 			Assert.IsTrue(true);

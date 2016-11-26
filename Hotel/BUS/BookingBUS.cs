@@ -17,16 +17,29 @@
 		{
 			using (var context = new HotelContext())
 			{
-				var booking = context.Bookings.ToList();
+				var booking = context.Bookings
+					.Where(b => !context.CheckIns.Any(c => b.BookingId == c.BookingId))
+					.ToList();
 				return Mapper.Map<List<Booking>, List<BookingDTO>>(booking);
 			}
 		}
 
-		public static void Add(BookingDTO booking)
+		public static List<BookingDTO> GetBookingsByContainsId(string bookingId)
 		{
 			using (var context = new HotelContext())
 			{
-				booking.BookingDetails.ForEach(b => b.Room = null);
+				var booking = context.Bookings
+					.Where(b => b.BookingId.Contains(bookingId))
+					.Where(b => !context.CheckIns.Any(c => b.BookingId == c.BookingId))
+					.ToList();
+				return Mapper.Map<List<Booking>, List<BookingDTO>>(booking);
+			}
+		}
+
+		public static void AddBooking(BookingDTO booking)
+		{
+			using (var context = new HotelContext())
+			{
 				context.Bookings.Add(Mapper.Map<BookingDTO, Booking>(booking));
 				context.SaveChanges();
 			}
@@ -40,13 +53,13 @@
 		{
 			using (var context = new HotelContext())
 			{
-				var query = context.Customers.OrderByDescending(c => c.CustomerId).FirstOrDefault();
+				var query = context.Bookings.OrderByDescending(c => c.BookingId).FirstOrDefault();
 				var prefixId = BookingDTO.PrefixId;
 				if (query == null)
 				{
 					return Utilities.NextId(string.Empty, prefixId);
 				}
-				return Utilities.NextId(query.CustomerId, prefixId);
+				return Utilities.NextId(query.BookingId, prefixId);
 			}
 		}
 	}

@@ -136,6 +136,11 @@
 
 		private void btnAddBooking_Click(object sender, EventArgs e)
 		{
+			if (bookingRoomDetails.Count == 0)
+			{
+				MessageBox.Show("Please add booking room", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				return;
+			}
 			var newBooking = new BookingDTO()
 			{
 				BookingId = BookingBUS.NextId(),
@@ -152,7 +157,8 @@
 				CreatedDate = DateTime.Now,
 				BookingDetails = this.bookingRoomDetails
 			};
-			BookingBUS.Add(newBooking);
+			newBooking.BookingDetails.ForEach(b => b.Room = null);
+			BookingBUS.AddBooking(newBooking);
 			this.bookingDTOBindingSource.DataSource = BookingBUS.GetBookings();
 			this.ReloadGridViewRoomAndBookingDetail();
 		}
@@ -168,6 +174,7 @@
 			else
 			{
 				this.roomDTOBindingSource.DataSource = this.availableRoom;
+				this.dgvAvailableRooms.Refresh();
 			}
 		}
 
@@ -209,7 +216,6 @@
 			this.availableRoom.Remove(selectedRoom);
 			this.roomDTOBindingSource.DataSource = this.availableRoom;
 			this.dgvBookingDetail.DataSource = this.BookingRoomTale(this.bookingRoomDetails);
-			this.dgvAvailableRooms.Refresh();
 
 			this.comboBoxRoomType_SelectedIndexChanged(sender, e);
 		}
@@ -228,6 +234,20 @@
 			this.dgvBookingDetail.DataSource = this.BookingRoomTale(this.bookingRoomDetails);
 
 			this.comboBoxRoomType_SelectedIndexChanged(sender, e);
+		}
+
+		private void txtSearch_TextChanged(object sender, EventArgs e)
+		{
+			this.bookingDTOBindingSource.DataSource = BookingBUS.GetBookingsByContainsId(txtSearch.Text);
+		}
+
+		private void dgvBookingList_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+		{
+			if (MessageBox.Show("Make a check in?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+			{
+				return;
+			}
+			string selectedBookingId = this.dgvBookingList.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
 		}
 	}
 }
