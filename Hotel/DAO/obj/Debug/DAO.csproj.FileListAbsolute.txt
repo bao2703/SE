@@ -3,3 +3,8 @@ C:\Users\Neptune\OneDrive\GitHub\SE\Hotel\bin\DAO.pdb
 C:\Users\Neptune\OneDrive\GitHub\SE\Hotel\DAO\obj\Debug\DAO.csprojResolveAssemblyReference.cache
 C:\Users\Neptune\OneDrive\GitHub\SE\Hotel\DAO\obj\Debug\DAO.dll
 C:\Users\Neptune\OneDrive\GitHub\SE\Hotel\DAO\obj\Debug\DAO.pdb
+D:\Ass\se\trunk\Hotel\bin\DAO.dll
+D:\Ass\se\trunk\Hotel\bin\DAO.pdb
+D:\Ass\se\trunk\Hotel\DAO\obj\Debug\DAO.csprojResolveAssemblyReference.cache
+D:\Ass\se\trunk\Hotel\DAO\obj\Debug\DAO.dll
+D:\Ass\se\trunk\Hotel\DAO\obj\Debug\DAO.pdb

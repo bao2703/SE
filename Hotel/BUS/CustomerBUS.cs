@@ -12,6 +12,10 @@ namespace BUS
 {
 	public static class CustomerBUS
 	{
+        /// <summary>
+        /// Tìm mã khách hàng tiếp theo
+        /// </summary>
+        /// <returns></returns>
 		public static string NextId()
 		{
 			using (var context = new HotelContext())

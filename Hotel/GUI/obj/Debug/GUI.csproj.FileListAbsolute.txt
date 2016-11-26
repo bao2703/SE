@@ -9,3 +9,13 @@ C:\Users\Neptune\OneDrive\GitHub\SE\Hotel\GUI\obj\Debug\GUI.LoginForm.resources
 C:\Users\Neptune\OneDrive\GitHub\SE\Hotel\GUI\obj\Debug\GUI.csproj.GenerateResource.Cache
 C:\Users\Neptune\OneDrive\GitHub\SE\Hotel\GUI\obj\Debug\GUI.exe
 C:\Users\Neptune\OneDrive\GitHub\SE\Hotel\GUI\obj\Debug\GUI.pdb
+D:\Ass\se\trunk\Hotel\bin\GUI.exe.config
+D:\Ass\se\trunk\Hotel\bin\GUI.exe
+D:\Ass\se\trunk\Hotel\bin\GUI.pdb
+D:\Ass\se\trunk\Hotel\GUI\obj\Debug\GUI.csprojResolveAssemblyReference.cache
+D:\Ass\se\trunk\Hotel\GUI\obj\Debug\GUI.ConfigForm.resources
+D:\Ass\se\trunk\Hotel\GUI\obj\Debug\GUI.MainForm.resources
+D:\Ass\se\trunk\Hotel\GUI\obj\Debug\GUI.LoginForm.resources
+D:\Ass\se\trunk\Hotel\GUI\obj\Debug\GUI.csproj.GenerateResource.Cache
+D:\Ass\se\trunk\Hotel\GUI\obj\Debug\GUI.exe
+D:\Ass\se\trunk\Hotel\GUI\obj\Debug\GUI.pdb

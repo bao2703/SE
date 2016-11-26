@@ -13,6 +13,12 @@ namespace BUS
 {
 	public static class RoomBUS
 	{
+        /// <summary>
+        /// Lấy ra danh sách những phòng còn trống
+        /// </summary>
+        /// <param name="startDate"></param>
+        /// <param name="endDate"></param>
+        /// <returns></returns>
 		public static List<RoomDTO> GetAvailableRooms(DateTime startDate, DateTime endDate)
 		{
 			using (var context = new HotelContext())

@@ -8,3 +8,8 @@ C:\Users\Neptune\OneDrive\GitHub\SE\Hotel\bin\BUS.pdb
 C:\Users\Neptune\OneDrive\GitHub\SE\Hotel\BUS\obj\Debug\BUS.csprojResolveAssemblyReference.cache
 C:\Users\Neptune\OneDrive\GitHub\SE\Hotel\BUS\obj\Debug\BUS.dll
 C:\Users\Neptune\OneDrive\GitHub\SE\Hotel\BUS\obj\Debug\BUS.pdb
+D:\Ass\se\trunk\Hotel\bin\BUS.dll
+D:\Ass\se\trunk\Hotel\bin\BUS.pdb
+D:\Ass\se\trunk\Hotel\BUS\obj\Debug\BUS.csprojResolveAssemblyReference.cache
+D:\Ass\se\trunk\Hotel\BUS\obj\Debug\BUS.dll
+D:\Ass\se\trunk\Hotel\BUS\obj\Debug\BUS.pdb
